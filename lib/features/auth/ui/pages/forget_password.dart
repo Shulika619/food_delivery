@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/sign_in_form.dart';
+import '../widgets/fortet_password_form.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class ForgetPasswordPage extends StatelessWidget {
+  const ForgetPasswordPage({Key? key}) : super(key: key);
 
-  static const routeName = '/sign-in';
+  static const routeName = '/forget-password';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Login",
+          "Password recovery",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
         ),
-        backgroundColor: Colors.amber,
         elevation: 0,
       ),
-      backgroundColor: Colors.amber,
       body: SafeArea(
         child: Container(
           // color: const Color(0xffe0e9f8),
@@ -30,9 +28,9 @@ class SignInPage extends StatelessWidget {
                 hasScrollBody: false,
                 child: Column(
                   children: <Widget>[
-                    Image.asset('assets/images/login.png'),
+                    Image.asset('assets/images/forget password.jpg'),
                     Expanded(
-                      child: const SignInForm(),
+                      child: ForgetPasswordForm(),
                     ),
                   ],
                 ),

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_delivery/features/auth/bloc/auth/auth_bloc.dart';
+import 'package:food_delivery/features/auth/ui/pages/forget_password.dart';
 import 'package:food_delivery/features/auth/ui/pages/sign_up_page.dart';
 
 class SignInForm extends StatefulWidget {
+  const SignInForm({Key? key}) : super(key: key);
+
   @override
   State<SignInForm> createState() => _SignInFormState();
 }
@@ -25,6 +29,7 @@ class _SignInFormState extends State<SignInForm> {
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<AuthBloc>().state;
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
       decoration: const BoxDecoration(
@@ -36,7 +41,6 @@ class _SignInFormState extends State<SignInForm> {
       ),
       child: Form(
         key: _formKey,
-        // autovalidate: state.showErrorMessages,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -57,7 +61,6 @@ class _SignInFormState extends State<SignInForm> {
                   ),
                   autocorrect: false,
                   autofocus: false,
-                  // onChanged: (value) => null,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
@@ -74,35 +77,47 @@ class _SignInFormState extends State<SignInForm> {
                     return null;
                   },
                   onSaved: (value) => _password = value,
-                  // onChanged: (value) => null,
                 ),
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text('Forget your password?',
-                        style: TextStyle(
-                            color: Colors.green[600],
-                            fontWeight: FontWeight.bold))
+                    TextButton(
+                        onPressed: () => Navigator.pushNamed(
+                            context, ForgetPasswordPage.routeName),
+                        child: Text('Forget your password?',
+                            style: TextStyle(
+                                color: Colors.green[600],
+                                fontWeight: FontWeight.bold))),
                   ],
                 ),
               ],
             ),
             Column(
               children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    FocusScope.of(context).unfocus();
-                    _submit();
-                    // TODO:
+                state.maybeWhen(
+                  error: (message) {
+                    Fluttertoast.showToast(
+                        msg: message,
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
+                    return const SizedBox();
                   },
-                  child: Container(
-                    width: 160,
-                    height: 40,
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white),
+                  orElse: () => ElevatedButton(
+                    onPressed: () {
+                      FocusScope.of(context).unfocus();
+                      _submit();
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 40,
+                      alignment: Alignment.center,
+                      child: const Text('Login',
+                          style: TextStyle(color: Colors.white)),
                     ),
                   ),
                 ),
@@ -126,7 +141,7 @@ class _SignInFormState extends State<SignInForm> {
                           style: TextStyle(
                               color: Colors.green[600],
                               fontWeight: FontWeight.bold)),
-                    )
+                    ),
                   ],
                 ),
               ],

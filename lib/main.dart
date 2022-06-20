@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/features/auth/bloc/auth/auth_bloc.dart';
+import 'package:food_delivery/features/auth/ui/pages/forget_password.dart';
 import 'package:food_delivery/features/auth/ui/pages/sign_in_page.dart';
 import 'package:food_delivery/features/auth/ui/pages/sign_up_page.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -14,7 +15,7 @@ Future main() async {
   await Firebase.initializeApp();
   final storage = await HydratedStorage.build(
       storageDirectory: await getTemporaryDirectory());
-  HydratedBlocOverrides.runZoned(() => runApp(const MyApp()),
+  HydratedBlocOverrides.runZoned(() => runApp(MyApp()),
       blocObserver: AppBlocObserver(), storage: storage);
 }
 
@@ -39,16 +40,16 @@ class MyApp extends StatelessWidget {
         ),
         home: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) => state.maybeWhen(
-              notAuthorized: () => const SignInPage(),
-              loadInProgress: () =>
-                  const Center(child: CircularProgressIndicator()),
-              authorized: () => const MainPage(),
+              notAuthorized: () => SignInPage(),
+              authorized: () => MainPage(),
               // error: (msg) => Center(child: Text(msg)),
               orElse: () => const SignInPage()),
         ),
         routes: {
-          SignInPage.routeName: (context) => SignInPage(),
-          SignUpPage.routeName: (context) => const SignUpPage(),
+          MainPage.routeName: (context) => const MainPage(),
+          SignInPage.routeName: (context) => const SignInPage(),
+          SignUpPage.routeName: (context) => SignUpPage(),
+          ForgetPasswordPage.routeName: (context) => const ForgetPasswordPage(),
         },
       ),
     );
@@ -58,12 +59,18 @@ class MyApp extends StatelessWidget {
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
+  static const routeName = '/main-page';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: const SizedBox(
+        body: SizedBox(
             child: Center(
-      child: Text('Main Page'),
+      child: ElevatedButton(
+          onPressed: () {
+            context.read<AuthBloc>().add(const AuthEvent.logOut());
+          },
+          child: const Text('LogOut')),
     )));
   }
 }

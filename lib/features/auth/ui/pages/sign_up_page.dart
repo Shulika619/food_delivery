@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/sign_up_form.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  SignUpPage({Key? key}) : super(key: key);
 
   static const routeName = '/sign-up';
 
@@ -32,7 +32,7 @@ class SignUpPage extends StatelessWidget {
                   children: <Widget>[
                     Image.asset(
                       'assets/images/signUp.png',
-                      fit: BoxFit.cover,
+                      // fit: BoxFit.cover,
                     ),
                     Expanded(
                       child: SignUpForm(),
