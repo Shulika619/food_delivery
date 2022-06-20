@@ -28,6 +28,12 @@ class _SignUpFormState extends State<SignUpForm> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _passwordController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // final state = context.read<AuthBloc>().state;
     // if (state == AuthState.authorized()) {
