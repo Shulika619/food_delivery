@@ -1,10 +1,11 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/auth/auth_bloc.dart';
 
 class SignUpForm extends StatefulWidget {
-  SignUpForm({Key? key}) : super(key: key);
+  const SignUpForm({Key? key}) : super(key: key);
 
   @override
   State<SignUpForm> createState() => _SignUpFormState();
@@ -22,9 +23,10 @@ class _SignUpFormState extends State<SignUpForm> {
     }
     _formKeySignUp.currentState!.save();
 
-    context
-        .read<AuthBloc>()
-        .add(AuthEvent.signUp(email: _email ?? "", password: _password ?? ""));
+    try {
+      context.read<AuthBloc>().add(
+          AuthEvent.signUp(email: _email ?? "", password: _password ?? ""));
+    } catch (_) {}
   }
 
   @override
@@ -35,10 +37,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    // final state = context.read<AuthBloc>().state;
-    // if (state == AuthState.authorized()) {
-    //   Navigator.pop(context);
-    // }
+    // final state = context.watch<AuthBloc>().state;
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
       decoration: const BoxDecoration(
@@ -64,7 +63,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   autocorrect: false,
                   autofocus: false,
                   validator: (value) {
-                    if (value!.isEmpty || !value.contains('@')) {
+                    if (value != null && !EmailValidator.validate(value)) {
                       return 'Invalid email!';
                     }
                     return null;

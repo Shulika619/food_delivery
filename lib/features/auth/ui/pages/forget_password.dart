@@ -19,24 +19,21 @@ class ForgetPasswordPage extends StatelessWidget {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Container(
-          // color: const Color(0xffe0e9f8),
-          child: CustomScrollView(
-            reverse: true,
-            slivers: [
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Column(
-                  children: <Widget>[
-                    Image.asset('assets/images/forget password.jpg'),
-                    Expanded(
-                      child: ForgetPasswordForm(),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+        child: CustomScrollView(
+          reverse: true,
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: <Widget>[
+                  Image.asset('assets/images/forget password.jpg'),
+                  Expanded(
+                    child: ForgetPasswordForm(),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

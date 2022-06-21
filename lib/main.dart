@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/features/auth/bloc/auth/auth_bloc.dart';
@@ -14,53 +14,56 @@ import 'bloc_observer.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  final storage = await HydratedStorage.build(
-      storageDirectory: await getTemporaryDirectory());
-  HydratedBlocOverrides.runZoned(() => runApp(MyApp()),
-      blocObserver: AppBlocObserver(), storage: storage);
+  runApp(const MyApp());
+  // final storage = await HydratedStorage.build(
+  //     storageDirectory: await getTemporaryDirectory());
+  // HydratedBlocOverrides.runZoned(() => runApp(MyApp()),
+  //     blocObserver: AppBlocObserver(), storage: storage);
 }
 
-// void main() => const MyApp();
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AuthBloc(),
-        )
-      ],
+    return BlocProvider(
+      create: (context) => AuthBloc(),
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'Food Delivery',
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        // home: BlocBuilder<AuthBloc, AuthState>(
-        //   builder: (context, state) => state.maybeWhen(
-        //       notAuthorized: () => SignInPage(),
-        //       authorized: () => MainPage(),
-        //       // error: (msg) => Center(child: Text(msg)),
-        //       orElse: () => const SignInPage()),
-        // ),
-        home: StreamBuilder<User?>(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return const MainPage();
-              }
-              return const SignInPage();
-            }),
+        home: const MyAppPage(),
         routes: {
           MainPage.routeName: (context) => const MainPage(),
           SignInPage.routeName: (context) => const SignInPage(),
-          SignUpPage.routeName: (context) => SignUpPage(),
+          SignUpPage.routeName: (context) => const SignUpPage(),
           ForgetPasswordPage.routeName: (context) => const ForgetPasswordPage(),
         },
       ),
+    );
+  }
+}
+
+class MyAppPage extends StatelessWidget {
+  const MyAppPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return const MainPage();
+            } else {
+              return const SignInPage();
+            }
+          }),
     );
   }
 }
@@ -77,9 +80,25 @@ class MainPage extends StatelessWidget {
             child: Center(
       child: ElevatedButton(
           onPressed: () {
-            context.read<AuthBloc>().add(const AuthEvent.logOut());
+            // context.read<AuthBloc>().add(const AuthEvent.logOut());
+            FirebaseAuth.instance.signOut();
           },
           child: const Text('LogOut')),
     )));
   }
 }
+
+
+// MultiBlocProvider(
+//       providers: [
+//         BlocProvider(create: (context) => AuthBloc()),
+//       ],
+// )
+
+  // home: BlocBuilder<AuthBloc, AuthState>(
+      //   builder: (context, state) => state.maybeWhen(
+      //       notAuthorized: () => SignInPage(),
+      //       authorized: () => MainPage(),
+      //       // error: (msg) => Center(child: Text(msg)),
+      //       orElse: () => const SignInPage()),
+      // ),

@@ -1,9 +1,10 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_delivery/features/auth/bloc/auth/auth_bloc.dart';
 import 'package:food_delivery/features/auth/ui/pages/forget_password.dart';
 import 'package:food_delivery/features/auth/ui/pages/sign_up_page.dart';
+import 'package:food_delivery/main.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -22,14 +23,22 @@ class _SignInFormState extends State<SignInForm> {
       return;
     }
     _formKey.currentState!.save();
-    context
-        .read<AuthBloc>()
-        .add(AuthEvent.logIn(email: _email ?? "", password: _password ?? ""));
+
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(child: CircularProgressIndicator()));
+
+    try {
+      context
+          .read<AuthBloc>()
+          .add(AuthEvent.logIn(email: _email ?? "", password: _password ?? ""));
+    } catch (_) {}
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AuthBloc>().state;
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
       decoration: const BoxDecoration(
@@ -49,8 +58,8 @@ class _SignInFormState extends State<SignInForm> {
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
-                    if (value!.isEmpty || !value.contains('@')) {
-                      return 'Invalid email!';
+                    if (value != null && !EmailValidator.validate(value)) {
+                      return 'Enter a valid email!';
                     }
                     return null;
                   },
@@ -95,30 +104,17 @@ class _SignInFormState extends State<SignInForm> {
             ),
             Column(
               children: <Widget>[
-                state.maybeWhen(
-                  error: (message) {
-                    Fluttertoast.showToast(
-                        msg: message,
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0);
-                    return const SizedBox();
+                ElevatedButton(
+                  onPressed: () {
+                    FocusScope.of(context).unfocus();
+                    _submit();
                   },
-                  orElse: () => ElevatedButton(
-                    onPressed: () {
-                      FocusScope.of(context).unfocus();
-                      _submit();
-                    },
-                    child: Container(
-                      width: 160,
-                      height: 40,
-                      alignment: Alignment.center,
-                      child: const Text('Login',
-                          style: TextStyle(color: Colors.white)),
-                    ),
+                  child: Container(
+                    width: 160,
+                    height: 40,
+                    alignment: Alignment.center,
+                    child: const Text('Login',
+                        style: TextStyle(color: Colors.white)),
                   ),
                 ),
                 const SizedBox(height: 10),

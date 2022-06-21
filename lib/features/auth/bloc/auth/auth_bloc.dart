@@ -4,6 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../main.dart';
+import '../../data/models/flutter_toast_warning.dart';
+
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -19,66 +22,67 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // });
     on<_AuthEventLogIn>((event, emit) async {
       try {
-        final credential = await FirebaseAuth.instance
+        await FirebaseAuth.instance
             .signInWithEmailAndPassword(
                 email: event.email, password: event.password)
             .timeout(const Duration(seconds: 5));
         emit(const AuthState.authorized());
         // print('!!!!!! $credential !!!!!!!!!');
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
-          emit(const AuthState.error(message: 'No user found for that email.'));
-        } else if (e.code == 'wrong-password') {
-          emit(const AuthState.error(
-              message: 'Wrong password provided for that user.'));
-        }
-        await Future.delayed(const Duration(seconds: 2));
-        emit(const AuthState.notAuthorized());
+        FlutterToastWarning.showToast(e.message.toString());
+        emit(AuthState.error(message: e.message.toString()));
       } on TimeoutException catch (_) {
+        FlutterToastWarning.showToast(
+            'TimeOut Error!!! The server is not responding, check Internet connection!');
         emit(const AuthState.error(
-            message: 'TimeOut Error!!! The server is not responding'));
-        await Future.delayed(const Duration(seconds: 2));
-        emit(const AuthState.notAuthorized());
-      } catch (e) {
-        emit(const AuthState.error(message: 'Some Error!!!'));
-        await Future.delayed(const Duration(seconds: 2));
-        emit(const AuthState.notAuthorized());
+            message:
+                'TimeOut Error!!! The server is not responding, check Internet connection!'));
+      } catch (_) {
+        FlutterToastWarning.showToast('Some Error AUTH!!!');
+        emit(const AuthState.error(message: 'Some Error AUTH!!! '));
+        rethrow;
       }
     });
+
     on<_AuthEventLogOut>((event, emit) async {
       await FirebaseAuth.instance.signOut();
       emit(const AuthState.notAuthorized());
     });
+
     on<_AuthEventForgotPass>((event, emit) async {
       try {
         await FirebaseAuth.instance.sendPasswordResetEmail(email: event.email);
-        await Future.delayed(const Duration(seconds: 2));
-        // emit(const AuthState.notAuthorized());
+        FlutterToastWarning.showToast('Check your email');
+        navigatorKey.currentState!.popUntil((route) => route.isFirst);
       } on FirebaseException catch (e) {
-        // emit(AuthState.error(message: e.code));
-        // await Future.delayed(const Duration(seconds: 2));
-        // emit(const AuthState.notAuthorized());
+        FlutterToastWarning.showToast(e.message.toString());
+        emit(AuthState.error(message: e.message.toString()));
       } catch (e) {
-        rethrow;
+        FlutterToastWarning.showToast('Some Error AUTH!!!');
+        emit(const AuthState.error(message: 'Some Error AUTH!!! '));
       }
     });
+
     on<_AuthEventSignUp>((event, emit) async {
       try {
         await FirebaseAuth.instance.signOut();
-        print('1111111 $state 11111111111');
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: event.email, password: event.password);
-        // await Future.delayed(const Duration(seconds: 1));
         emit(const AuthState.authorized());
-        print('22222222  $state 222222222222');
+        navigatorKey.currentState!.popUntil((route) => route.isFirst);
       } on FirebaseException catch (e) {
-        emit(AuthState.error(message: e.code));
-        await Future.delayed(const Duration(seconds: 2));
-        emit(const AuthState.notAuthorized());
-      } catch (e) {
-        emit(AuthState.error(message: e.toString()));
-        await Future.delayed(const Duration(seconds: 2));
-        emit(const AuthState.notAuthorized());
+        FlutterToastWarning.showToast(e.message.toString());
+        emit(AuthState.error(message: e.message.toString()));
+      } on TimeoutException catch (_) {
+        FlutterToastWarning.showToast(
+            'TimeOut Error!!! The server is not responding, check Internet connection!');
+        emit(const AuthState.error(
+            message:
+                'TimeOut Error!!! The server is not responding, check Internet connection!'));
+      } catch (_) {
+        FlutterToastWarning.showToast('Some Error AUTH!!!');
+        emit(const AuthState.error(message: 'Some Error AUTH!!! '));
+        // rethrow;
       }
     });
   }

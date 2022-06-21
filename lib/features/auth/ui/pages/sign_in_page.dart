@@ -21,24 +21,21 @@ class SignInPage extends StatelessWidget {
       ),
       backgroundColor: Colors.amber,
       body: SafeArea(
-        child: Container(
-          // color: const Color(0xffe0e9f8),
-          child: CustomScrollView(
-            reverse: true,
-            slivers: [
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Column(
-                  children: <Widget>[
-                    Image.asset('assets/images/login.png'),
-                    Expanded(
-                      child: const SignInForm(),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+        child: CustomScrollView(
+          reverse: true,
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: <Widget>[
+                  Image.asset('assets/images/login.png'),
+                  const Expanded(
+                    child: SignInForm(),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../bloc/auth/auth_bloc.dart';
 
 class ForgetPasswordForm extends StatelessWidget {
+  ForgetPasswordForm({Key? key}) : super(key: key);
   String? _email;
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AuthBloc>().state;
-
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
       decoration: const BoxDecoration(
@@ -45,16 +43,6 @@ class ForgetPasswordForm extends StatelessWidget {
                   context
                       .read<AuthBloc>()
                       .add(AuthEvent.forgotPass(email: _email ?? ""));
-                  // await Future.delayed(const Duration(seconds: 2));
-                  Fluttertoast.showToast(
-                      msg: 'Check your email',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.BOTTOM,
-                      timeInSecForIosWeb: 2,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0);
-                  Navigator.pop(context);
                 },
                 child: Container(
                   width: 160,
