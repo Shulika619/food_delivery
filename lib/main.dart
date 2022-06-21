@@ -17,7 +17,7 @@ Future main() async {
   runApp(const MyApp());
   // final storage = await HydratedStorage.build(
   //     storageDirectory: await getTemporaryDirectory());
-  // HydratedBlocOverrides.runZoned(() => runApp(MyApp()),
+  // HydratedBlocOverrides.runZoned(() => runApp(const MyApp()),
   //     blocObserver: AppBlocObserver(), storage: storage);
 }
 
@@ -39,22 +39,12 @@ class MyApp extends StatelessWidget {
         ),
         home: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
-            print('!!!!!!!!!!!!!!!!!!!! $state !!!!!!!!!!!!!!');
-            return state.maybeWhen(
+            return state.when(
               notAuthorized: () => const SignInPage(),
-              orElse: () => const MainPage(),
+              authorized: () => const MainPage(),
             );
           },
         ),
-        // StreamBuilder<User?>(
-        //     stream: FirebaseAuth.instance.authStateChanges(),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.hasData) {
-        //         return const MainPage();
-        //       } else {
-        //         return const SignInPage();
-        //       }
-        //     }),
         routes: {
           MainPage.routeName: (context) => const MainPage(),
           SignInPage.routeName: (context) => const SignInPage(),

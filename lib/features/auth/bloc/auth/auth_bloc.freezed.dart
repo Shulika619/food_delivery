@@ -678,21 +678,18 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() notAuthorized,
     required TResult Function() authorized,
-    required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? notAuthorized,
     TResult Function()? authorized,
-    TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notAuthorized,
     TResult Function()? authorized,
-    TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -700,21 +697,18 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthStateNotAuthorized value) notAuthorized,
     required TResult Function(_AuthStateAuthorized value) authorized,
-    required TResult Function(_AuthStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
     TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
     TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -780,7 +774,6 @@ class _$_AuthStateNotAuthorized extends _AuthStateNotAuthorized {
   TResult when<TResult extends Object?>({
     required TResult Function() notAuthorized,
     required TResult Function() authorized,
-    required TResult Function(String message) error,
   }) {
     return notAuthorized();
   }
@@ -790,7 +783,6 @@ class _$_AuthStateNotAuthorized extends _AuthStateNotAuthorized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? notAuthorized,
     TResult Function()? authorized,
-    TResult Function(String message)? error,
   }) {
     return notAuthorized?.call();
   }
@@ -800,7 +792,6 @@ class _$_AuthStateNotAuthorized extends _AuthStateNotAuthorized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notAuthorized,
     TResult Function()? authorized,
-    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (notAuthorized != null) {
@@ -814,7 +805,6 @@ class _$_AuthStateNotAuthorized extends _AuthStateNotAuthorized {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthStateNotAuthorized value) notAuthorized,
     required TResult Function(_AuthStateAuthorized value) authorized,
-    required TResult Function(_AuthStateError value) error,
   }) {
     return notAuthorized(this);
   }
@@ -824,7 +814,6 @@ class _$_AuthStateNotAuthorized extends _AuthStateNotAuthorized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
     TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
   }) {
     return notAuthorized?.call(this);
   }
@@ -834,7 +823,6 @@ class _$_AuthStateNotAuthorized extends _AuthStateNotAuthorized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
     TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
     required TResult orElse(),
   }) {
     if (notAuthorized != null) {
@@ -892,7 +880,6 @@ class _$_AuthStateAuthorized extends _AuthStateAuthorized {
   TResult when<TResult extends Object?>({
     required TResult Function() notAuthorized,
     required TResult Function() authorized,
-    required TResult Function(String message) error,
   }) {
     return authorized();
   }
@@ -902,7 +889,6 @@ class _$_AuthStateAuthorized extends _AuthStateAuthorized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? notAuthorized,
     TResult Function()? authorized,
-    TResult Function(String message)? error,
   }) {
     return authorized?.call();
   }
@@ -912,7 +898,6 @@ class _$_AuthStateAuthorized extends _AuthStateAuthorized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notAuthorized,
     TResult Function()? authorized,
-    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -926,7 +911,6 @@ class _$_AuthStateAuthorized extends _AuthStateAuthorized {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthStateNotAuthorized value) notAuthorized,
     required TResult Function(_AuthStateAuthorized value) authorized,
-    required TResult Function(_AuthStateError value) error,
   }) {
     return authorized(this);
   }
@@ -936,7 +920,6 @@ class _$_AuthStateAuthorized extends _AuthStateAuthorized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
     TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
   }) {
     return authorized?.call(this);
   }
@@ -946,7 +929,6 @@ class _$_AuthStateAuthorized extends _AuthStateAuthorized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
     TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -959,146 +941,4 @@ class _$_AuthStateAuthorized extends _AuthStateAuthorized {
 abstract class _AuthStateAuthorized extends AuthState {
   const factory _AuthStateAuthorized() = _$_AuthStateAuthorized;
   const _AuthStateAuthorized._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_AuthStateErrorCopyWith<$Res> {
-  factory _$$_AuthStateErrorCopyWith(
-          _$_AuthStateError value, $Res Function(_$_AuthStateError) then) =
-      __$$_AuthStateErrorCopyWithImpl<$Res>;
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$_AuthStateErrorCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$_AuthStateErrorCopyWith<$Res> {
-  __$$_AuthStateErrorCopyWithImpl(
-      _$_AuthStateError _value, $Res Function(_$_AuthStateError) _then)
-      : super(_value, (v) => _then(v as _$_AuthStateError));
-
-  @override
-  _$_AuthStateError get _value => super._value as _$_AuthStateError;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_$_AuthStateError(
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AuthStateError extends _AuthStateError {
-  const _$_AuthStateError({required this.message}) : super._();
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'AuthState.error(message: $message)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AuthStateError &&
-            const DeepCollectionEquality().equals(other.message, message));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_AuthStateErrorCopyWith<_$_AuthStateError> get copyWith =>
-      __$$_AuthStateErrorCopyWithImpl<_$_AuthStateError>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() notAuthorized,
-    required TResult Function() authorized,
-    required TResult Function(String message) error,
-  }) {
-    return error(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? notAuthorized,
-    TResult Function()? authorized,
-    TResult Function(String message)? error,
-  }) {
-    return error?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? notAuthorized,
-    TResult Function()? authorized,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthStateNotAuthorized value) notAuthorized,
-    required TResult Function(_AuthStateAuthorized value) authorized,
-    required TResult Function(_AuthStateError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
-    TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthStateNotAuthorized value)? notAuthorized,
-    TResult Function(_AuthStateAuthorized value)? authorized,
-    TResult Function(_AuthStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthStateError extends AuthState {
-  const factory _AuthStateError({required final String message}) =
-      _$_AuthStateError;
-  const _AuthStateError._() : super._();
-
-  String get message => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_AuthStateErrorCopyWith<_$_AuthStateError> get copyWith =>
-      throw _privateConstructorUsedError;
 }
