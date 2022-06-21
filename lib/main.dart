@@ -37,7 +37,24 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        home: const MyAppPage(),
+        home: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            print('!!!!!!!!!!!!!!!!!!!! $state !!!!!!!!!!!!!!');
+            return state.maybeWhen(
+              notAuthorized: () => const SignInPage(),
+              orElse: () => const MainPage(),
+            );
+          },
+        ),
+        // StreamBuilder<User?>(
+        //     stream: FirebaseAuth.instance.authStateChanges(),
+        //     builder: (context, snapshot) {
+        //       if (snapshot.hasData) {
+        //         return const MainPage();
+        //       } else {
+        //         return const SignInPage();
+        //       }
+        //     }),
         routes: {
           MainPage.routeName: (context) => const MainPage(),
           SignInPage.routeName: (context) => const SignInPage(),
@@ -45,25 +62,6 @@ class MyApp extends StatelessWidget {
           ForgetPasswordPage.routeName: (context) => const ForgetPasswordPage(),
         },
       ),
-    );
-  }
-}
-
-class MyAppPage extends StatelessWidget {
-  const MyAppPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return const MainPage();
-            } else {
-              return const SignInPage();
-            }
-          }),
     );
   }
 }
@@ -87,18 +85,3 @@ class MainPage extends StatelessWidget {
     )));
   }
 }
-
-
-// MultiBlocProvider(
-//       providers: [
-//         BlocProvider(create: (context) => AuthBloc()),
-//       ],
-// )
-
-  // home: BlocBuilder<AuthBloc, AuthState>(
-      //   builder: (context, state) => state.maybeWhen(
-      //       notAuthorized: () => SignInPage(),
-      //       authorized: () => MainPage(),
-      //       // error: (msg) => Center(child: Text(msg)),
-      //       orElse: () => const SignInPage()),
-      // ),

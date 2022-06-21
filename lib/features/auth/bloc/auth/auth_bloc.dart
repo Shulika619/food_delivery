@@ -9,25 +9,25 @@ import '../../data/models/flutter_toast_warning.dart';
 
 part 'auth_bloc.freezed.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
+class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
   AuthBloc() : super(const AuthState.notAuthorized()) {
-    // FirebaseAuth.instance.authStateChanges().listen((userOrNull) {
-    //   if (userOrNull == null) {
-    //     on<_AuthEventLogOut>((event, emit) async {
-    //       await FirebaseAuth.instance.signOut();
-    //       emit(const AuthState.notAuthorized());
-    //     });
-    //     return;
-    //   }
-    // });
+    FirebaseAuth.instance.authStateChanges().listen((userOrNull) {
+      if (userOrNull == null) {
+        setState(const AuthState.notAuthorized());
+        print('User=============null');
+        return;
+      } else {
+        print('User+++++++++++++++++++++');
+        setState(const AuthState.authorized());
+      }
+    }, cancelOnError: false);
+
     on<_AuthEventLogIn>((event, emit) async {
       try {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(
                 email: event.email, password: event.password)
             .timeout(const Duration(seconds: 5));
-        emit(const AuthState.authorized());
-        // print('!!!!!! $credential !!!!!!!!!');
       } on FirebaseAuthException catch (e) {
         FlutterToastWarning.showToast(e.message.toString());
         emit(AuthState.error(message: e.message.toString()));
@@ -46,7 +46,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<_AuthEventLogOut>((event, emit) async {
       await FirebaseAuth.instance.signOut();
-      emit(const AuthState.notAuthorized());
     });
 
     on<_AuthEventForgotPass>((event, emit) async {
@@ -68,7 +67,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await FirebaseAuth.instance.signOut();
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: event.email, password: event.password);
-        emit(const AuthState.authorized());
         navigatorKey.currentState!.popUntil((route) => route.isFirst);
       } on FirebaseException catch (e) {
         FlutterToastWarning.showToast(e.message.toString());
@@ -82,16 +80,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } catch (_) {
         FlutterToastWarning.showToast('Some Error AUTH!!!');
         emit(const AuthState.error(message: 'Some Error AUTH!!! '));
-        // rethrow;
       }
     });
   }
 }
 
+mixin _SetStateMixin<State extends Object?> on BlocBase<State> {
+  void setState(State state) => emit(state);
+}
+
 @freezed
 class AuthEvent with _$AuthEvent {
   const AuthEvent._();
-  // const factory AuthEvent.logInWithGoogle() = _AuthEventLogInWithGoogle;
   const factory AuthEvent.logIn(
       {required String email, required String password}) = _AuthEventLogIn;
   const factory AuthEvent.signUp(
