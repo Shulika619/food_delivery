@@ -6,6 +6,8 @@ import 'package:food_delivery/features/auth/ui/pages/forget_password.dart';
 import 'package:food_delivery/features/auth/ui/pages/sign_up_page.dart';
 import 'package:food_delivery/main.dart';
 
+import '../../../../const.dart';
+
 class SignInForm extends StatefulWidget {
   const SignInForm({Key? key}) : super(key: key);
 
@@ -41,9 +43,9 @@ class _SignInFormState extends State<SignInForm> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: kMainBgColor,
+        borderRadius: const BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
@@ -96,7 +98,7 @@ class _SignInFormState extends State<SignInForm> {
                             context, ForgetPasswordPage.routeName),
                         child: Text('Forget your password?',
                             style: TextStyle(
-                                color: Colors.green[600],
+                                color: kSecondaryColor,
                                 fontWeight: FontWeight.bold))),
                   ],
                 ),
@@ -113,18 +115,18 @@ class _SignInFormState extends State<SignInForm> {
                     width: 160,
                     height: 40,
                     alignment: Alignment.center,
-                    child: const Text('Login',
-                        style: TextStyle(color: Colors.white)),
+                    child:
+                        Text('Login', style: TextStyle(color: kBtnTextColor)),
                   ),
                 ),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text(
+                    Text(
                       'Don\'t have an account? ',
                       style: TextStyle(
-                        color: Color(0xff485068),
+                        color: kTexthint,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -135,7 +137,7 @@ class _SignInFormState extends State<SignInForm> {
                       },
                       child: Text('Sign Up',
                           style: TextStyle(
-                              color: Colors.green[600],
+                              color: kSecondaryColor,
                               fontWeight: FontWeight.bold)),
                     ),
                   ],

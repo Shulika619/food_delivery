@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/const.dart';
 import 'package:food_delivery/features/auth/bloc/auth/auth_bloc.dart';
 import 'package:food_delivery/features/auth/ui/pages/forget_password.dart';
 import 'package:food_delivery/features/auth/ui/pages/sign_in_page.dart';
 import 'package:food_delivery/features/auth/ui/pages/sign_up_page.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:path_provider/path_provider.dart';
+// import 'package:hydrated_bloc/hydrated_bloc.dart';
+// import 'package:path_provider/path_provider.dart';
 
 import 'bloc_observer.dart';
+import 'features/home/ui/pages/main_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+
+  BlocOverrides.runZoned(() => runApp(const MyApp()),
+      blocObserver: AppBlocObserver());
   // final storage = await HydratedStorage.build(
   //     storageDirectory: await getTemporaryDirectory());
   // HydratedBlocOverrides.runZoned(() => runApp(const MyApp()),
@@ -35,8 +38,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Food Delivery',
         theme: ThemeData(
-          primarySwatch: Colors.amber,
-        ),
+            // fontFamily: 'Forum',
+            primarySwatch: kMainColor,
+            appBarTheme: AppBarTheme(foregroundColor: kMainBgColor)),
         home: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
             return state.when(
@@ -53,25 +57,5 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
-
-  static const routeName = '/main-page';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: SizedBox(
-            child: Center(
-      child: ElevatedButton(
-          onPressed: () {
-            // context.read<AuthBloc>().add(const AuthEvent.logOut());
-            FirebaseAuth.instance.signOut();
-          },
-          child: const Text('LogOut')),
-    )));
   }
 }

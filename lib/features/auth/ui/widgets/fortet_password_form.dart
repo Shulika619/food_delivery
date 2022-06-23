@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../const.dart';
 import '../../bloc/auth/auth_bloc.dart';
 
 class ForgetPasswordForm extends StatelessWidget {
@@ -11,9 +12,9 @@ class ForgetPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: kMainBgColor,
+        borderRadius: const BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
@@ -48,8 +49,7 @@ class ForgetPasswordForm extends StatelessWidget {
                   width: 160,
                   height: 40,
                   alignment: Alignment.center,
-                  child: const Text('Reset',
-                      style: TextStyle(color: Colors.white)),
+                  child: Text('Reset', style: TextStyle(color: kBtnTextColor)),
                 ),
               ),
               const SizedBox(height: 10),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../const.dart';
 import '../widgets/sign_up_form.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -11,15 +12,17 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Create Account",
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+              color: kAppBarTextColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 25),
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: kMainColor,
         elevation: 0,
       ),
-      backgroundColor: Colors.amber,
+      backgroundColor: kMainColor,
       body: SafeArea(
         child: CustomScrollView(
           reverse: true,

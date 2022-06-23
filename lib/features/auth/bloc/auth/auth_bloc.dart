@@ -11,9 +11,9 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
   AuthBloc() : super(const AuthState.notAuthorized()) {
-    FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-    _firebaseAuth.authStateChanges().listen((userOrNull) {
+    firebaseAuth.authStateChanges().listen((userOrNull) {
       if (userOrNull == null) {
         setState(const AuthState.notAuthorized());
         return;
@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
 
     on<_AuthEventLogIn>((event, emit) async {
       try {
-        await _firebaseAuth
+        await firebaseAuth
             .signInWithEmailAndPassword(
                 email: event.email, password: event.password)
             .timeout(const Duration(seconds: 5));
@@ -40,12 +40,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
     });
 
     on<_AuthEventLogOut>((event, emit) async {
-      await _firebaseAuth.signOut();
+      await firebaseAuth.signOut();
     });
 
     on<_AuthEventForgotPass>((event, emit) async {
       try {
-        await _firebaseAuth.sendPasswordResetEmail(email: event.email);
+        await firebaseAuth.sendPasswordResetEmail(email: event.email);
         FlutterToastWarning.showToast('Check your email');
         navigatorKey.currentState!.popUntil((route) => route.isFirst);
       } on FirebaseException catch (e) {
@@ -57,8 +57,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
 
     on<_AuthEventSignUp>((event, emit) async {
       try {
-        await _firebaseAuth.signOut();
-        await _firebaseAuth.createUserWithEmailAndPassword(
+        await firebaseAuth.signOut();
+        await firebaseAuth.createUserWithEmailAndPassword(
             email: event.email, password: event.password);
         navigatorKey.currentState!.popUntil((route) => route.isFirst);
       } on FirebaseException catch (e) {

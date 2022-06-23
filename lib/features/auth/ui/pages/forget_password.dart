@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../const.dart';
 import '../widgets/fortet_password_form.dart';
 
 class ForgetPasswordPage extends StatelessWidget {
@@ -11,10 +12,12 @@ class ForgetPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Password recovery",
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+              color: kAppBarTextColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 25),
         ),
         elevation: 0,
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../const.dart';
 import '../widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
@@ -11,15 +12,17 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Login",
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+              color: kAppBarTextColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 25),
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: kMainColor,
         elevation: 0,
       ),
-      backgroundColor: Colors.amber,
+      backgroundColor: kMainColor,
       body: SafeArea(
         child: CustomScrollView(
           reverse: true,

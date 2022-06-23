@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../const.dart';
 import '../../bloc/auth/auth_bloc.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -40,9 +41,9 @@ class _SignUpFormState extends State<SignUpForm> {
     // final state = context.watch<AuthBloc>().state;
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: kMainBgColor,
+        borderRadius: const BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
@@ -118,10 +119,10 @@ class _SignUpFormState extends State<SignUpForm> {
                     width: 160,
                     height: 40,
                     alignment: Alignment.center,
-                    child: const Text(
+                    child: Text(
                       'Let\'s Get Started',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kBtnTextColor,
                       ),
                     ),
                   ),
@@ -130,11 +131,10 @@ class _SignUpFormState extends State<SignUpForm> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text(
+                    Text(
                       'Already have an account? ',
                       style: TextStyle(
-                          color: Color(0xff485068),
-                          fontWeight: FontWeight.w400),
+                          color: kTexthint, fontWeight: FontWeight.w400),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -143,7 +143,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       child: Text(
                         'Login',
                         style: TextStyle(
-                          color: Colors.green[600],
+                          color: kSecondaryColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
