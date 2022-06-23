@@ -110,6 +110,7 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
             Column(
               children: <Widget>[
+                const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () {
                     FocusScope.of(context).unfocus();
