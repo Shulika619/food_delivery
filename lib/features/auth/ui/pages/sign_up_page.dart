@@ -12,14 +12,8 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Create Account",
-          style: TextStyle(
-              color: kAppBarTextColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 25),
-        ),
-        backgroundColor: kMainColor,
+        title: const Text("Create Account",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
         elevation: 0,
       ),
       backgroundColor: kMainColor,
@@ -31,9 +25,12 @@ class SignUpPage extends StatelessWidget {
               hasScrollBody: false,
               child: Column(
                 children: <Widget>[
-                  Image.asset(
-                    'assets/images/signUp.png',
-                    // fit: BoxFit.cover,
+                  SizedBox(
+                    height: 320,
+                    child: Image.asset(
+                      'assets/images/signUp.png',
+                      // fit: BoxFit.cover,
+                    ),
                   ),
                   const Expanded(
                     child: SignUpForm(),

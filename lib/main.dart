@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/const.dart';
 import 'package:food_delivery/features/auth/bloc/auth/auth_bloc.dart';
@@ -18,6 +19,9 @@ Future main() async {
 
   BlocOverrides.runZoned(() => runApp(const MyApp()),
       blocObserver: AppBlocObserver());
+
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   // final storage = await HydratedStorage.build(
   //     storageDirectory: await getTemporaryDirectory());
   // HydratedBlocOverrides.runZoned(() => runApp(const MyApp()),

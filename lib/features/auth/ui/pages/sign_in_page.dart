@@ -12,14 +12,8 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Login",
-          style: TextStyle(
-              color: kAppBarTextColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 25),
-        ),
-        backgroundColor: kMainColor,
+        title: const Text("Login",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
         elevation: 0,
       ),
       backgroundColor: kMainColor,
