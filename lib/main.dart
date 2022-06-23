@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/const.dart';
-import 'package:food_delivery/features/auth/bloc/auth/auth_bloc.dart';
-import 'package:food_delivery/features/auth/ui/pages/forget_password.dart';
-import 'package:food_delivery/features/auth/ui/pages/sign_in_page.dart';
-import 'package:food_delivery/features/auth/ui/pages/sign_up_page.dart';
+import 'package:food_delivery/src/core/errors/bloc_observer.dart';
+
+import 'src/core/const.dart';
+import 'src/features/auth/bloc/auth/auth_bloc.dart';
+import 'src/features/auth/ui/pages/forget_password.dart';
+import 'src/features/auth/ui/pages/sign_in_page.dart';
+import 'src/features/auth/ui/pages/sign_up_page.dart';
+import 'src/features/home/ui/pages/main_page.dart';
+import 'src/features/profile/ui/pages/my_info.dart';
+
 // import 'package:hydrated_bloc/hydrated_bloc.dart';
 // import 'package:path_provider/path_provider.dart';
-
-import 'bloc_observer.dart';
-import 'features/home/ui/pages/main_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +51,7 @@ class MyApp extends StatelessWidget {
           builder: (context, state) {
             return state.when(
               notAuthorized: () => const SignInPage(),
-              authorized: () => const MainPage(),
+              authorized: (user) => const MainPage(),
             );
           },
         ),
@@ -58,6 +60,7 @@ class MyApp extends StatelessWidget {
           SignInPage.routeName: (context) => const SignInPage(),
           SignUpPage.routeName: (context) => const SignUpPage(),
           ForgetPasswordPage.routeName: (context) => const ForgetPasswordPage(),
+          MyInfo.routeName: (context) => const MyInfo(),
         },
       ),
     );
