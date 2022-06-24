@@ -10,7 +10,7 @@ import 'src/features/auth/ui/pages/forget_password.dart';
 import 'src/features/auth/ui/pages/sign_in_page.dart';
 import 'src/features/auth/ui/pages/sign_up_page.dart';
 import 'src/features/home/ui/pages/main_page.dart';
-import 'src/features/profile/ui/pages/my_info.dart';
+import 'src/features/profile/ui/pages/my_info_edit.dart';
 
 // import 'package:hydrated_bloc/hydrated_bloc.dart';
 // import 'package:path_provider/path_provider.dart';
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
           SignInPage.routeName: (context) => const SignInPage(),
           SignUpPage.routeName: (context) => const SignUpPage(),
           ForgetPasswordPage.routeName: (context) => const ForgetPasswordPage(),
-          MyInfo.routeName: (context) => const MyInfo(),
+          MyInfoEdit.routeName: (context) => const MyInfoEdit(),
         },
       ),
     );

@@ -6,24 +6,19 @@ import '../../../home/ui/components/size_config.dart';
 class UserSection extends StatelessWidget {
   IconData iconName;
   String sectionText;
-  UserSection({Key? key, required this.iconName, required this.sectionText})
+  IconData optionIcon;
+  UserSection(
+      {Key? key,
+      required this.iconName,
+      required this.sectionText,
+      this.optionIcon = Icons.keyboard_arrow_right})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth! / 13.7,
-
-          /// 30.0
-          0,
-          SizeConfig.screenWidth! / 27.4,
-
-          /// 15.0
-          SizeConfig.screenHeight! / 34.15
-
-          /// 20.0
-          ),
+      padding: EdgeInsets.fromLTRB(SizeConfig.screenWidth! / 13.7, 15,
+          SizeConfig.screenWidth! / 27.4, 15.0),
       child: Row(
         children: [
           Icon(
@@ -43,9 +38,9 @@ class UserSection extends StatelessWidget {
           /// 16
           const Spacer(),
           Icon(
-            Icons.keyboard_arrow_right,
+            optionIcon,
             color: kIconListColor,
-            size: SizeConfig.screenHeight! / 21.34,
+            size: SizeConfig.screenHeight! / 27,
           )
 
           /// 32
