@@ -14,4 +14,8 @@ class ManageUserApi {
   static Future<void> updateEmail(User user, String email) async {
     await user.updateEmail('test3@tes.tocm');
   }
+
+  static Future<void> updatePassword(User user, String password) async {
+    await user.updatePassword('123321');
+  }
 }
