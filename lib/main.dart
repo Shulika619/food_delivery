@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/errors/bloc_observer.dart';
+import 'package:food_delivery/src/features/home/cubit/current_user/user_cubit.dart';
 
 import 'src/core/const.dart';
 import 'src/features/auth/bloc/auth/auth_bloc.dart';
@@ -37,8 +38,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(),
+        ),
+        BlocProvider<UserCubit>(
+          create: (context) => UserCubit(),
+        ),
+      ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
@@ -51,12 +59,12 @@ class MyApp extends StatelessWidget {
           builder: (context, state) {
             return state.when(
               notAuthorized: () => const SignInPage(),
-              authorized: (user) => const MainPage(),
+              authorized: (user) => MainPage(curentUser: user),
             );
           },
         ),
         routes: {
-          MainPage.routeName: (context) => const MainPage(),
+          // MainPage.routeName: (context) => MainPage(),
           SignInPage.routeName: (context) => const SignInPage(),
           SignUpPage.routeName: (context) => const SignUpPage(),
           ForgetPasswordPage.routeName: (context) => const ForgetPasswordPage(),

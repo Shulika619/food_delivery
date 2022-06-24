@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/src/features/home/cubit/current_user/user_cubit.dart';
 
 import '../../../../core/const.dart';
-import '../../../auth/bloc/auth/auth_bloc.dart';
 import '../../../home/ui/components/size_config.dart';
 import 'custom_shape.dart';
 
@@ -16,11 +16,11 @@ class TopCustomShape extends StatefulWidget {
 class _TopCustomShapeState extends State<TopCustomShape> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        return state.when(
-          notAuthorized: () => const Center(child: CircularProgressIndicator()),
-          authorized: (user) => SizedBox(
+        return state.maybeWhen(
+          orElse: () => const Center(child: CircularProgressIndicator()),
+          successfull: (user) => SizedBox(
             height: SizeConfig.screenHeight! / 2.84, // 240.0
             child: Stack(
               children: [
@@ -45,24 +45,19 @@ class _TopCustomShapeState extends State<TopCustomShape> {
                               width: SizeConfig.screenWidth! / 51.37),
                           color: kMainBgColor,
                           image: DecorationImage(
-                              image: user.photoURL != null
-                                  ? NetworkImage(user.photoURL!)
+                              image: user.img != null && user.img != ''
+                                  ? NetworkImage(user.img!)
                                   : const AssetImage("assets/main/avatar.png")
                                       as ImageProvider),
                         ),
                       ),
 
-                      Text(
-                        user.displayName != null && user.displayName != ''
-                            ? user.displayName!
-                            : "Anonymous",
-                        style: const TextStyle(fontSize: 22),
-                      ),
+                      Text(user.name!, style: const TextStyle(fontSize: 22)),
                       SizedBox(height: SizeConfig.screenHeight! / 136.6),
 
                       /// 5.0
                       Text(
-                        user.email ?? "",
+                        user.email,
                         style: TextStyle(
                             fontWeight: FontWeight.w400, color: kTexthint),
                       ),
