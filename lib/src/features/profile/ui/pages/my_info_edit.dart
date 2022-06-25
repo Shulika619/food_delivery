@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/const.dart';
+import '../../../../core/widgets/loading_widget.dart';
 import '../../../home/ui/components/size_config.dart';
 import '../../cubit/user_cubit.dart';
 import '../widgets/custom_shape.dart';
@@ -21,15 +22,12 @@ class _MyInfoEditState extends State<MyInfoEdit> {
   Widget build(BuildContext context) {
     final userCubit = context.watch<UserProfileCubit>();
     // final user = userCubit.getUser;
-    // final currentState = context.watch<UserCubit>().state;
 
     return BlocBuilder<UserProfileCubit, UserProfileState>(
         builder: (context, state) {
       return state.maybeWhen(
         orElse: () => const SizedBox(),
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        loading: () => const LoadingIndicatorWidget(),
         successfull: (user) => Scaffold(
           appBar: AppBar(
               title: const Text('Edit Profile'),
@@ -92,8 +90,8 @@ class _MyInfoEditState extends State<MyInfoEdit> {
                                 shape: BoxShape.circle,
                                 border:
                                     Border.all(width: 3, color: kMainBgColor),
-                                color: kSecondaryColor),
-                            child: Icon(Icons.edit, color: kMainBgColor)),
+                                color: kSecondColor),
+                            child: const Icon(Icons.edit, color: kMainBgColor)),
                       ),
                     ],
                   ),

@@ -41,9 +41,9 @@ class _SignUpFormState extends State<SignUpForm> {
     // final state = context.watch<AuthBloc>().state;
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kMainBgColor,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
@@ -120,7 +120,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     width: 160,
                     height: 40,
                     alignment: Alignment.center,
-                    child: Text(
+                    child: const Text(
                       'Let\'s Get Started',
                       style: TextStyle(
                         color: kBtnTextColor,
@@ -132,7 +132,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'Already have an account? ',
                       style: TextStyle(
                           color: kTexthint, fontWeight: FontWeight.w400),
@@ -141,10 +141,10 @@ class _SignUpFormState extends State<SignUpForm> {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Login',
                         style: TextStyle(
-                          color: kSecondaryColor,
+                          color: kSecondColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

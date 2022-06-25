@@ -1,8 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 
 import '../data/model/user_model.dart';
 import '../data/repositories/user_repository.dart';

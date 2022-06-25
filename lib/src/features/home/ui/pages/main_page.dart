@@ -1,5 +1,4 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/const.dart';
@@ -26,6 +25,7 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     context.read<UserProfileCubit>().initData();
     print('++++ Init CubitProfile in MAIN +++++');
+    // TODO: other Init(adress, favorite, products)
   }
 
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
@@ -51,7 +51,7 @@ class _MainPageState extends State<MainPage> {
     ];
     // Size size = MediaQuery.of(context).size;
     return Container(
-      color: kButtonColor,
+      color: kThirdColor,
       child: SafeArea(
         top: false,
         child: Scaffold(
@@ -60,10 +60,10 @@ class _MainPageState extends State<MainPage> {
           body: screen[index],
           bottomNavigationBar: Theme(
             data: Theme.of(context)
-                .copyWith(iconTheme: IconThemeData(color: kMainBgColor)),
+                .copyWith(iconTheme: const IconThemeData(color: kMainBgColor)),
             child: CurvedNavigationBar(
               key: navigationKey,
-              color: kSecondaryColor,
+              color: kSecondColor,
               backgroundColor: Colors.transparent,
               buttonBackgroundColor: kMainColor,
               height: SizeConfig.screenHeight! / 11.39, // 60.0

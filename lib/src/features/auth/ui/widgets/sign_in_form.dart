@@ -44,9 +44,9 @@ class _SignInFormState extends State<SignInForm> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kMainBgColor,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
@@ -97,9 +97,9 @@ class _SignInFormState extends State<SignInForm> {
                     TextButton(
                         onPressed: () => Navigator.pushNamed(
                             context, ForgetPasswordPage.routeName),
-                        child: Text('Forget your password?',
+                        child: const Text('Forget your password?',
                             style: TextStyle(
-                                color: kSecondaryColor,
+                                color: kSecondColor,
                                 fontWeight: FontWeight.bold))),
                   ],
                 ),
@@ -116,15 +116,15 @@ class _SignInFormState extends State<SignInForm> {
                     width: 160,
                     height: 40,
                     alignment: Alignment.center,
-                    child:
-                        Text('Login', style: TextStyle(color: kBtnTextColor)),
+                    child: const Text('Login',
+                        style: TextStyle(color: kBtnTextColor)),
                   ),
                 ),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'Don\'t have an account? ',
                       style: TextStyle(
                         color: kTexthint,
@@ -136,9 +136,9 @@ class _SignInFormState extends State<SignInForm> {
                         FocusScope.of(context).unfocus();
                         Navigator.pushNamed(context, SignUpPage.routeName);
                       },
-                      child: Text('Sign Up',
+                      child: const Text('Sign Up',
                           style: TextStyle(
-                              color: kSecondaryColor,
+                              color: kSecondColor,
                               fontWeight: FontWeight.bold)),
                     ),
                   ],

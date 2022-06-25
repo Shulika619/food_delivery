@@ -3,8 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'src/core/bloc/bloc_observer.dart';
 import 'src/core/const.dart';
-import 'src/core/errors/bloc_observer.dart';
 import 'src/features/auth/bloc/auth/auth_bloc.dart';
 import 'src/features/auth/ui/pages/forget_password.dart';
 import 'src/features/auth/ui/pages/sign_in_page.dart';
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             // fontFamily: 'Forum',
             primarySwatch: kMainColor,
-            appBarTheme: AppBarTheme(foregroundColor: kMainBgColor)),
+            appBarTheme: const AppBarTheme(foregroundColor: kMainBgColor)),
         home: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
             return state.when(

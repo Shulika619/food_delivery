@@ -58,7 +58,7 @@ class _TopCustomShapeState extends State<TopCustomShape> {
                       /// 5.0
                       Text(
                         user.email,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.w400, color: kTexthint),
                       ),
                     ],

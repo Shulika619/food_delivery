@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
 // Main colors
-var kMainColor = Colors.amber;
-var kSecondaryColor = Colors.green;
-var kAppBarTextColor = Colors.white;
-var kMainBgColor = Colors.white;
+const kMainBgColor = Colors.white;
+const kMainColor = Colors.amber;
+const kSecondColor = Colors.green;
+const kThirdColor = Color(0xFFFF9505);
+const kAppBarTextColor = Colors.white;
 
 // Text colors
-var kTxtListColor = Colors.black54;
-var kTexthint = const Color(0xFF666666);
-var kBtnTextColor = Colors.white;
+const kTxtListColor = Colors.black54;
+const kTexthint = Color(0xFF666666);
+const kBtnTextColor = Colors.white;
 
-var kIconListColor = Colors.black45;
+// Icon
+const kIconListColor = Colors.black45;
 
-var kButtonColor = const Color(0xFFFF9505);
-var kRegisterColor = const Color(0xFFffdfb4);
-var kLightColor = const Color(0xFFFFC971);
-var kFreeDelivery = const Color(0xFF025939);
-var kTextColor = const Color(0xFFf2ac29);
-var kPassiveFavorite = const Color(0xFFD9886A);
+// Other
+// const kButtonColor = Color(0xFFFF9505);
+const kRegisterColor = Color(0xFFffdfb4);
+const kLightColor = Color(0xFFFFC971);
+const kFreeDelivery = Color(0xFF025939);
+const kTextColor = Color(0xFFf2ac29);
+const kPassiveFavorite = Color(0xFFD9886A);

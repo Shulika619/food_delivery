@@ -12,9 +12,9 @@ class ForgetPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kMainBgColor,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
@@ -49,7 +49,8 @@ class ForgetPasswordForm extends StatelessWidget {
                   width: 160,
                   height: 40,
                   alignment: Alignment.center,
-                  child: Text('Reset', style: TextStyle(color: kBtnTextColor)),
+                  child: const Text('Reset',
+                      style: TextStyle(color: kBtnTextColor)),
                 ),
               ),
               const SizedBox(height: 10),
