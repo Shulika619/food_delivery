@@ -22,9 +22,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   void initState() {
-    super.initState();
     context.read<UserProfileCubit>().initData();
-    print('++++ Init CubitProfile in MAIN +++++');
+    super.initState();
     // TODO: other Init(adress, favorite, products)
   }
 

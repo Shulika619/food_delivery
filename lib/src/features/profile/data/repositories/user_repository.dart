@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../auth/bloc/auth/auth_bloc.dart';
+
 abstract class InterfaceUserRepository {
   User? getCurrentUser();
 
@@ -12,31 +14,31 @@ abstract class InterfaceUserRepository {
   Future<void> updatePassword(String password);
 }
 
-final User? kFirebaseUserProvider = FirebaseAuth.instance.currentUser;
+final FirebaseAuth kFirebaseUserProvider = FirebaseAuth.instance;
 
 class UserRepository implements InterfaceUserRepository {
   @override
   User? getCurrentUser() {
-    return kFirebaseUserProvider;
+    return kFirebaseUserProvider.currentUser;
   }
 
   @override
   Future<void> updateDisplayName(String name) async {
-    await kFirebaseUserProvider?.updateDisplayName(name);
+    await kFirebaseUserProvider.currentUser?.updateDisplayName(name);
   }
 
   @override
   Future<void> updateEmail(String email) async {
-    await kFirebaseUserProvider?.updateEmail(email);
+    await kFirebaseUserProvider.currentUser?.updateEmail(email);
   }
 
   @override
   Future<void> updatePassword(String password) async {
-    await kFirebaseUserProvider?.updatePassword(password);
+    await kFirebaseUserProvider.currentUser?.updatePassword(password);
   }
 
   @override
   Future<void> updatePhotoURL(String url) async {
-    await kFirebaseUserProvider!.updatePhotoURL(url);
+    await kFirebaseUserProvider.currentUser?.updatePhotoURL(url);
   }
 }

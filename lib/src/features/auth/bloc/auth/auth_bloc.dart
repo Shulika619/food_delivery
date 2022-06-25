@@ -18,11 +18,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
     firebaseRepo.authStateChange.listen((user) {
       if (user == null) {
         setState(const AuthState.notAuthorized());
-        print('--------  $user ----------');
         return;
       } else {
         setState(AuthState.authorized(user: user));
-        print('++++++++ $user +++++++++++');
       }
     }, cancelOnError: false);
 
