@@ -48,10 +48,6 @@ class _ProfilePageState extends State<ProfilePage> {
               onTap: () =>
                   context.read<AuthBloc>().add(const AuthEvent.logOut()),
             ),
-
-            //! Future features
-            // UserSection(iconName: Icons.credit_card, sectionText: "Credit Card"),
-            // UserSection(iconName: Icons.wallet_giftcard, sectionText: "Coupons"),
           ],
         ),
       ),

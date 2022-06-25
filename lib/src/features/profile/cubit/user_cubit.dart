@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/errors/flutter_toast_warning.dart';
 import '../data/model/user_model.dart';
 import '../data/repositories/user_repository.dart';
 
@@ -14,35 +16,59 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   UserProfileCubit() : super(const UserProfileState.initial());
 
   Future<void> initData() async {
-    // emit(const UserState.loading());
+    emit(const UserProfileState.loading());
     _user = UserModel.fromFirebase(userRepository.getCurrentUser()!);
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 
   Future<void> updateDisplayName(String name) async {
-    emit(const UserProfileState.loading());
-    await userRepository.updateDisplayName(name);
-    _user = _user!.copyWith(name: name);
+    try {
+      emit(const UserProfileState.loading());
+      await userRepository.updateDisplayName(name);
+      _user = _user!.copyWith(name: name);
+      FlutterToastWarning.showToast(message: 'Successfully', isError: false);
+    } on FirebaseAuthException catch (e) {
+      FlutterToastWarning.showToast(
+          message: e.message.toString(), isError: true);
+    }
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 
   Future<void> updateEmail(String email) async {
-    emit(const UserProfileState.loading());
-    await userRepository.updateEmail(email);
-    _user = _user!.copyWith(email: email);
+    try {
+      emit(const UserProfileState.loading());
+      await userRepository.updateEmail(email);
+      _user = _user!.copyWith(email: email);
+      FlutterToastWarning.showToast(message: 'Successfully', isError: false);
+    } on FirebaseAuthException catch (e) {
+      FlutterToastWarning.showToast(
+          message: e.message.toString(), isError: true);
+    }
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 
   Future<void> updatePassword(String password) async {
-    emit(const UserProfileState.loading());
-    await userRepository.updatePassword(password);
+    try {
+      emit(const UserProfileState.loading());
+      await userRepository.updatePassword(password);
+      FlutterToastWarning.showToast(message: 'Successfully', isError: false);
+    } on FirebaseAuthException catch (e) {
+      FlutterToastWarning.showToast(
+          message: e.message.toString(), isError: true);
+    }
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 
   Future<void> updatePhotoURL(String url) async {
-    emit(const UserProfileState.loading());
-    await userRepository.updatePhotoURL(url);
-    _user = _user!.copyWith(img: url);
+    try {
+      emit(const UserProfileState.loading());
+      await userRepository.updatePhotoURL(url);
+      _user = _user!.copyWith(img: url);
+      FlutterToastWarning.showToast(message: 'Successfully', isError: false);
+    } on FirebaseAuthException catch (e) {
+      FlutterToastWarning.showToast(
+          message: e.message.toString(), isError: true);
+    }
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 }
@@ -53,5 +79,4 @@ class UserProfileState with _$UserProfileState {
   const factory UserProfileState.loading() = _UserStateLoading;
   const factory UserProfileState.successfull({required UserModel currentUser}) =
       _UserStateSuccessfull;
-  const factory UserProfileState.error() = _UserStateError;
 }

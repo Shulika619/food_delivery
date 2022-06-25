@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,26 +54,30 @@ class _MyInfoEditState extends State<MyInfoEdit> {
                             GestureDetector(
                               onTap: () async {
                                 userCubit.updatePhotoURL(
+                                    // 'https://sbbusiness.ru/upload/resize_cache/iblock/7d0/308_210_1/7d0807e985f92071fee80d489f56d28f.jpg');
                                     'https://pbs.twimg.com/media/DJi3pUDWsAIx9xQ.jpg');
-                                // 'https://sbbusiness.ru/upload/resize_cache/iblock/7d0/308_210_1/7d0807e985f92071fee80d489f56d28f.jpg');
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(bottom: 10),
                                 height:
                                     SizeConfig.screenHeight! / 4.88, // 140.0
                                 width: SizeConfig.screenWidth! / 2.93, // 140.0
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: kMainBgColor,
-                                      width: SizeConfig.screenWidth! / 51.37),
-                                  color: kMainBgColor,
-                                  image: DecorationImage(
-                                      image: user.img != null && user.img != ''
-                                          ? NetworkImage(user.img!)
-                                          : const AssetImage(
-                                                  "assets/main/avatar.png")
-                                              as ImageProvider),
+                                child: CircleAvatar(
+                                  radius: 56,
+                                  backgroundColor: kMainBgColor,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(
+                                        8), // Border radius
+                                    child: ClipOval(
+                                      child: CachedNetworkImage(
+                                        imageUrl: user.img!,
+                                        placeholder: (context, url) =>
+                                            const CircularProgressIndicator(),
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(Icons.error),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -98,7 +103,7 @@ class _MyInfoEditState extends State<MyInfoEdit> {
                 ),
                 InkWell(
                   onTap: () async {
-                    userCubit.updateDisplayName('New name77');
+                    userCubit.updateDisplayName('New name');
                   },
                   child: UserSection(
                       iconName: Icons.person,
@@ -107,7 +112,7 @@ class _MyInfoEditState extends State<MyInfoEdit> {
                 ),
                 InkWell(
                   onTap: () async {
-                    userCubit.updateEmail('test3@test.com');
+                    userCubit.updateEmail('test5@test.com');
                   },
                   child: UserSection(
                       iconName: Icons.email,
@@ -116,7 +121,7 @@ class _MyInfoEditState extends State<MyInfoEdit> {
                 ),
                 InkWell(
                   onTap: () async {
-                    userCubit.updatePassword('1233211');
+                    userCubit.updatePassword('123321');
                   },
                   child: UserSection(
                       iconName: Icons.security,

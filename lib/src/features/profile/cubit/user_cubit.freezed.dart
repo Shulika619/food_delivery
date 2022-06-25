@@ -21,7 +21,6 @@ mixin _$UserProfileState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(UserModel currentUser) successfull,
-    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +28,6 @@ mixin _$UserProfileState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +35,6 @@ mixin _$UserProfileState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +43,6 @@ mixin _$UserProfileState {
     required TResult Function(_UserStateInitial value) initial,
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateSuccessfull value) successfull,
-    required TResult Function(_UserStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +50,6 @@ mixin _$UserProfileState {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +57,6 @@ mixin _$UserProfileState {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,7 +123,6 @@ class _$_UserStateInitial implements _UserStateInitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(UserModel currentUser) successfull,
-    required TResult Function() error,
   }) {
     return initial();
   }
@@ -140,7 +133,6 @@ class _$_UserStateInitial implements _UserStateInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
   }) {
     return initial?.call();
   }
@@ -151,7 +143,6 @@ class _$_UserStateInitial implements _UserStateInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -166,7 +157,6 @@ class _$_UserStateInitial implements _UserStateInitial {
     required TResult Function(_UserStateInitial value) initial,
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateSuccessfull value) successfull,
-    required TResult Function(_UserStateError value) error,
   }) {
     return initial(this);
   }
@@ -177,7 +167,6 @@ class _$_UserStateInitial implements _UserStateInitial {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -188,7 +177,6 @@ class _$_UserStateInitial implements _UserStateInitial {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -246,7 +234,6 @@ class _$_UserStateLoading implements _UserStateLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(UserModel currentUser) successfull,
-    required TResult Function() error,
   }) {
     return loading();
   }
@@ -257,7 +244,6 @@ class _$_UserStateLoading implements _UserStateLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
   }) {
     return loading?.call();
   }
@@ -268,7 +254,6 @@ class _$_UserStateLoading implements _UserStateLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -283,7 +268,6 @@ class _$_UserStateLoading implements _UserStateLoading {
     required TResult Function(_UserStateInitial value) initial,
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateSuccessfull value) successfull,
-    required TResult Function(_UserStateError value) error,
   }) {
     return loading(this);
   }
@@ -294,7 +278,6 @@ class _$_UserStateLoading implements _UserStateLoading {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -305,7 +288,6 @@ class _$_UserStateLoading implements _UserStateLoading {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -398,7 +380,6 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(UserModel currentUser) successfull,
-    required TResult Function() error,
   }) {
     return successfull(currentUser);
   }
@@ -409,7 +390,6 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
   }) {
     return successfull?.call(currentUser);
   }
@@ -420,7 +400,6 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (successfull != null) {
@@ -435,7 +414,6 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
     required TResult Function(_UserStateInitial value) initial,
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateSuccessfull value) successfull,
-    required TResult Function(_UserStateError value) error,
   }) {
     return successfull(this);
   }
@@ -446,7 +424,6 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
   }) {
     return successfull?.call(this);
   }
@@ -457,7 +434,6 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
     TResult Function(_UserStateInitial value)? initial,
     TResult Function(_UserStateLoading value)? loading,
     TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
     required TResult orElse(),
   }) {
     if (successfull != null) {
@@ -475,121 +451,4 @@ abstract class _UserStateSuccessfull implements UserProfileState {
   @JsonKey(ignore: true)
   _$$_UserStateSuccessfullCopyWith<_$_UserStateSuccessfull> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_UserStateErrorCopyWith<$Res> {
-  factory _$$_UserStateErrorCopyWith(
-          _$_UserStateError value, $Res Function(_$_UserStateError) then) =
-      __$$_UserStateErrorCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_UserStateErrorCopyWithImpl<$Res>
-    extends _$UserProfileStateCopyWithImpl<$Res>
-    implements _$$_UserStateErrorCopyWith<$Res> {
-  __$$_UserStateErrorCopyWithImpl(
-      _$_UserStateError _value, $Res Function(_$_UserStateError) _then)
-      : super(_value, (v) => _then(v as _$_UserStateError));
-
-  @override
-  _$_UserStateError get _value => super._value as _$_UserStateError;
-}
-
-/// @nodoc
-
-class _$_UserStateError implements _UserStateError {
-  const _$_UserStateError();
-
-  @override
-  String toString() {
-    return 'UserProfileState.error()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UserStateError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(UserModel currentUser) successfull,
-    required TResult Function() error,
-  }) {
-    return error();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
-  }) {
-    return error?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserModel currentUser)? successfull,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UserStateInitial value) initial,
-    required TResult Function(_UserStateLoading value) loading,
-    required TResult Function(_UserStateSuccessfull value) successfull,
-    required TResult Function(_UserStateError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserStateInitial value)? initial,
-    TResult Function(_UserStateLoading value)? loading,
-    TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserStateInitial value)? initial,
-    TResult Function(_UserStateLoading value)? loading,
-    TResult Function(_UserStateSuccessfull value)? successfull,
-    TResult Function(_UserStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UserStateError implements UserProfileState {
-  const factory _UserStateError() = _$_UserStateError;
 }

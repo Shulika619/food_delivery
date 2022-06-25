@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,29 +39,28 @@ class _TopCustomShapeState extends State<TopCustomShape> {
                         margin: const EdgeInsets.only(bottom: 10),
                         height: SizeConfig.screenHeight! / 4.88, // 140.0
                         width: SizeConfig.screenWidth! / 2.93, // 140.0
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              color: kMainBgColor,
-                              width: SizeConfig.screenWidth! / 51.37),
-                          color: kMainBgColor,
-                          image: DecorationImage(
-                              image: user.img != null && user.img != ''
-                                  ? NetworkImage(user.img!)
-                                  : const AssetImage("assets/main/avatar.png")
-                                      as ImageProvider),
+                        child: CircleAvatar(
+                          radius: 56,
+                          backgroundColor: kMainBgColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8), // Border radius
+                            child: ClipOval(
+                              child: CachedNetworkImage(
+                                imageUrl: user.img!,
+                                placeholder: (context, url) =>
+                                    const CircularProgressIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-
                       Text(user.name!, style: const TextStyle(fontSize: 22)),
                       SizedBox(height: SizeConfig.screenHeight! / 136.6),
-
-                      /// 5.0
-                      Text(
-                        user.email,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w400, color: kTexthint),
-                      ),
+                      Text(user.email,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w400, color: kTexthint)),
                     ],
                   ),
                 ),
