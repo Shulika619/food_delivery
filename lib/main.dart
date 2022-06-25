@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/src/core/errors/bloc_observer.dart';
-import 'package:food_delivery/src/features/home/cubit/current_user/user_cubit.dart';
 
 import 'src/core/const.dart';
+import 'src/core/errors/bloc_observer.dart';
 import 'src/features/auth/bloc/auth/auth_bloc.dart';
 import 'src/features/auth/ui/pages/forget_password.dart';
 import 'src/features/auth/ui/pages/sign_in_page.dart';
 import 'src/features/auth/ui/pages/sign_up_page.dart';
 import 'src/features/home/ui/pages/main_page.dart';
+import 'src/features/profile/cubit/user_cubit.dart';
 import 'src/features/profile/ui/pages/my_info_edit.dart';
 
 // import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -43,8 +43,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(),
         ),
-        BlocProvider<UserCubit>(
-          create: (context) => UserCubit(),
+        BlocProvider<UserProfileCubit>(
+          create: (context) => UserProfileCubit(),
         ),
       ],
       child: MaterialApp(
@@ -59,12 +59,12 @@ class MyApp extends StatelessWidget {
           builder: (context, state) {
             return state.when(
               notAuthorized: () => const SignInPage(),
-              authorized: (user) => MainPage(curentUser: user),
+              authorized: (user) => const MainPage(),
             );
           },
         ),
         routes: {
-          // MainPage.routeName: (context) => MainPage(),
+          MainPage.routeName: (context) => const MainPage(),
           SignInPage.routeName: (context) => const SignInPage(),
           SignUpPage.routeName: (context) => const SignUpPage(),
           ForgetPasswordPage.routeName: (context) => const ForgetPasswordPage(),

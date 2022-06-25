@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/src/features/home/cubit/current_user/user_cubit.dart';
 
 import '../../../../core/const.dart';
 import '../../../home/ui/components/size_config.dart';
+import '../../cubit/user_cubit.dart';
 import '../widgets/custom_shape.dart';
 import '../widgets/user_sections.dart';
 
@@ -19,11 +19,12 @@ class MyInfoEdit extends StatefulWidget {
 class _MyInfoEditState extends State<MyInfoEdit> {
   @override
   Widget build(BuildContext context) {
-    final userCubit = context.watch<UserCubit>();
+    final userCubit = context.watch<UserProfileCubit>();
     // final user = userCubit.getUser;
     // final currentState = context.watch<UserCubit>().state;
 
-    return BlocBuilder<UserCubit, UserState>(builder: (context, state) {
+    return BlocBuilder<UserProfileCubit, UserProfileState>(
+        builder: (context, state) {
       return state.maybeWhen(
         orElse: () => const SizedBox(),
         loading: () => const Center(
@@ -99,7 +100,7 @@ class _MyInfoEditState extends State<MyInfoEdit> {
                 ),
                 InkWell(
                   onTap: () async {
-                    userCubit.updateDisplayName('New name11');
+                    userCubit.updateDisplayName('New name77');
                   },
                   child: UserSection(
                       iconName: Icons.person,
@@ -108,7 +109,7 @@ class _MyInfoEditState extends State<MyInfoEdit> {
                 ),
                 InkWell(
                   onTap: () async {
-                    userCubit.updateEmail('test2@test.com');
+                    userCubit.updateEmail('test3@test.com');
                   },
                   child: UserSection(
                       iconName: Icons.email,

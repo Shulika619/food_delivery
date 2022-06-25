@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$UserState {
+mixin _$UserProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,18 +69,20 @@ mixin _$UserState {
 }
 
 /// @nodoc
-abstract class $UserStateCopyWith<$Res> {
-  factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
-      _$UserStateCopyWithImpl<$Res>;
+abstract class $UserProfileStateCopyWith<$Res> {
+  factory $UserProfileStateCopyWith(
+          UserProfileState value, $Res Function(UserProfileState) then) =
+      _$UserProfileStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
-  _$UserStateCopyWithImpl(this._value, this._then);
+class _$UserProfileStateCopyWithImpl<$Res>
+    implements $UserProfileStateCopyWith<$Res> {
+  _$UserProfileStateCopyWithImpl(this._value, this._then);
 
-  final UserState _value;
+  final UserProfileState _value;
   // ignore: unused_field
-  final $Res Function(UserState) _then;
+  final $Res Function(UserProfileState) _then;
 }
 
 /// @nodoc
@@ -92,7 +94,7 @@ abstract class _$$_UserStateInitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserStateInitialCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res>
     implements _$$_UserStateInitialCopyWith<$Res> {
   __$$_UserStateInitialCopyWithImpl(
       _$_UserStateInitial _value, $Res Function(_$_UserStateInitial) _then)
@@ -109,7 +111,7 @@ class _$_UserStateInitial implements _UserStateInitial {
 
   @override
   String toString() {
-    return 'UserState.initial()';
+    return 'UserProfileState.initial()';
   }
 
   @override
@@ -196,7 +198,7 @@ class _$_UserStateInitial implements _UserStateInitial {
   }
 }
 
-abstract class _UserStateInitial implements UserState {
+abstract class _UserStateInitial implements UserProfileState {
   const factory _UserStateInitial() = _$_UserStateInitial;
 }
 
@@ -209,7 +211,7 @@ abstract class _$$_UserStateLoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserStateLoadingCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res>
     implements _$$_UserStateLoadingCopyWith<$Res> {
   __$$_UserStateLoadingCopyWithImpl(
       _$_UserStateLoading _value, $Res Function(_$_UserStateLoading) _then)
@@ -226,7 +228,7 @@ class _$_UserStateLoading implements _UserStateLoading {
 
   @override
   String toString() {
-    return 'UserState.loading()';
+    return 'UserProfileState.loading()';
   }
 
   @override
@@ -313,7 +315,7 @@ class _$_UserStateLoading implements _UserStateLoading {
   }
 }
 
-abstract class _UserStateLoading implements UserState {
+abstract class _UserStateLoading implements UserProfileState {
   const factory _UserStateLoading() = _$_UserStateLoading;
 }
 
@@ -329,7 +331,7 @@ abstract class _$$_UserStateSuccessfullCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserStateSuccessfullCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res>
     implements _$$_UserStateSuccessfullCopyWith<$Res> {
   __$$_UserStateSuccessfullCopyWithImpl(_$_UserStateSuccessfull _value,
       $Res Function(_$_UserStateSuccessfull) _then)
@@ -368,7 +370,7 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
 
   @override
   String toString() {
-    return 'UserState.successfull(currentUser: $currentUser)';
+    return 'UserProfileState.successfull(currentUser: $currentUser)';
   }
 
   @override
@@ -465,7 +467,7 @@ class _$_UserStateSuccessfull implements _UserStateSuccessfull {
   }
 }
 
-abstract class _UserStateSuccessfull implements UserState {
+abstract class _UserStateSuccessfull implements UserProfileState {
   const factory _UserStateSuccessfull({required final UserModel currentUser}) =
       _$_UserStateSuccessfull;
 
@@ -484,7 +486,7 @@ abstract class _$$_UserStateErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserStateErrorCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res>
     implements _$$_UserStateErrorCopyWith<$Res> {
   __$$_UserStateErrorCopyWithImpl(
       _$_UserStateError _value, $Res Function(_$_UserStateError) _then)
@@ -501,7 +503,7 @@ class _$_UserStateError implements _UserStateError {
 
   @override
   String toString() {
-    return 'UserState.error()';
+    return 'UserProfileState.error()';
   }
 
   @override
@@ -588,6 +590,6 @@ class _$_UserStateError implements _UserStateError {
   }
 }
 
-abstract class _UserStateError implements UserState {
+abstract class _UserStateError implements UserProfileState {
   const factory _UserStateError() = _$_UserStateError;
 }

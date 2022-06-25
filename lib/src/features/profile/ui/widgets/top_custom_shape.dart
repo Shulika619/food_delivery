@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/src/features/home/cubit/current_user/user_cubit.dart';
 
 import '../../../../core/const.dart';
 import '../../../home/ui/components/size_config.dart';
+import '../../cubit/user_cubit.dart';
 import 'custom_shape.dart';
 
 class TopCustomShape extends StatefulWidget {
@@ -16,7 +16,7 @@ class TopCustomShape extends StatefulWidget {
 class _TopCustomShapeState extends State<TopCustomShape> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserCubit, UserState>(
+    return BlocBuilder<UserProfileCubit, UserProfileState>(
       builder: (context, state) {
         return state.maybeWhen(
           orElse: () => const Center(child: CircularProgressIndicator()),

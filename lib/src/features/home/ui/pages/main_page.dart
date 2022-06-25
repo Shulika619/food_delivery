@@ -2,8 +2,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/src/features/home/cubit/current_user/user_cubit.dart';
 import '../../../../core/const.dart';
+import '../../../profile/cubit/user_cubit.dart';
 import '../../../profile/ui/pages/profile_page.dart';
 import '../components/size_config.dart';
 import 'home_page.dart';
@@ -12,8 +12,9 @@ import 'home_page.dart';
 // import 'package:food_order_ui/view/search_page/search_page_view.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key, required this.curentUser}) : super(key: key);
-  final User curentUser;
+  const MainPage({Key? key}) : super(key: key);
+
+  static const routeName = '/main';
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -23,7 +24,8 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    context.read<UserCubit>().initData(widget.curentUser);
+    context.read<UserProfileCubit>().initData();
+    print('++++ Init CubitProfile in MAIN +++++');
   }
 
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
