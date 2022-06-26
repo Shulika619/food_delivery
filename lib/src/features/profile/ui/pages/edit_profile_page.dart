@@ -7,16 +7,16 @@ import '../widgets/avatar_edit_widget.dart';
 import '../widgets/show_edit_dialog.dart';
 import '../widgets/user_section_list.dart';
 
-class MyInfoEdit extends StatefulWidget {
-  const MyInfoEdit({Key? key}) : super(key: key);
+class EditProfilePage extends StatefulWidget {
+  const EditProfilePage({Key? key}) : super(key: key);
 
   static const routeName = '/my-info';
 
   @override
-  State<MyInfoEdit> createState() => _MyInfoEditState();
+  State<EditProfilePage> createState() => _EditProfilePageState();
 }
 
-class _MyInfoEditState extends State<MyInfoEdit> {
+class _EditProfilePageState extends State<EditProfilePage> {
   ShowEditDialog editDialog = ShowEditDialog();
 
   @override

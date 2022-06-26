@@ -20,6 +20,7 @@ mixin _$UserModel {
   String get email => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get img => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +33,12 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
   $Res call(
-      {String uid, String email, String? name, String? img, String? address});
+      {String uid,
+      String email,
+      String? name,
+      String? img,
+      String? phone,
+      String? address});
 }
 
 /// @nodoc
@@ -49,6 +55,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? email = freezed,
     Object? name = freezed,
     Object? img = freezed,
+    Object? phone = freezed,
     Object? address = freezed,
   }) {
     return _then(_value.copyWith(
@@ -68,6 +75,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String?,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -83,7 +94,12 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       __$$_UserModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String uid, String email, String? name, String? img, String? address});
+      {String uid,
+      String email,
+      String? name,
+      String? img,
+      String? phone,
+      String? address});
 }
 
 /// @nodoc
@@ -102,6 +118,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? email = freezed,
     Object? name = freezed,
     Object? img = freezed,
+    Object? phone = freezed,
     Object? address = freezed,
   }) {
     return _then(_$_UserModel(
@@ -121,6 +138,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String?,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -137,6 +158,7 @@ class _$_UserModel extends _UserModel {
       required this.email,
       this.name,
       this.img,
+      this.phone,
       this.address})
       : super._();
 
@@ -149,11 +171,13 @@ class _$_UserModel extends _UserModel {
   @override
   final String? img;
   @override
+  final String? phone;
+  @override
   final String? address;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, email: $email, name: $name, img: $img, address: $address)';
+    return 'UserModel(uid: $uid, email: $email, name: $name, img: $img, phone: $phone, address: $address)';
   }
 
   @override
@@ -165,6 +189,7 @@ class _$_UserModel extends _UserModel {
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.img, img) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.address, address));
   }
 
@@ -175,6 +200,7 @@ class _$_UserModel extends _UserModel {
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(img),
+      const DeepCollectionEquality().hash(phone),
       const DeepCollectionEquality().hash(address));
 
   @JsonKey(ignore: true)
@@ -189,6 +215,7 @@ abstract class _UserModel extends UserModel {
       required final String email,
       final String? name,
       final String? img,
+      final String? phone,
       final String? address}) = _$_UserModel;
   const _UserModel._() : super._();
 
@@ -200,6 +227,8 @@ abstract class _UserModel extends UserModel {
   String? get name => throw _privateConstructorUsedError;
   @override
   String? get img => throw _privateConstructorUsedError;
+  @override
+  String? get phone => throw _privateConstructorUsedError;
   @override
   String? get address => throw _privateConstructorUsedError;
   @override

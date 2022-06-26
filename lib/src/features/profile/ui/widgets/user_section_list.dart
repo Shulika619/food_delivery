@@ -29,6 +29,31 @@ class UserSectionList extends StatelessWidget {
         ),
         InkWell(
           onTap: () async {
+            final dialogData =
+                await editDialog.openDialog(context, 'phone number');
+            if (dialogData != null && dialogData != '') {
+              await userCubit.updatePhone(dialogData);
+            }
+          },
+          child: UserSection(
+              iconName: Icons.phone,
+              sectionText: userCubit.getUser.phone ?? 'add phone number',
+              optionIcon: Icons.edit),
+        ),
+        InkWell(
+          onTap: () async {
+            final dialogData = await editDialog.openDialog(context, 'address');
+            if (dialogData != null && dialogData != '') {
+              await userCubit.updateAddress(dialogData);
+            }
+          },
+          child: UserSection(
+              iconName: Icons.location_city,
+              sectionText: userCubit.getUser.address ?? 'add address',
+              optionIcon: Icons.edit),
+        ),
+        InkWell(
+          onTap: () async {
             final dialogData = await editDialog.openDialog(context, 'email');
             if (dialogData != null && dialogData != '') {
               await userCubit.updateEmail(dialogData);

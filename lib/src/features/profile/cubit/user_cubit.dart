@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -18,6 +19,32 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> initData() async {
     emit(const UserProfileState.loading());
     _user = UserModel.fromFirebase(userRepository.getCurrentUser()!);
+    emit(UserProfileState.successfull(currentUser: _user!));
+  }
+
+  Future<void> updatePhone(String phone) async {
+    try {
+      emit(const UserProfileState.loading());
+      await userRepository.updateUserPhone(phone);
+      _user = _user!.copyWith(phone: phone);
+      FlutterToastWarning.showToast(message: 'Successfully', isError: false);
+    } on FirebaseException catch (e) {
+      FlutterToastWarning.showToast(
+          message: e.message.toString(), isError: true);
+    }
+    emit(UserProfileState.successfull(currentUser: _user!));
+  }
+
+  Future<void> updateAddress(String address) async {
+    try {
+      emit(const UserProfileState.loading());
+      await userRepository.updateUserAddress(address);
+      _user = _user!.copyWith(address: address);
+      FlutterToastWarning.showToast(message: 'Successfully', isError: false);
+    } on FirebaseException catch (e) {
+      FlutterToastWarning.showToast(
+          message: e.message.toString(), isError: true);
+    }
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 

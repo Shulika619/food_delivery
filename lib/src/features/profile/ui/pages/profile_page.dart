@@ -6,7 +6,7 @@ import '../../../auth/bloc/auth/auth_bloc.dart';
 import '../../../home/ui/components/size_config.dart';
 import '../widgets/top_custom_shape.dart';
 import '../widgets/user_sections.dart';
-import 'my_info_edit.dart';
+import 'edit_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -34,12 +34,10 @@ class _ProfilePageState extends State<ProfilePage> {
               child: UserSection(
                   iconName: Icons.account_circle,
                   sectionText: "My information"),
-              onTap: () => Navigator.pushNamed(context, MyInfoEdit.routeName),
+              onTap: () =>
+                  Navigator.pushNamed(context, EditProfilePage.routeName),
             ),
 
-            UserSection(
-                iconName: Icons.location_city,
-                sectionText: "Address information"),
             UserSection(
                 iconName: Icons.shopping_basket, sectionText: "Past orders"),
 

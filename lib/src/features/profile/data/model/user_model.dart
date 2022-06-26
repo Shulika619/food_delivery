@@ -11,6 +11,7 @@ class UserModel with _$UserModel {
     required String email,
     String? name,
     String? img,
+    String? phone,
     String? address,
   }) = _UserModel;
 
