@@ -3,14 +3,11 @@ import 'package:firebase_database/firebase_database.dart';
 
 abstract class InterfaceUserRepository {
   User? getCurrentUser();
-
   Future<void> updatePhotoURL(String url);
-
   Future<void> updateDisplayName(String name);
-
   Future<void> updateEmail(String email);
-
   Future<void> updatePassword(String password);
+  Future<Map<dynamic, dynamic>> fetchUserPhoneAndAddress();
   Future<void> updateUserPhone(String phone);
   Future<void> updateUserAddress(String address);
 }
@@ -18,17 +15,28 @@ abstract class InterfaceUserRepository {
 class UserRepository implements InterfaceUserRepository {
   final FirebaseAuth kFirebaseUserProvider = FirebaseAuth.instance;
 
-  DatabaseReference refUserInfo = FirebaseDatabase.instance
-      .ref("usersInfo/${FirebaseAuth.instance.currentUser?.uid}");
+  @override
+  Future<Map<dynamic, dynamic>> fetchUserPhoneAndAddress() async {
+    final snapshot = await FirebaseDatabase.instance
+        .ref("usersInfo/${FirebaseAuth.instance.currentUser?.uid}")
+        .get();
+    // if (snapshot.exists) {}
+    // final data = snapshot.value as Map<dynamic, dynamic>;
+    return snapshot.value as Map<dynamic, dynamic>;
+  }
 
   @override
   Future<void> updateUserPhone(String phone) async {
-    await refUserInfo.update({'phone': phone});
+    await FirebaseDatabase.instance
+        .ref("usersInfo/${FirebaseAuth.instance.currentUser?.uid}")
+        .update({'phone': phone});
   }
 
   @override
   Future<void> updateUserAddress(String address) async {
-    await refUserInfo.update({'address': address});
+    await FirebaseDatabase.instance
+        .ref("usersInfo/${FirebaseAuth.instance.currentUser?.uid}")
+        .update({'address': address});
   }
 
   @override

@@ -61,6 +61,7 @@ class _TopCustomShapeState extends State<TopCustomShape> {
                       Text(user.email,
                           style: const TextStyle(
                               fontWeight: FontWeight.w400, color: kTexthint)),
+                      SizedBox(height: SizeConfig.screenHeight! / 136.6),
                       Text(user.phone ?? "",
                           style: const TextStyle(
                               fontWeight: FontWeight.w400, color: kTexthint)),

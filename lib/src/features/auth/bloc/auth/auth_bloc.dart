@@ -12,7 +12,6 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
   FireBaseAuthRepository firebaseRepo = FireBaseAuthRepository();
-  User? get currentUser => firebaseRepo.getCurrentUser();
 
   AuthBloc() : super(const AuthState.notAuthorized()) {
     firebaseRepo.authStateChange.listen((user) {

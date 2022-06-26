@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -18,7 +17,13 @@ class UserProfileCubit extends Cubit<UserProfileState> {
 
   Future<void> initData() async {
     emit(const UserProfileState.loading());
-    _user = UserModel.fromFirebase(userRepository.getCurrentUser()!);
+    _user = await UserModel.fromFirebase(userRepository.getCurrentUser()!);
+    final db = await userRepository.fetchUserPhoneAndAddress();
+    _user =
+        _user?.copyWith(phone: db['phone'] ?? '', address: db['address'] ?? '');
+    print(db);
+    print(db['phone']);
+    print(db['address']);
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 

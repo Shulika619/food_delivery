@@ -26,10 +26,6 @@ class UserDbRepository implements IUserDbRepository {
 
   // Future<UserInfoDb> fetchUserInfoDb() async {}
 
-  Future<void> editUserAddressDb(String address) async {
-    await refUserInfo.update({'address': address});
-  }
-
   // Future<UserFavorite> fetchUserFavoriteDb() async {}
 
   // Future<void> editUserFavoriteDb() async {}

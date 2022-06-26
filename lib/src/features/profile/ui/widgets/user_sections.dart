@@ -17,8 +17,10 @@ class UserSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(SizeConfig.screenWidth! / 13.7, 15,
-          SizeConfig.screenWidth! / 27.4, 15.0),
+      padding: EdgeInsets.symmetric(
+        vertical: SizeConfig.screenWidth! / 27.4,
+        horizontal: SizeConfig.screenWidth! / 13.7,
+      ),
       child: Row(
         children: [
           Icon(
