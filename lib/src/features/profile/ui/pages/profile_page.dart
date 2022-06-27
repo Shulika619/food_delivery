@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/const.dart';
+import '../../../../core/size_config.dart';
 import '../../../auth/bloc/auth/auth_bloc.dart';
-import '../../../home/ui/components/size_config.dart';
 import '../widgets/top_custom_shape.dart';
 import '../widgets/user_sections.dart';
 import 'edit_profile_page.dart';

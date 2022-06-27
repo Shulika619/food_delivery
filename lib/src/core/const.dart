@@ -16,7 +16,6 @@ const kBtnTextColor = Colors.white;
 const kIconListColor = Colors.black45;
 
 // Other
-// const kButtonColor = Color(0xFFFF9505);
 const kRegisterColor = Color(0xFFffdfb4);
 const kLightColor = Color(0xFFFFC971);
 const kFreeDelivery = Color(0xFF025939);

@@ -2,10 +2,13 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/const.dart';
+import '../../../../core/size_config.dart';
+import '../../../cart/ui/pages/cart_page.dart';
+import '../../../favorite/ui/pages/favorite_page.dart';
 import '../../../profile/cubit/user_cubit.dart';
 import '../../../profile/ui/pages/profile_page.dart';
-import '../components/size_config.dart';
-import 'home_page.dart';
+import '../../../search/ui/pages/search_page.dart';
+import 'menu_page.dart';
 // import 'package:food_order_ui/view/cart_page/cart_view.dart';
 // import 'package:food_order_ui/view/favorite_page/favorite_page_view.dart';
 // import 'package:food_order_ui/view/search_page/search_page_view.dart';
@@ -31,10 +34,10 @@ class _MainPageState extends State<MainPage> {
   int index = 0;
 
   final screen = [
-    HomePage(),
-    // SearchPageView(),
-    // CartView(),
-    // FavoritePageView(),
+    const MenuPage(),
+    const SearchPage(),
+    const CartPage(),
+    const FavoritePage(),
     const ProfilePage(),
   ];
   @override
@@ -43,9 +46,9 @@ class _MainPageState extends State<MainPage> {
     final items = [
       /// 30.0
       Icon(Icons.home, size: SizeConfig.screenHeight! / 22.77),
-      // Icon(Icons.search, size: SizeConfig.screenHeight! / 22.77),
-      // Icon(Icons.shopping_cart, size: SizeConfig.screenHeight! / 22.77),
-      // Icon(Icons.favorite, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.search, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.shopping_cart, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.favorite, size: SizeConfig.screenHeight! / 22.77),
       Icon(Icons.person, size: SizeConfig.screenHeight! / 22.77),
     ];
     // Size size = MediaQuery.of(context).size;
