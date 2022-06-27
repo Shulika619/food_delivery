@@ -8,9 +8,17 @@
 - Регистрация
 - Сброс пароля
 
-![Screenshot_1655870976](https://user-images.githubusercontent.com/99508083/174942464-302decd0-6f07-4c39-98a9-47a76e058604.png)
-![Screenshot_1655871079](https://user-images.githubusercontent.com/99508083/174942467-2e10d726-dc23-4b2d-acc2-a220cdc384b9.png)
-![Screenshot_1655871090](https://user-images.githubusercontent.com/99508083/174942469-f833acbe-27ce-47b3-ad30-0c65b4e6549f.png)
+![auth](https://user-images.githubusercontent.com/99508083/174943632-eba64d41-9082-41dc-832e-53407c62b306.png)
+
+## Profile Экраны
+
+- Профиль
+- Редактирование
+- Ввод данных
+
+![222](https://user-images.githubusercontent.com/99508083/175934650-b20a2d3b-64a6-4f33-804b-0512c910c32d.png)
+
+
 
 
 This project is a starting point for a Flutter application.
