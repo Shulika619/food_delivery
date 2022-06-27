@@ -21,6 +21,7 @@ class ForgetPasswordPage extends StatelessWidget {
         ),
         elevation: 0,
       ),
+      backgroundColor: kMainColor,
       body: SafeArea(
         child: CustomScrollView(
           reverse: true,
@@ -29,7 +30,7 @@ class ForgetPasswordPage extends StatelessWidget {
               hasScrollBody: false,
               child: Column(
                 children: <Widget>[
-                  Image.asset('assets/images/forget password.jpg'),
+                  Image.asset('assets/images/forget password.png'),
                   Expanded(
                     child: ForgetPasswordForm(),
                   ),
