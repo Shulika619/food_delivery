@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/const.dart';
+
 part 'user_model.freezed.dart';
 
 @freezed
@@ -17,10 +19,11 @@ class UserModel with _$UserModel {
 
   static fromFirebase(User user) {
     final currentUser = UserModel(
-        uid: user.uid,
-        email: user.email!,
-        name: user.displayName ?? 'Anonymous',
-        img: user.photoURL ?? '');
+      uid: user.uid,
+      email: user.email!,
+      name: user.displayName ?? 'Anonymous',
+      img: user.photoURL ?? kDefaulrAvatarUrl,
+    );
     return currentUser;
   }
 }

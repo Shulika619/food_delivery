@@ -54,7 +54,7 @@ class AvatarEditWidget extends StatelessWidget {
                             placeholder: (context, url) =>
                                 const CircularProgressIndicator(),
                             errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
+                                const Icon(Icons.error, size: 40),
                           ),
                         ),
                       ),

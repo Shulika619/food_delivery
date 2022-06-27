@@ -7,7 +7,7 @@ abstract class InterfaceUserRepository {
   Future<void> updateDisplayName(String name);
   Future<void> updateEmail(String email);
   Future<void> updatePassword(String password);
-  Future<Map<dynamic, dynamic>> fetchUserPhoneAndAddress();
+  Future<Map<dynamic, dynamic>?> fetchUserPhoneAndAddress();
   Future<void> updateUserPhone(String phone);
   Future<void> updateUserAddress(String address);
 }
@@ -16,13 +16,15 @@ class UserRepository implements InterfaceUserRepository {
   final FirebaseAuth kFirebaseUserProvider = FirebaseAuth.instance;
 
   @override
-  Future<Map<dynamic, dynamic>> fetchUserPhoneAndAddress() async {
+  Future<Map<dynamic, dynamic>?> fetchUserPhoneAndAddress() async {
     final snapshot = await FirebaseDatabase.instance
         .ref("usersInfo/${FirebaseAuth.instance.currentUser?.uid}")
         .get();
-    // if (snapshot.exists) {}
+    if (snapshot.exists) {
+      return snapshot.value as Map<dynamic, dynamic>;
+    }
+    return null;
     // final data = snapshot.value as Map<dynamic, dynamic>;
-    return snapshot.value as Map<dynamic, dynamic>;
   }
 
   @override

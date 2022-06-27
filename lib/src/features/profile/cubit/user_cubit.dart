@@ -19,11 +19,9 @@ class UserProfileCubit extends Cubit<UserProfileState> {
     emit(const UserProfileState.loading());
     _user = await UserModel.fromFirebase(userRepository.getCurrentUser()!);
     final db = await userRepository.fetchUserPhoneAndAddress();
-    _user =
-        _user?.copyWith(phone: db['phone'] ?? '', address: db['address'] ?? '');
-    print(db);
-    print(db['phone']);
-    print(db['address']);
+    if (db != null) {
+      _user = _user?.copyWith(phone: db['phone'], address: db['address']);
+    }
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 

@@ -22,3 +22,7 @@ const kLightColor = Color(0xFFFFC971);
 const kFreeDelivery = Color(0xFF025939);
 const kTextColor = Color(0xFFf2ac29);
 const kPassiveFavorite = Color(0xFFD9886A);
+
+//
+const kDefaulrAvatarUrl =
+    'https://higherlogicdownload.s3.amazonaws.com/IDB2UG/38f2efa7-8305-4977-bcc3-e56a63ec493d/UploadedImages/Images/orange-membershipicon.png';
