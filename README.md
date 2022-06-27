@@ -4,6 +4,10 @@
 
 ## Auth Экраны
 
+Firebase Authentication, Sign-in provider: Email/Password.
+
+Flutter bloc + freezed
+
 - Авторизация
 - Регистрация
 - Сброс пароля
@@ -11,6 +15,10 @@
 ![auth](https://user-images.githubusercontent.com/99508083/174943632-eba64d41-9082-41dc-832e-53407c62b306.png)
 
 ## Profile Экраны
+
+Firebase Realtime Database
+
+Cubit + freezed
 
 - Профиль
 - Редактирование
