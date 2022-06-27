@@ -24,7 +24,6 @@ class UserRepository implements InterfaceUserRepository {
       return snapshot.value as Map<dynamic, dynamic>;
     }
     return null;
-    // final data = snapshot.value as Map<dynamic, dynamic>;
   }
 
   @override

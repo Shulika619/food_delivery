@@ -61,7 +61,7 @@ class AvatarEditWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: SizeConfig.screenHeight! / 15),
+                SizedBox(height: SizeConfig.screenHeight! / 11.75),
               ],
             ),
           ),
