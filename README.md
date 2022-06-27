@@ -10,6 +10,15 @@
 
 ![auth](https://user-images.githubusercontent.com/99508083/174943632-eba64d41-9082-41dc-832e-53407c62b306.png)
 
+## Profile Экраны
+
+- Профиль
+- Редактирование
+- Ввод данных
+
+![222](https://user-images.githubusercontent.com/99508083/175934650-b20a2d3b-64a6-4f33-804b-0512c910c32d.png)
+
+
 
 
 This project is a starting point for a Flutter application.
