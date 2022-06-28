@@ -8,7 +8,7 @@ class RecommedFoods extends StatefulWidget {
   const RecommedFoods({Key? key}) : super(key: key);
 
   @override
-  _RecommedFoodsState createState() => _RecommedFoodsState();
+  State<RecommedFoods> createState() => _RecommedFoodsState();
 }
 
 class _RecommedFoodsState extends State<RecommedFoods> {
@@ -57,7 +57,7 @@ class _RecommedFoodsState extends State<RecommedFoods> {
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                offset: Offset(4, 6),
+                                offset: const Offset(4, 6),
                                 blurRadius: 4,
                                 color: Colors.black.withOpacity(0.3),
                               )
@@ -68,7 +68,7 @@ class _RecommedFoodsState extends State<RecommedFoods> {
                             Container(
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("${food.foodImageName}"),
+                                  image: AssetImage(food.foodImageName),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(20),
@@ -92,14 +92,14 @@ class _RecommedFoodsState extends State<RecommedFoods> {
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("${food.foodName}",
+                                    Text(food.foodName,
                                         style: TextStyle(
                                             fontSize: SizeConfig.screenHeight! /
                                                 34.15,
                                             color: Colors.white)),
 
                                     /// 20
-                                    Text("${food.foodCategory}",
+                                    Text(food.foodCategory,
                                         style: TextStyle(
                                             fontSize: SizeConfig.screenHeight! /
                                                 48.79,
@@ -122,8 +122,8 @@ class _RecommedFoodsState extends State<RecommedFoods> {
                                 right: SizeConfig.screenWidth! / 41.1,
 
                                 /// 10.0
-                                child:
-                                    Icon(Icons.favorite, color: Colors.white))
+                                child: const Icon(Icons.favorite,
+                                    color: Colors.white))
                           ],
                         ),
                       ),
@@ -134,7 +134,7 @@ class _RecommedFoodsState extends State<RecommedFoods> {
             ),
           );
         } else {
-          return Center();
+          return const Center();
         }
       },
     );

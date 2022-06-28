@@ -6,8 +6,6 @@ import '../widgets/discount_cart.dart';
 import '../widgets/food_part.dart';
 import '../widgets/popular.dart';
 import '../widgets/recommed.dart';
-import '../widgets/search_food.dart';
-import '../widgets/username_text.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -22,19 +20,22 @@ class _MenuPageState extends State<MenuPage> {
     // SizeConfig().init(context);
     return Scaffold(
       backgroundColor: kMainBgColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            UserNameText(),
-            SearchFood(),
-            DiscountCard(),
-            FoodPart(partName: "Categories"),
-            CategoriesFood(),
-            FoodPart(partName: "Recommed"),
-            RecommedFoods(),
-            FoodPart(partName: "Popular"),
-            PopularFoods(),
-          ],
+      body: SafeArea(
+        bottom: false,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // UserNameText(),
+              // const SearchFood(),
+              const DiscountCard(),
+              FoodPart(partName: "Categories"),
+              const CategoriesFood(),
+              FoodPart(partName: "Recommed"),
+              const RecommedFoods(),
+              FoodPart(partName: "Popular"),
+              const PopularFoods(),
+            ],
+          ),
         ),
       ),
     );

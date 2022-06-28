@@ -7,7 +7,7 @@ class SearchFood extends StatefulWidget {
   const SearchFood({Key? key}) : super(key: key);
 
   @override
-  _SearchFoodState createState() => _SearchFoodState();
+  State<SearchFood> createState() => _SearchFoodState();
 }
 
 class _SearchFoodState extends State<SearchFood> {
@@ -31,9 +31,9 @@ class _SearchFoodState extends State<SearchFood> {
         ),
         child: InkWell(
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SearchPage()));
-            print("hello");
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SearchPage()));
+            // print("--->Push SearchPage()");
           },
           child: Container(
               height: SizeConfig.screenHeight! / 13.66,
@@ -44,18 +44,18 @@ class _SearchFoodState extends State<SearchFood> {
               /// 385.0
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                   boxShadow: [
                     BoxShadow(
-                      offset: Offset(0, 4),
+                      offset: const Offset(0, 4),
                       blurRadius: 6,
                       color: Colors.black.withOpacity(0.3),
                     )
                   ]),
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
+                  const Padding(
+                    padding: EdgeInsets.all(12.0),
                     child: Icon(
                       Icons.search,
                       color: Colors.black26,

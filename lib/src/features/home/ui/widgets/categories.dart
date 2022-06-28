@@ -8,7 +8,7 @@ class CategoriesFood extends StatefulWidget {
   const CategoriesFood({Key? key}) : super(key: key);
 
   @override
-  _CategoriesFoodState createState() => _CategoriesFoodState();
+  State<CategoriesFood> createState() => _CategoriesFoodState();
 }
 
 class _CategoriesFoodState extends State<CategoriesFood> {
@@ -55,7 +55,7 @@ class _CategoriesFoodState extends State<CategoriesFood> {
                         /// 45.0
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("${category.categoryImage}"),
+                            image: AssetImage(category.categoryImage),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -77,7 +77,7 @@ class _CategoriesFoodState extends State<CategoriesFood> {
             ),
           );
         } else {
-          return Center();
+          return const Center();
         }
       },
     );

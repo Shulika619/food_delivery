@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/src/features/home/bloc/discount/discount_bloc.dart';
 import '../../../../core/const.dart';
 import '../../../../core/size_config.dart';
 import '../../../cart/ui/pages/cart_page.dart';
@@ -9,9 +10,6 @@ import '../../../profile/cubit/user_cubit.dart';
 import '../../../profile/ui/pages/profile_page.dart';
 import '../../../search/ui/pages/search_page.dart';
 import 'menu_page.dart';
-// import 'package:food_order_ui/view/cart_page/cart_view.dart';
-// import 'package:food_order_ui/view/favorite_page/favorite_page_view.dart';
-// import 'package:food_order_ui/view/search_page/search_page_view.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -26,6 +24,8 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     context.read<UserProfileCubit>().initData();
+    context.read<DiscountBloc>().add(const DiscountEvent.fetchData());
+
     super.initState();
     // TODO: other Init(adress, favorite, products)
   }

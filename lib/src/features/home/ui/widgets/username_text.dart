@@ -7,7 +7,7 @@ class UserNameText extends StatefulWidget {
   const UserNameText({Key? key}) : super(key: key);
 
   @override
-  _UserNameTextState createState() => _UserNameTextState();
+  State<UserNameText> createState() => _UserNameTextState();
 }
 
 class _UserNameTextState extends State<UserNameText> {
@@ -67,7 +67,7 @@ class _UserNameTextState extends State<UserNameText> {
                       width: SizeConfig.screenWidth! / 13.7,
 
                       /// 30.0
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                               image:
                                   AssetImage("assets/main/waving-hand.png"))),
@@ -108,7 +108,7 @@ class _UserNameTextState extends State<UserNameText> {
                   decoration: BoxDecoration(
                       color: buttonColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(30.0)),
-                  child: Icon(
+                  child: const Icon(
                     Icons.notifications_none,
                     color: Colors.white,
                   )),
@@ -119,7 +119,7 @@ class _UserNameTextState extends State<UserNameText> {
                   bottom: SizeConfig.screenHeight! / 62.01,
 
                   /// 11.0
-                  child: Text(
+                  child: const Text(
                     "3",
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),
