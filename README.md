@@ -12,14 +12,13 @@ Flutter bloc + freezed
 - Регистрация
 - Сброс пароля
 
-![Screenshot_1656334890](https://user-images.githubusercontent.com/99508083/175948138-7d0d4a15-800e-4f28-a339-1e7c5458aba1.png)
-![Screenshot_1656334895](https://user-images.githubusercontent.com/99508083/175948140-5882ba91-ce6f-44c5-9fb2-a9034f0ec5c7.png)
-![Screenshot_1656334898](https://user-images.githubusercontent.com/99508083/175948143-37419d8f-4efe-4e0b-a3ba-d8b402127c4c.png)
-
+![Screenshot_1656332621](https://user-images.githubusercontent.com/99508083/176202728-4d6381f4-23cf-40ba-a47e-2052efb01462.png)
+![Screenshot_1656332626](https://user-images.githubusercontent.com/99508083/176202732-a0d82faf-ddf5-4858-8eff-014f0cdfae7d.png)
+![Screenshot_1656333214](https://user-images.githubusercontent.com/99508083/176202734-776c6afa-37e5-44c5-b66d-64af63948183.png)
 
 ## Profile Экраны
 
-Firebase Realtime Database
+Firebase Realtime Database (Чтение и запись данных).
 
 Cubit + freezed
 
@@ -27,11 +26,15 @@ Cubit + freezed
 - Редактирование
 - Ввод данных
 
-![Screenshot_1656334870](https://user-images.githubusercontent.com/99508083/175948130-2fe35800-4bf0-4865-8ad5-025cb2e1bd1b.png)
-![Screenshot_1656334873](https://user-images.githubusercontent.com/99508083/175948133-251811a9-bf31-4cd5-9839-1759c97898fd.png)
-![Screenshot_1656334877](https://user-images.githubusercontent.com/99508083/175948135-f4cc0a6e-ccc2-4e04-8491-7c80ca177822.png)
+![Screenshot_1656334530](https://user-images.githubusercontent.com/99508083/176202737-8ef6a721-a4f8-4eeb-8d54-9139d4409028.png)
+![Screenshot_1656334533](https://user-images.githubusercontent.com/99508083/176202738-8a8b3080-28b0-499c-afa6-909d8c8e5d9e.png)
+![Screenshot_1656334546](https://user-images.githubusercontent.com/99508083/176202739-23f84e25-12db-4933-b6a2-d2c44514e79c.png)
 
-## 
+## Main Основной экран
+
+Firebase Storage (Чтение изображения со скидками из хранилища).Если есть изображения в FirebaseStorage/discount, то создается слайдер/карусель
+
+- Скидки 
 
 
 This project is a starting point for a Flutter application.
