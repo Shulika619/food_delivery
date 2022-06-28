@@ -18,7 +18,7 @@ Flutter bloc + freezed
 
 ## Profile Экраны
 
-Firebase Realtime Database (Чтение и запись данных).
+Firebase Realtime Database (Чтение и запись данных профиля).
 
 Cubit + freezed
 
