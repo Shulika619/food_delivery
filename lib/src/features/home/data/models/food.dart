@@ -1,14 +1,17 @@
-class Food {
-  int foodId;
-  String foodName;
-  String foodImageName;
-  String foodCategory;
-  String foodPrice;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Food({
-    required this.foodId,
-    required this.foodName,
-    required this.foodImageName,
-    required this.foodCategory,
-    required this.foodPrice});
+part 'food.freezed.dart';
+part 'food.g.dart';
+
+@freezed
+class Food with _$Food {
+  const factory Food({
+    required String foodId,
+    required String foodName,
+    required String foodImageName,
+    required String foodCategory,
+    required String foodPrice,
+  }) = _Food;
+
+  factory Food.fromJson(Map<String, dynamic> json) => _$FoodFromJson(json);
 }

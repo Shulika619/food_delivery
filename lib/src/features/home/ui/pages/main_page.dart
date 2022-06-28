@@ -23,11 +23,10 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   void initState() {
+    super.initState();
+    // TODO: Init(favorite, products, orders)
     context.read<UserProfileCubit>().initData();
     context.read<DiscountBloc>().add(const DiscountEvent.fetchData());
-
-    super.initState();
-    // TODO: other Init(adress, favorite, products)
   }
 
   final navigationKey = GlobalKey<CurvedNavigationBarState>();

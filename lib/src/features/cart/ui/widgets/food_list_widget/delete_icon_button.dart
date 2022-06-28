@@ -15,17 +15,14 @@ class _DeleteIconButtonState extends State<DeleteIconButton> {
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content:
-              Text("Delete ${widget.foodName}?"),
-              action: SnackBarAction(
-                  label: "Yes",
-                  onPressed: () {
-
-                  }
-              ),
+              content: Text("Delete ${widget.foodName}?"),
+              action: SnackBarAction(label: "Yes", onPressed: () {}),
             ),
           );
         },
-        icon: Icon(Icons.delete_outline, color: Colors.black54,));
+        icon: Icon(
+          Icons.delete_outline,
+          color: Colors.black54,
+        ));
   }
 }
