@@ -9,6 +9,7 @@ const kAppBarTextColor = Colors.white;
 
 // Text colors
 const kTxtListColor = Colors.black54;
+const kTxtListCategoryColor = Colors.black38;
 const kTexthint = Color(0xFF666666);
 const kBtnTextColor = Colors.white;
 
@@ -16,10 +17,10 @@ const kBtnTextColor = Colors.white;
 const kIconListColor = Colors.black45;
 
 // Other
-const kRegisterColor = Color(0xFFffdfb4);
-const kLightColor = Color(0xFFFFC971);
-const kFreeDelivery = Color(0xFF025939);
-const kTextColor = Color(0xFFf2ac29);
-const kPassiveFavorite = Color(0xFFD9886A);
+// const kRegisterColor = Color(0xFFffdfb4);
+// const kLightColor = Color(0xFFFFC971);
+// const kFreeDelivery = Color(0xFF025939);
+// const kTextColor = Color(0xFFf2ac29);
+// const kPassiveFavorite = Color(0xFFD9886A);
 
 //

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/src/features/home/bloc/discount/discount_bloc.dart';
+import 'package:food_delivery/src/features/home/bloc/menu_bloc.dart';
 
 import 'src/core/bloc/bloc_observer.dart';
 import 'src/core/const.dart';
@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(),
         ),
-        BlocProvider<DiscountBloc>(
-          create: (context) => DiscountBloc(),
+        BlocProvider<MenuBloc>(
+          create: (context) => MenuBloc(),
         ),
         BlocProvider<UserProfileCubit>(
           create: (context) => UserProfileCubit(),

@@ -1,7 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/src/features/home/bloc/discount/discount_bloc.dart';
+import 'package:food_delivery/src/features/home/bloc/menu_bloc.dart';
 import '../../../../core/const.dart';
 import '../../../../core/size_config.dart';
 import '../../../cart/ui/pages/cart_page.dart';
@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     // TODO: Init(favorite, products, orders)
     context.read<UserProfileCubit>().initData();
-    context.read<DiscountBloc>().add(const DiscountEvent.fetchData());
+    context.read<MenuBloc>().add(const MenuEvent.fetchData());
   }
 
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
