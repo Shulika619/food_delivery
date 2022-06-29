@@ -33,13 +33,19 @@ Cubit + freezed
 ## Main Основной экран
 
 Firebase Storage (Чтение изображения со скидками из хранилища). Если есть изображения в FirebaseStorage/discount, то создается слайдер/карусель
+Firebase Realtime Database (Чтение категорий и товара из бд).
 
 - Скидки 
+- Категории
+- Рекомендации
+- Популярное
+
+![Screenshot_1656516086](https://user-images.githubusercontent.com/99508083/176475670-775135c3-6139-4bbf-874c-7b3cff210650.png)
+![Screenshot_1656516097](https://user-images.githubusercontent.com/99508083/176475678-2e8884f6-6f66-4aab-8c67-f9129d1b5f70.png)
 
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
