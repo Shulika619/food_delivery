@@ -90,7 +90,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                     left: SizeConfig.screenWidth! / 34.25,
                                     bottom: SizeConfig.screenHeight! / 45.54,
                                     child: Container(
-                                      padding: const EdgeInsets.all(10),
+                                      padding: const EdgeInsets.only(left: 5),
                                       // color: Colors.black.withOpacity(0.5),
                                       child: Column(
                                         mainAxisAlignment:
@@ -115,6 +115,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                                   fontSize:
                                                       SizeConfig.screenHeight! /
                                                           37.95,
+                                                  fontWeight: FontWeight.bold,
                                                   color: kMainColor))
                                         ],
                                       ),
@@ -128,24 +129,29 @@ class _CategoryPageState extends State<CategoryPage> {
                                       child: const Icon(
                                         Icons.favorite,
                                         color: kMainBgColor,
-                                        size: 40,
+                                        size: 42,
                                       ),
                                     )),
                                 Positioned(
                                   bottom: 0,
                                   right: 0,
-                                  child: Container(
-                                    height: SizeConfig.screenHeight! / 13.66,
-                                    width: SizeConfig.screenWidth! / 8.22,
-                                    decoration: const BoxDecoration(
-                                        color: kMainColor,
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(20.0),
-                                          topLeft: Radius.circular(20.0),
-                                        )),
-                                    child: const Icon(
-                                      Icons.shopping_cart_rounded,
-                                      color: kMainBgColor,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      print('Tap Add Cart: ${food.foodName}');
+                                    },
+                                    child: Container(
+                                      height: SizeConfig.screenHeight! / 13.66,
+                                      width: SizeConfig.screenWidth! / 8.22,
+                                      decoration: const BoxDecoration(
+                                          color: kMainColor,
+                                          borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(20.0),
+                                            topLeft: Radius.circular(20.0),
+                                          )),
+                                      child: const Icon(
+                                        Icons.shopping_cart_rounded,
+                                        color: kMainBgColor,
+                                      ),
                                     ),
                                   ),
                                 ),

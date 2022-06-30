@@ -108,23 +108,38 @@ class _PopularFoodsState extends State<PopularFoods> {
                                                     fontWeight:
                                                         FontWeight.w400),
                                               ),
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .screenHeight! /
-                                                        136.6),
-                                                child: Text(
-                                                  "\$${food.foodPrice}",
-                                                  style: TextStyle(
-                                                      color: kMainColor,
-                                                      fontSize: SizeConfig
-                                                              .screenHeight! /
-                                                          37.95,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
+                                              // Padding(
+                                              //   padding: EdgeInsets.only(
+                                              //       top: SizeConfig
+                                              //               .screenHeight! /
+                                              //           136.6),
+                                              //   child: Text(
+                                              //     "\$${food.foodPrice}",
+                                              //     style: TextStyle(
+                                              //         color: kMainColor,
+                                              //         fontSize: SizeConfig
+                                              //                 .screenHeight! /
+                                              //             37.95,
+                                              //         fontWeight:
+                                              //             FontWeight.bold),
+                                              //   ),
+                                              // ),
                                             ],
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Container(
+                                          alignment: Alignment.bottomLeft,
+                                          padding: const EdgeInsets.only(
+                                              left: 15, bottom: 10),
+                                          child: Text(
+                                            "\$${food.foodPrice}",
+                                            style: TextStyle(
+                                                color: kMainColor,
+                                                fontSize:
+                                                    SizeConfig.screenHeight! /
+                                                        37.95,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ),
                                       ],
