@@ -104,7 +104,7 @@ class _RecommedFoodsState extends State<RecommedFoods> {
                                                       fontSize: SizeConfig
                                                               .screenHeight! /
                                                           37.95,
-                                                      color: kMainBgColor))
+                                                      color: kMainColor))
                                             ],
                                           )),
                                       // Positioned(

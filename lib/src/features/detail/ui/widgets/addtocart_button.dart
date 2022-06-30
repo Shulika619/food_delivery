@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/src/core/const.dart';
 
-import '../../../../core/colors.dart';
 import '../../../../core/size_config.dart';
 
 class AddToCartButton extends StatelessWidget {
@@ -18,7 +18,7 @@ class AddToCartButton extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: buttonColor,
+          color: kThirdColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: ElevatedButton(
@@ -31,10 +31,12 @@ class AddToCartButton extends StatelessWidget {
             minimumSize: MaterialStateProperty.all(Size(
                 SizeConfig.screenWidth! / 1.37,
                 SizeConfig.screenHeight! / 11.66)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            // backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            // shadowColor: MaterialStateProperty.all(Colors.transparent),
           ),
-          onPressed: () {},
+          onPressed: () {
+            print('Add to Cart');
+          },
           child: Wrap(
             children: [
               Padding(
@@ -42,9 +44,9 @@ class AddToCartButton extends StatelessWidget {
                     EdgeInsets.only(right: SizeConfig.screenWidth! / 51.38),
 
                 /// 8.0
-                child: Icon(
+                child: const Icon(
                   Icons.shopping_cart_rounded,
-                  color: Colors.white,
+                  color: kMainBgColor,
                 ),
               ),
               Text(
@@ -52,7 +54,7 @@ class AddToCartButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: SizeConfig.screenHeight! / 34.15,
                   fontWeight: FontWeight.w700,
-                  color: Colors.white,
+                  color: kMainBgColor,
                 ),
               ),
             ],

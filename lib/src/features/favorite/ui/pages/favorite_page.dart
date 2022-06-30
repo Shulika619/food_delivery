@@ -34,6 +34,7 @@ class _FavoritePageState extends State<FavoritePage> {
               if (snapshot.hasData) {
                 var foodList = snapshot.data;
                 return GridView.builder(
+                    // shrinkWrap: true,
                     itemCount: 3,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -53,8 +54,8 @@ class _FavoritePageState extends State<FavoritePage> {
                                     builder: (context) =>
                                         DetailPage(food: food))),
                             child: Container(
-                                // height: SizeConfig.screenHeight! / 3.10,
-                                // width: SizeConfig.screenWidth! / 2.06,
+                                height: SizeConfig.screenHeight! / 3.10,
+                                width: SizeConfig.screenWidth! / 2.06,
                                 decoration: BoxDecoration(
                                     color: kMainBgColor,
                                     borderRadius: BorderRadius.circular(30.0),
