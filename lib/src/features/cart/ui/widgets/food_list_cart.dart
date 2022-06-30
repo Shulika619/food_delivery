@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/src/core/const.dart';
 
 import 'package:lottie/lottie.dart';
 
 import '../../../../core/size_config.dart';
 import '../../../home/data/models/food.dart';
 import '../../../home/data/models/food_list.dart';
-import 'food_list_widget/delete_icon_button.dart';
-import 'food_list_widget/food_image.dart';
-import 'food_list_widget/food_text.dart';
+import 'delete_icon_button.dart';
+import 'food_image.dart';
+import 'food_text.dart';
 
-class FoodListWidget extends StatefulWidget {
-  const FoodListWidget({Key? key}) : super(key: key);
+class FoodListCartWidget extends StatefulWidget {
+  const FoodListCartWidget({Key? key}) : super(key: key);
 
   @override
-  _FoodListState createState() => _FoodListState();
+  State<FoodListCartWidget> createState() => _FoodListState();
 }
 
-class _FoodListState extends State<FoodListWidget> {
+class _FoodListState extends State<FoodListCartWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,34 +34,35 @@ class _FoodListState extends State<FoodListWidget> {
                     return Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: SizeConfig.screenHeight! / 68.3),
-
-                      /// 10.0
                       child: Dismissible(
                         key: UniqueKey(),
                         direction: DismissDirection.endToStart,
                         onDismissed: (direction) {
-                          setState(() {});
+                          setState(() {
+                            print('---- Swipe delete');
+                          });
                         },
                         background: Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: SizeConfig.screenWidth! / 20.55),
-
-                          /// 20.0
                           decoration: BoxDecoration(
-                            color: Color(0xFFFFE6E6),
+                            color: kThirdColor,
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: Row(
-                            children: [Spacer(), Icon(Icons.delete_outline)],
+                            children: const [
+                              Spacer(),
+                              Icon(Icons.delete_outline)
+                            ],
                           ),
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: kMainBgColor,
                               borderRadius: BorderRadius.circular(30.0),
                               boxShadow: [
                                 BoxShadow(
-                                  offset: Offset(4, 6),
+                                  offset: const Offset(4, 6),
                                   blurRadius: 4,
                                   color: Colors.black.withOpacity(0.1),
                                 )
@@ -69,12 +71,10 @@ class _FoodListState extends State<FoodListWidget> {
                             children: [
                               FoodImage(foodImage: food.foodImageName),
                               SizedBox(width: SizeConfig.screenWidth! / 20.55),
-
-                              /// 20.0
                               FoodText(
                                   foodName: food.foodName,
                                   foodPrice: food.foodPrice),
-                              Spacer(),
+                              const Spacer(),
                               DeleteIconButton(foodName: food.foodName),
                             ],
                           ),
@@ -88,11 +88,7 @@ class _FoodListState extends State<FoodListWidget> {
                 child: Lottie.network(
                     "https://assets10.lottiefiles.com/packages/lf20_peztuj79.json",
                     height: SizeConfig.screenHeight! / 6.83,
-
-                    /// 100.0
                     width: SizeConfig.screenWidth! / 4.11,
-
-                    /// 100.0
                     repeat: false),
               ));
             }

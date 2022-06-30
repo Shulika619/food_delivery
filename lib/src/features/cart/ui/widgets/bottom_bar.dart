@@ -3,9 +3,8 @@ import 'package:food_delivery/src/core/const.dart';
 
 import '../../../../core/size_config.dart';
 import '../../../detail/ui/widgets/separator.dart';
-import 'bottom_bar_widget/3d_secure.dart';
-import 'bottom_bar_widget/bottombar_text.dart';
-import 'bottom_bar_widget/checkout_button.dart';
+import 'bottombar_text.dart';
+import '../components/checkout_button.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -38,42 +37,66 @@ class _BottomBarState extends State<BottomBar> {
             Padding(
               padding:
                   EdgeInsets.only(bottom: SizeConfig.screenHeight! / 85.37),
-              child: MySeparator(
-                color: Colors.grey,
+              child: const MySeparator(
+                color: kSeparatorColor,
               ),
             ),
-            ThreeDSecure(),
+            // ThreeDSecure(),
             SizedBox(
               height: SizeConfig.screenHeight! / 45.54,
             ),
+            // BottomBarText(
+            //     title_text: "Subtotal",
+            //     price_text: "\$37.0",
+            //     font_size: SizeConfig.screenHeight! / 45.54,
+            //     fontWeight: FontWeight.w400,
+            //     text_color: kTxtListColor),
+            // SizedBox(
+            //   height: SizeConfig.screenHeight! / 45.54,
+            // ),
+            // BottomBarText(
+            //   title_text: "Discount",
+            //   price_text: "\$2.0",
+            //   font_size: SizeConfig.screenHeight! / 45.54,
+            //   fontWeight: FontWeight.w400,
+            //   text_color: Colors.black54,
+            // ),
+            // SizedBox(
+            //   height: SizeConfig.screenHeight! / 45.54,
+            // ),
             BottomBarText(
-                title_text: "Subtotal",
-                price_text: "\$37.0",
-                font_size: SizeConfig.screenHeight! / 45.54,
-                fontWeight: FontWeight.w400,
-                text_color: Colors.black54),
-            SizedBox(
-              height: SizeConfig.screenHeight! / 45.54,
-            ),
-            BottomBarText(
-              title_text: "Discount",
-              price_text: "\$2.0",
-              font_size: SizeConfig.screenHeight! / 45.54,
-              fontWeight: FontWeight.w400,
-              text_color: Colors.black54,
-            ),
-            SizedBox(
-              height: SizeConfig.screenHeight! / 45.54,
-            ),
-            BottomBarText(
-              title_text: "Total",
-              price_text: "\$35.0",
-              font_size: SizeConfig.screenHeight! / 37.95,
+              titleText: "Total",
+              priceText: "\$35.0",
+              fontSize: SizeConfig.screenHeight! / 37.95,
               fontWeight: FontWeight.bold,
-              text_color: Colors.black,
+              textColor: kTxtMainColor,
             ),
             SizedBox(height: SizeConfig.screenHeight! / 34.15),
-            CheckoutButton(),
+            // CheckoutButton(),
+            InkWell(
+              onTap: () {
+                print('Tap CONFIRM ---->');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      width: SizeConfig.screenWidth! / 1.42,
+                      height: SizeConfig.screenHeight! / 12.42,
+                      decoration: BoxDecoration(
+                          color: kMainColor,
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Center(
+                          child: Text(
+                        "CONFIRM",
+                        style: TextStyle(
+                            color: kMainBgColor,
+                            fontSize: SizeConfig.screenHeight! / 34.15,
+                            fontWeight: FontWeight.bold),
+                      ))),
+                ],
+              ),
+            )
           ],
         ),
       ),

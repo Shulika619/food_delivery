@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/src/core/const.dart';
 
 class DeleteIconButton extends StatefulWidget {
-  String foodName;
-  DeleteIconButton({required this.foodName});
+  final String foodName;
+  const DeleteIconButton({Key? key, required this.foodName}) : super(key: key);
 
   @override
-  _DeleteIconButtonState createState() => _DeleteIconButtonState();
+  State<DeleteIconButton> createState() => _DeleteIconButtonState();
 }
 
 class _DeleteIconButtonState extends State<DeleteIconButton> {
@@ -16,13 +17,17 @@ class _DeleteIconButtonState extends State<DeleteIconButton> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Delete ${widget.foodName}?"),
-              action: SnackBarAction(label: "Yes", onPressed: () {}),
+              action: SnackBarAction(
+                  label: "Yes",
+                  onPressed: () {
+                    print("---- Deleted: ");
+                  }),
             ),
           );
         },
-        icon: Icon(
+        icon: const Icon(
           Icons.delete_outline,
-          color: Colors.black54,
+          color: kThirdColor,
         ));
   }
 }

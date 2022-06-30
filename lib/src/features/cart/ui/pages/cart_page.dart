@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/src/core/const.dart';
 
 import '../widgets/bottom_bar.dart';
-import '../widgets/food_list.dart';
+import '../widgets/food_list_cart.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -14,19 +15,19 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kMainBgColor,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "My Cart",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: kTxtMainColor),
         ),
         elevation: 0,
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: kMainBgColor,
+        // iconTheme: const IconThemeData(color: Colors.black),
       ),
-      body: FoodListWidget(),
-      bottomNavigationBar: BottomBar(),
+      body: const FoodListCartWidget(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }

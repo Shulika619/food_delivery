@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/size_config.dart';
+import '../../../../core/size_config.dart';
 
 class FoodImage extends StatefulWidget {
-  String foodImage;
-  FoodImage({required this.foodImage});
+  final String foodImage;
+  const FoodImage({Key? key, required this.foodImage}) : super(key: key);
 
   @override
-  _FoodImageState createState() => _FoodImageState();
+  State<FoodImage> createState() => _FoodImageState();
 }
 
 class _FoodImageState extends State<FoodImage> {
@@ -15,14 +15,10 @@ class _FoodImageState extends State<FoodImage> {
   Widget build(BuildContext context) {
     return Container(
       height: SizeConfig.screenHeight! / 8.54,
-
-      /// 80.0
       width: SizeConfig.screenWidth! / 4.57,
-
-      /// 90.0
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("${widget.foodImage}"),
+          image: AssetImage(widget.foodImage),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(20.0),
