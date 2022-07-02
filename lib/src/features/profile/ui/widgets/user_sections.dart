@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/const.dart';
-import '../../../home/ui/components/size_config.dart';
+import '../../../../core/size_config.dart';
 
 class UserSection extends StatelessWidget {
   IconData iconName;

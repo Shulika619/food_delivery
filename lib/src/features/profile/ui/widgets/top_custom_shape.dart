@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/const.dart';
-import '../../../home/ui/components/size_config.dart';
+import '../../../../core/size_config.dart';
 import '../../cubit/user_cubit.dart';
 import 'custom_shape.dart';
 

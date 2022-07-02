@@ -4,11 +4,8 @@ abstract class IUserDbRepository {
   // Future<Character> getCharacter();
 }
 
-// info/$uid : { phone: '', address: ''}
 // favotire/$uid { ... }
 // orders/$uid { .... }
-
-// users/$uid/     info{}
 
 class UserDbRepository implements IUserDbRepository {
   // FirebaseDatabase database = FirebaseDatabase.instance;
@@ -17,8 +14,6 @@ class UserDbRepository implements IUserDbRepository {
 // await refUserInfo.child('address').set(address);   // добавить указ знач
 // await refUserInfo.update({'address': address,});   // только обновить выбр знач
 
-  DatabaseReference refUserInfo =
-      FirebaseDatabase.instance.ref("usersInfo/123");
   DatabaseReference refUserFavorite =
       FirebaseDatabase.instance.ref("usersFavorite/123");
   DatabaseReference refUserOrder =
@@ -27,9 +22,9 @@ class UserDbRepository implements IUserDbRepository {
   // Future<UserInfoDb> fetchUserInfoDb() async {}
 
   // Future<UserFavorite> fetchUserFavoriteDb() async {}
-
   // Future<void> editUserFavoriteDb() async {}
 
+  // Future<UserOrders> saveUserOrdersDb() async {}
   // Future<UserOrders> fetchUserOrdersDb() async {}
 
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/src/features/profile/ui/widgets/show_edit_dialog.dart';
 
 import '../../../../core/const.dart';
-import '../../../home/ui/components/size_config.dart';
+import '../../../../core/size_config.dart';
 import '../../cubit/user_cubit.dart';
 import '../../data/model/user_model.dart';
 import 'custom_shape.dart';

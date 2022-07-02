@@ -1,14 +1,15 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/src/features/home/bloc/menu_bloc.dart';
 import '../../../../core/const.dart';
+import '../../../../core/size_config.dart';
+import '../../../cart/ui/pages/cart_page.dart';
+import '../../../favorite/ui/pages/favorite_page.dart';
 import '../../../profile/cubit/user_cubit.dart';
 import '../../../profile/ui/pages/profile_page.dart';
-import '../components/size_config.dart';
-import 'home_page.dart';
-// import 'package:food_order_ui/view/cart_page/cart_view.dart';
-// import 'package:food_order_ui/view/favorite_page/favorite_page_view.dart';
-// import 'package:food_order_ui/view/search_page/search_page_view.dart';
+import '../../../search/ui/pages/search_page.dart';
+import 'menu_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -22,19 +23,20 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   void initState() {
-    context.read<UserProfileCubit>().initData();
     super.initState();
-    // TODO: other Init(adress, favorite, products)
+    // TODO: Init(favorite, products, orders)
+    context.read<UserProfileCubit>().initData();
+    context.read<MenuBloc>().add(const MenuEvent.fetchData());
   }
 
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
   int index = 0;
 
   final screen = [
-    HomePage(),
-    // SearchPageView(),
-    // CartView(),
-    // FavoritePageView(),
+    const MenuPage(),
+    const SearchPage(),
+    const CartPage(),
+    const FavoritePage(),
     const ProfilePage(),
   ];
   @override
@@ -43,9 +45,9 @@ class _MainPageState extends State<MainPage> {
     final items = [
       /// 30.0
       Icon(Icons.home, size: SizeConfig.screenHeight! / 22.77),
-      // Icon(Icons.search, size: SizeConfig.screenHeight! / 22.77),
-      // Icon(Icons.shopping_cart, size: SizeConfig.screenHeight! / 22.77),
-      // Icon(Icons.favorite, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.search, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.shopping_cart, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.favorite, size: SizeConfig.screenHeight! / 22.77),
       Icon(Icons.person, size: SizeConfig.screenHeight! / 22.77),
     ];
     // Size size = MediaQuery.of(context).size;

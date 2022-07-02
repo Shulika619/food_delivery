@@ -10,6 +10,8 @@ abstract class InterfaceUserRepository {
   Future<Map<dynamic, dynamic>?> fetchUserPhoneAndAddress();
   Future<void> updateUserPhone(String phone);
   Future<void> updateUserAddress(String address);
+  Future<void> updateUserFavorite(String foodId);
+  Stream<DatabaseEvent> fetchUserFavorite();
 }
 
 class UserRepository implements InterfaceUserRepository {
@@ -63,5 +65,25 @@ class UserRepository implements InterfaceUserRepository {
   @override
   Future<void> updatePhotoURL(String url) async {
     await kFirebaseUserProvider.currentUser?.updatePhotoURL(url);
+  }
+
+  @override
+  Stream<DatabaseEvent> fetchUserFavorite() {
+    final favoriteStream = FirebaseDatabase.instance
+        .ref("favorite/${FirebaseAuth.instance.currentUser?.uid}")
+        .onValue;
+    return favoriteStream;
+  }
+
+  @override
+  Future<void> updateUserFavorite(String foodId) async {
+    final ref = FirebaseDatabase.instance
+        .ref("favorite/${FirebaseAuth.instance.currentUser?.uid}");
+    final snapshot = await ref.child(foodId).get();
+    if (snapshot.value == null) {
+      await ref.update({foodId: true});
+    } else {
+      await ref.child(foodId).remove();
+    }
   }
 }

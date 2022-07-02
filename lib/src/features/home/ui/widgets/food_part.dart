@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/size_config.dart';
+import '../../../../core/size_config.dart';
 
 class FoodPart extends StatelessWidget {
   String partName;

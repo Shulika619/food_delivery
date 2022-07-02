@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/src/core/const.dart';
 
 import '../../../../core/widgets/loading_widget.dart';
 import '../../cubit/user_cubit.dart';
@@ -33,6 +34,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               title: const Text('Edit Profile'),
               centerTitle: true,
               elevation: 0),
+          backgroundColor: kMainBgColor,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
