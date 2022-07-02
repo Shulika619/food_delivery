@@ -13,6 +13,7 @@ class UserModel with _$UserModel {
     String? img,
     String? phone,
     String? address,
+    List<String?>? favoriteList,
   }) = _UserModel;
 
   static fromFirebase(User user) {

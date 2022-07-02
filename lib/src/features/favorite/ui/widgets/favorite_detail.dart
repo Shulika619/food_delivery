@@ -1,21 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
+import 'package:food_delivery/src/features/profile/cubit/user_cubit.dart';
 
 import '../../../../core/size_config.dart';
+import '../../../home/data/models/food.dart';
 
 class FavoriteDetail extends StatefulWidget {
-  final String foodImageName;
-  final String foodName;
-  final String foodCategory;
-  final String foodPrice;
+  final Food food;
 
-  const FavoriteDetail(
-      {Key? key,
-      required this.foodImageName,
-      required this.foodName,
-      required this.foodCategory,
-      required this.foodPrice})
-      : super(key: key);
+  const FavoriteDetail({Key? key, required this.food}) : super(key: key);
 
   @override
   State<FavoriteDetail> createState() => _FavoriteDetailState();
@@ -24,6 +19,7 @@ class FavoriteDetail extends StatefulWidget {
 class _FavoriteDetailState extends State<FavoriteDetail> {
   @override
   Widget build(BuildContext context) {
+    final userCubit = context.watch<UserProfileCubit>();
     return Stack(
       children: [
         Column(
@@ -37,7 +33,8 @@ class _FavoriteDetailState extends State<FavoriteDetail> {
                   width: SizeConfig.screenWidth! / 2.055,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(widget.foodImageName),
+                      image:
+                          CachedNetworkImageProvider(widget.food.foodImageName),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: const BorderRadius.only(
@@ -51,11 +48,13 @@ class _FavoriteDetailState extends State<FavoriteDetail> {
                     right: SizeConfig.screenWidth! / 34.25,
                     child: GestureDetector(
                       onTap: () {
-                        print('Tap add FAVORITE: ${widget.foodName}');
+                        userCubit.updateUserFavorite(widget.food.foodId);
                       },
-                      child: const Icon(
+                      child: Icon(
                         Icons.favorite,
-                        color: kMainColor,
+                        color: userCubit.isFoodFavorite(widget.food.foodId)
+                            ? kMainColor
+                            : kMainColor,
                         size: 35,
                       ),
                     )),
@@ -67,14 +66,14 @@ class _FavoriteDetailState extends State<FavoriteDetail> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    widget.foodName,
+                    widget.food.foodName,
                     style: TextStyle(
                         color: kTxtListColor,
                         fontSize: SizeConfig.screenHeight! / 38.15,
                         fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    widget.foodCategory,
+                    widget.food.foodCategory,
                     style: TextStyle(
                         color: kTxtListCategoryColor,
                         fontSize: SizeConfig.screenHeight! / 42.69,
@@ -94,7 +93,7 @@ class _FavoriteDetailState extends State<FavoriteDetail> {
             Padding(
               padding: const EdgeInsets.only(left: 15, bottom: 8),
               child: Text(
-                "\$${widget.foodPrice}",
+                "\$${widget.food.foodPrice}",
                 style: TextStyle(
                     color: kMainColor,
                     fontSize: SizeConfig.screenHeight! / 37.95,
@@ -108,7 +107,7 @@ class _FavoriteDetailState extends State<FavoriteDetail> {
           right: 0,
           child: GestureDetector(
             onTap: () {
-              print('Tap add card: ${widget.foodName}');
+              print('Tap add card: ${widget.food.foodName}');
             },
             child: Container(
               height: SizeConfig.screenHeight! / 13.66,

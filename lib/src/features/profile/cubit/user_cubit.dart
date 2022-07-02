@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,6 +22,35 @@ class UserProfileCubit extends Cubit<UserProfileState> {
     final db = await userRepository.fetchUserPhoneAndAddress();
     if (db != null) {
       _user = _user?.copyWith(phone: db['phone'], address: db['address']);
+    }
+
+    userRepository.fetchUserFavorite().listen((event) {
+      if (event.snapshot.value != null) {
+        List<String?> favoriteList =
+            event.snapshot.children.map((item) => item.key).toList();
+        _user = _user?.copyWith(favoriteList: favoriteList);
+      } else {
+        _user = _user?.copyWith(favoriteList: []);
+      }
+    });
+    emit(UserProfileState.successfull(currentUser: _user!));
+  }
+
+  // List<Food> findFavorite()
+
+  bool isFoodFavorite(String foodId) {
+    final listFavorite = _user?.favoriteList ?? [];
+    return listFavorite.any((element) => element == foodId);
+  }
+
+  Future<void> updateUserFavorite(String foodId) async {
+    try {
+      emit(const UserProfileState.loading());
+      await userRepository.updateUserFavorite(foodId);
+      // _user = _user.copyWith(favoriteList: foodId);
+    } on FirebaseException catch (e) {
+      FlutterToastWarning.showToast(
+          message: e.message.toString(), isError: true);
     }
     emit(UserProfileState.successfull(currentUser: _user!));
   }

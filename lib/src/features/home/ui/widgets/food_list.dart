@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/const.dart';
 import '../../../../core/size_config.dart';
 import '../../../detail/ui/pages/detail_page.dart';
+import '../../../profile/cubit/user_cubit.dart';
 import '../../data/models/food.dart';
 
 class FoodListWidget extends StatefulWidget {
@@ -21,8 +23,8 @@ class FoodListWidget extends StatefulWidget {
 class _FoodListWidgetState extends State<FoodListWidget> {
   @override
   Widget build(BuildContext context) {
+    final profileCubit = context.watch<UserProfileCubit>();
     return ListView.builder(
-        // shrinkWrap: true,
         itemCount: widget.foodList.length,
         itemBuilder: (context, index) {
           var food = widget.foodList[index];
@@ -97,11 +99,14 @@ class _FoodListWidgetState extends State<FoodListWidget> {
                           top: SizeConfig.screenHeight! / 68.3,
                           right: SizeConfig.screenWidth! / 41.1,
                           child: GestureDetector(
-                            onTap: () =>
-                                print('Tab favorite recomme: ${food.foodName}'),
-                            child: const Icon(
+                            onTap: () {
+                              profileCubit.updateUserFavorite(food.foodId);
+                            },
+                            child: Icon(
                               Icons.favorite,
-                              color: kMainBgColor,
+                              color: profileCubit.isFoodFavorite(food.foodId)
+                                  ? kMainColor
+                                  : kMainBgColor,
                               size: 42,
                             ),
                           )),

@@ -4,7 +4,6 @@ import 'package:food_delivery/src/core/const.dart';
 import '../../../../core/size_config.dart';
 import '../../../detail/ui/widgets/separator.dart';
 import 'bottombar_text.dart';
-import '../components/checkout_button.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);

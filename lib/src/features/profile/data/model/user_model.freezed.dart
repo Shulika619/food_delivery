@@ -22,6 +22,7 @@ mixin _$UserModel {
   String? get img => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
+  List<String?>? get favoriteList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $UserModelCopyWith<$Res> {
       String? name,
       String? img,
       String? phone,
-      String? address});
+      String? address,
+      List<String?>? favoriteList});
 }
 
 /// @nodoc
@@ -57,6 +59,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? img = freezed,
     Object? phone = freezed,
     Object? address = freezed,
+    Object? favoriteList = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -83,6 +86,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
+      favoriteList: favoriteList == freezed
+          ? _value.favoriteList
+          : favoriteList // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
     ));
   }
 }
@@ -99,7 +106,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String? name,
       String? img,
       String? phone,
-      String? address});
+      String? address,
+      List<String?>? favoriteList});
 }
 
 /// @nodoc
@@ -120,6 +128,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? img = freezed,
     Object? phone = freezed,
     Object? address = freezed,
+    Object? favoriteList = freezed,
   }) {
     return _then(_$_UserModel(
       uid: uid == freezed
@@ -146,6 +155,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
+      favoriteList: favoriteList == freezed
+          ? _value._favoriteList
+          : favoriteList // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
     ));
   }
 }
@@ -159,8 +172,10 @@ class _$_UserModel extends _UserModel {
       this.name,
       this.img,
       this.phone,
-      this.address})
-      : super._();
+      this.address,
+      final List<String?>? favoriteList})
+      : _favoriteList = favoriteList,
+        super._();
 
   @override
   final String uid;
@@ -174,10 +189,18 @@ class _$_UserModel extends _UserModel {
   final String? phone;
   @override
   final String? address;
+  final List<String?>? _favoriteList;
+  @override
+  List<String?>? get favoriteList {
+    final value = _favoriteList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, email: $email, name: $name, img: $img, phone: $phone, address: $address)';
+    return 'UserModel(uid: $uid, email: $email, name: $name, img: $img, phone: $phone, address: $address, favoriteList: $favoriteList)';
   }
 
   @override
@@ -190,7 +213,9 @@ class _$_UserModel extends _UserModel {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.img, img) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.address, address));
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteList, _favoriteList));
   }
 
   @override
@@ -201,7 +226,8 @@ class _$_UserModel extends _UserModel {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(img),
       const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(address));
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(_favoriteList));
 
   @JsonKey(ignore: true)
   @override
@@ -216,7 +242,8 @@ abstract class _UserModel extends UserModel {
       final String? name,
       final String? img,
       final String? phone,
-      final String? address}) = _$_UserModel;
+      final String? address,
+      final List<String?>? favoriteList}) = _$_UserModel;
   const _UserModel._() : super._();
 
   @override
@@ -231,6 +258,8 @@ abstract class _UserModel extends UserModel {
   String? get phone => throw _privateConstructorUsedError;
   @override
   String? get address => throw _privateConstructorUsedError;
+  @override
+  List<String?>? get favoriteList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
 
 import '../../../../core/size_config.dart';
 import '../../../home/data/models/food.dart';
+import '../../../profile/cubit/user_cubit.dart';
 
 class FoodImage extends StatefulWidget {
   final Food food;
@@ -16,6 +18,7 @@ class FoodImage extends StatefulWidget {
 class _FoodImageState extends State<FoodImage> {
   @override
   Widget build(BuildContext context) {
+    final profileCubit = context.watch<UserProfileCubit>();
     SizeConfig().init(context);
     return Container(
       height: SizeConfig.screenHeight! * 0.45,
@@ -53,10 +56,12 @@ class _FoodImageState extends State<FoodImage> {
                   )),
               IconButton(
                 onPressed: () {
-                  print("Tap Favorite: ${widget.food.foodName}");
+                  profileCubit.updateUserFavorite(widget.food.foodId);
                 },
                 icon: const Icon(Icons.favorite),
-                color: Colors.white,
+                color: profileCubit.isFoodFavorite(widget.food.foodId)
+                    ? kMainColor
+                    : kMainBgColor,
                 iconSize: SizeConfig.screenHeight! / 22.77,
               ),
             ],
