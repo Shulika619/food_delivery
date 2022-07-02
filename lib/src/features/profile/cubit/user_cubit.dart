@@ -36,8 +36,6 @@ class UserProfileCubit extends Cubit<UserProfileState> {
     emit(UserProfileState.successfull(currentUser: _user!));
   }
 
-  // List<Food> findFavorite()
-
   bool isFoodFavorite(String foodId) {
     final listFavorite = _user?.favoriteList ?? [];
     return listFavorite.any((element) => element == foodId);
