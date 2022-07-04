@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/src/features/cart/data/bloc/cart/cart_bloc.dart';
 import 'package:food_delivery/src/features/home/bloc/menu_bloc.dart';
 
 import 'src/core/bloc/bloc_observer.dart';
@@ -46,6 +47,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<MenuBloc>(
           create: (context) => MenuBloc(),
+        ),
+        BlocProvider<CartBloc>(
+          create: (context) => CartBloc(),
         ),
         BlocProvider<UserProfileCubit>(
           create: (context) => UserProfileCubit(),

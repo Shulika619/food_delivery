@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/src/core/const.dart';
-import 'package:food_delivery/src/features/detail/ui/widgets/addtocart_button.dart';
-import 'package:food_delivery/src/features/detail/ui/widgets/increase_decrease_button.dart';
+import 'package:food_delivery/src/features/detail/ui/widgets/buttons.dart';
 import '../../../../core/size_config.dart';
 import '../../../home/data/models/food.dart';
 import 'price_delivery.dart';
@@ -27,10 +26,6 @@ class _DetailWidgetState extends State<DetailWidget> {
         color: kMainBgColor,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
-        // boxShadow: [
-        //   BoxShadow(
-        //       color: kTxtListColor, blurRadius: 10, offset: Offset(0, -1))
-        // ]
       ),
       child: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -50,8 +45,7 @@ class _DetailWidgetState extends State<DetailWidget> {
             PriceDelivery(food: widget.food),
             const FoodDescription(),
             // FeaturesFood(),
-            IncreaseDecrease(food: widget.food),
-            const AddToCartButton(),
+            IncreaseDecreaseCart(food: widget.food),
           ],
         ),
       ),

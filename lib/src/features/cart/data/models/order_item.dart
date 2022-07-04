@@ -9,7 +9,7 @@ class OrderItem with _$OrderItem {
   const factory OrderItem({
     required List<CartItem> items,
     required double amount,
-    required DateTime dateTime,
+    DateTime? dateTime,
   }) = _OrderItem;
 
   factory OrderItem.fromJson(Map<String, dynamic> json) =>

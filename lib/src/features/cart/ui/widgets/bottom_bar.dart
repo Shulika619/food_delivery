@@ -6,7 +6,9 @@ import '../../../detail/ui/widgets/separator.dart';
 import 'bottombar_text.dart';
 
 class BottomBar extends StatefulWidget {
-  const BottomBar({Key? key}) : super(key: key);
+  const BottomBar({Key? key, required this.amount}) : super(key: key);
+
+  final double amount;
 
   @override
   State<BottomBar> createState() => _BottomBarState();
@@ -65,7 +67,7 @@ class _BottomBarState extends State<BottomBar> {
             // ),
             BottomBarText(
               titleText: "Total",
-              priceText: "\$35.0",
+              priceText: "\$${widget.amount}",
               fontSize: SizeConfig.screenHeight! / 37.95,
               fontWeight: FontWeight.bold,
               textColor: kTxtMainColor,

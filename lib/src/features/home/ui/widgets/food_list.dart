@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/src/features/cart/data/bloc/cart/cart_bloc.dart';
 
 import '../../../../core/const.dart';
 import '../../../../core/size_config.dart';
@@ -115,7 +116,9 @@ class _FoodListWidgetState extends State<FoodListWidget> {
                         right: 0,
                         child: GestureDetector(
                           onTap: () {
-                            print('Tap Add Cart: ${food.foodName}');
+                            context
+                                .read<CartBloc>()
+                                .add(CartEvent.addItem(food: food));
                           },
                           child: Container(
                             height: SizeConfig.screenHeight! / 13.66,

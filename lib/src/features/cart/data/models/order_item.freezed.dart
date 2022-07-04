@@ -22,7 +22,7 @@ OrderItem _$OrderItemFromJson(Map<String, dynamic> json) {
 mixin _$OrderItem {
   List<CartItem> get items => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
-  DateTime get dateTime => throw _privateConstructorUsedError;
+  DateTime? get dateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ mixin _$OrderItem {
 abstract class $OrderItemCopyWith<$Res> {
   factory $OrderItemCopyWith(OrderItem value, $Res Function(OrderItem) then) =
       _$OrderItemCopyWithImpl<$Res>;
-  $Res call({List<CartItem> items, double amount, DateTime dateTime});
+  $Res call({List<CartItem> items, double amount, DateTime? dateTime});
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$OrderItemCopyWithImpl<$Res> implements $OrderItemCopyWith<$Res> {
       dateTime: dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -74,7 +74,7 @@ abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
           _$_OrderItem value, $Res Function(_$_OrderItem) then) =
       __$$_OrderItemCopyWithImpl<$Res>;
   @override
-  $Res call({List<CartItem> items, double amount, DateTime dateTime});
+  $Res call({List<CartItem> items, double amount, DateTime? dateTime});
 }
 
 /// @nodoc
@@ -105,7 +105,7 @@ class __$$_OrderItemCopyWithImpl<$Res> extends _$OrderItemCopyWithImpl<$Res>
       dateTime: dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -116,7 +116,7 @@ class _$_OrderItem implements _OrderItem {
   const _$_OrderItem(
       {required final List<CartItem> items,
       required this.amount,
-      required this.dateTime})
+      this.dateTime})
       : _items = items;
 
   factory _$_OrderItem.fromJson(Map<String, dynamic> json) =>
@@ -132,7 +132,7 @@ class _$_OrderItem implements _OrderItem {
   @override
   final double amount;
   @override
-  final DateTime dateTime;
+  final DateTime? dateTime;
 
   @override
   String toString() {
@@ -172,7 +172,7 @@ abstract class _OrderItem implements OrderItem {
   const factory _OrderItem(
       {required final List<CartItem> items,
       required final double amount,
-      required final DateTime dateTime}) = _$_OrderItem;
+      final DateTime? dateTime}) = _$_OrderItem;
 
   factory _OrderItem.fromJson(Map<String, dynamic> json) =
       _$_OrderItem.fromJson;
@@ -182,7 +182,7 @@ abstract class _OrderItem implements OrderItem {
   @override
   double get amount => throw _privateConstructorUsedError;
   @override
-  DateTime get dateTime => throw _privateConstructorUsedError;
+  DateTime? get dateTime => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_OrderItemCopyWith<_$_OrderItem> get copyWith =>

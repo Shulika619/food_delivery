@@ -20,11 +20,8 @@ CartItem _$CartItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartItem {
-  String get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
-  String get quantity => throw _privateConstructorUsedError;
-  String get price => throw _privateConstructorUsedError;
+  Food get food => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,12 +33,9 @@ mixin _$CartItem {
 abstract class $CartItemCopyWith<$Res> {
   factory $CartItemCopyWith(CartItem value, $Res Function(CartItem) then) =
       _$CartItemCopyWithImpl<$Res>;
-  $Res call(
-      {String id,
-      String title,
-      String imageUrl,
-      String quantity,
-      String price});
+  $Res call({Food food, int quantity});
+
+  $FoodCopyWith<$Res> get food;
 }
 
 /// @nodoc
@@ -54,34 +48,26 @@ class _$CartItemCopyWithImpl<$Res> implements $CartItemCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? imageUrl = freezed,
+    Object? food = freezed,
     Object? quantity = freezed,
-    Object? price = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      food: food == freezed
+          ? _value.food
+          : food // ignore: cast_nullable_to_non_nullable
+              as Food,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: price == freezed
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
+  }
+
+  @override
+  $FoodCopyWith<$Res> get food {
+    return $FoodCopyWith<$Res>(_value.food, (value) {
+      return _then(_value.copyWith(food: value));
+    });
   }
 }
 
@@ -91,12 +77,10 @@ abstract class _$$_CartItemCopyWith<$Res> implements $CartItemCopyWith<$Res> {
           _$_CartItem value, $Res Function(_$_CartItem) then) =
       __$$_CartItemCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String id,
-      String title,
-      String imageUrl,
-      String quantity,
-      String price});
+  $Res call({Food food, int quantity});
+
+  @override
+  $FoodCopyWith<$Res> get food;
 }
 
 /// @nodoc
@@ -111,33 +95,18 @@ class __$$_CartItemCopyWithImpl<$Res> extends _$CartItemCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? imageUrl = freezed,
+    Object? food = freezed,
     Object? quantity = freezed,
-    Object? price = freezed,
   }) {
     return _then(_$_CartItem(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      food: food == freezed
+          ? _value.food
+          : food // ignore: cast_nullable_to_non_nullable
+              as Food,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: price == freezed
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -145,30 +114,19 @@ class __$$_CartItemCopyWithImpl<$Res> extends _$CartItemCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CartItem implements _CartItem {
-  const _$_CartItem(
-      {required this.id,
-      required this.title,
-      required this.imageUrl,
-      required this.quantity,
-      required this.price});
+  const _$_CartItem({required this.food, required this.quantity});
 
   factory _$_CartItem.fromJson(Map<String, dynamic> json) =>
       _$$_CartItemFromJson(json);
 
   @override
-  final String id;
+  final Food food;
   @override
-  final String title;
-  @override
-  final String imageUrl;
-  @override
-  final String quantity;
-  @override
-  final String price;
+  final int quantity;
 
   @override
   String toString() {
-    return 'CartItem(id: $id, title: $title, imageUrl: $imageUrl, quantity: $quantity, price: $price)';
+    return 'CartItem(food: $food, quantity: $quantity)';
   }
 
   @override
@@ -176,22 +134,16 @@ class _$_CartItem implements _CartItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CartItem &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity) &&
-            const DeepCollectionEquality().equals(other.price, price));
+            const DeepCollectionEquality().equals(other.food, food) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(quantity),
-      const DeepCollectionEquality().hash(price));
+      const DeepCollectionEquality().hash(food),
+      const DeepCollectionEquality().hash(quantity));
 
   @JsonKey(ignore: true)
   @override
@@ -206,24 +158,14 @@ class _$_CartItem implements _CartItem {
 
 abstract class _CartItem implements CartItem {
   const factory _CartItem(
-      {required final String id,
-      required final String title,
-      required final String imageUrl,
-      required final String quantity,
-      required final String price}) = _$_CartItem;
+      {required final Food food, required final int quantity}) = _$_CartItem;
 
   factory _CartItem.fromJson(Map<String, dynamic> json) = _$_CartItem.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  Food get food => throw _privateConstructorUsedError;
   @override
-  String get title => throw _privateConstructorUsedError;
-  @override
-  String get imageUrl => throw _privateConstructorUsedError;
-  @override
-  String get quantity => throw _privateConstructorUsedError;
-  @override
-  String get price => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_CartItemCopyWith<_$_CartItem> get copyWith =>
