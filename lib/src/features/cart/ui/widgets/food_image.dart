@@ -15,7 +15,7 @@ class _FoodImageState extends State<FoodImage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.screenHeight! / 8.54,
+      height: SizeConfig.screenHeight! / 6.54,
       width: SizeConfig.screenWidth! / 4.57,
       decoration: BoxDecoration(
         image: DecorationImage(

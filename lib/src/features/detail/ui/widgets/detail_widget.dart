@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/src/core/const.dart';
-import 'package:food_delivery/src/features/detail/ui/widgets/buttons.dart';
+import 'package:food_delivery/src/features/detail/ui/widgets/incr_decr_cart.dart';
 import '../../../../core/size_config.dart';
 import '../../../home/data/models/food.dart';
 import 'price_delivery.dart';

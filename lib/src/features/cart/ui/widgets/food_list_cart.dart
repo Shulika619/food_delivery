@@ -82,8 +82,7 @@ class _FoodListState extends State<FoodListCartWidget> {
                                     SizedBox(
                                         width: SizeConfig.screenWidth! / 20.55),
                                     FoodText(
-                                      foodName: cartItem.food.foodName,
-                                      foodPrice: cartItem.food.foodPrice,
+                                      food: cartItem.food,
                                       foodQuantity: cartItem.quantity,
                                     ),
                                     const Spacer(),

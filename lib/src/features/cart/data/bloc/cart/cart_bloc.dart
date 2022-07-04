@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/src/core/widgets/loading_widget.dart';
 import 'package:food_delivery/src/features/cart/data/models/cart_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -54,6 +53,48 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           });
     });
 
+    on<_CartEventDecrementItem>((event, emit) {
+      state.maybeWhen(
+          orElse: () {},
+          data: (order) {
+            final decrementItem =
+                order.items.firstWhere((item) => item.food == event.food);
+            if (decrementItem.quantity > 1) {
+              final newCartItem =
+                  decrementItem.copyWith(quantity: decrementItem.quantity - 1);
+              final amount =
+                  order.amount - double.parse(decrementItem.food.foodPrice);
+              final List<CartItem> items = order.items
+                  .map((item) => item != decrementItem ? item : newCartItem)
+                  .toList();
+
+              final newOrderItem = order.copyWith(items: items, amount: amount);
+
+              emit(CartState.data(orderItem: newOrderItem));
+            }
+          });
+    });
+
+    on<_CartEventIncrementItem>((event, emit) {
+      state.maybeWhen(
+          orElse: () {},
+          data: (order) {
+            final incrementItem =
+                order.items.firstWhere((item) => item.food == event.food);
+
+            final newCartItem =
+                incrementItem.copyWith(quantity: incrementItem.quantity + 1);
+            final amount =
+                order.amount + double.parse(incrementItem.food.foodPrice);
+            final List<CartItem> items = order.items
+                .map((item) => item != incrementItem ? item : newCartItem)
+                .toList();
+
+            final newOrderItem = order.copyWith(items: items, amount: amount);
+
+            emit(CartState.data(orderItem: newOrderItem));
+          });
+    });
     on<_CartEventAddOrder>((event, emit) {});
   }
 }

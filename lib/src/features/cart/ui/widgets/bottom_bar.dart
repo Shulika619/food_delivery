@@ -18,11 +18,8 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: SizeConfig.screenHeight! / 15.0,
-        horizontal: SizeConfig.screenHeight! / 30.0,
-      ),
-      // height: 174,
+      padding: EdgeInsets.fromLTRB(SizeConfig.screenHeight! / 30.0, 5,
+          SizeConfig.screenHeight! / 30.0, SizeConfig.screenHeight! / 15.0),
       decoration: const BoxDecoration(
         color: kMainBgColor,
         borderRadius: BorderRadius.only(
