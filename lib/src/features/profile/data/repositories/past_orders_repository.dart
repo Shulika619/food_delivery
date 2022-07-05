@@ -10,6 +10,7 @@ class PastOrdersRepository {
     final List<OrderItem> ordersList = [];
     final response = await FirebaseDatabase.instance
         .ref("orders/${FirebaseAuth.instance.currentUser?.uid}")
+        .orderByValue()
         .get();
     final extractData =
         jsonDecode(jsonEncode(response.value)) as Map<String, dynamic>;

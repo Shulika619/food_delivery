@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
-import 'package:food_delivery/src/features/cart/data/bloc/cart/cart_bloc.dart';
 import 'package:food_delivery/src/features/cart/ui/widgets/bottom_bar.dart';
 
 import 'package:lottie/lottie.dart';
 
 import '../../../../core/size_config.dart';
+import '../../bloc/cart/cart_bloc.dart';
 import 'delete_icon_button.dart';
 import 'food_image.dart';
 import 'food_text.dart';
@@ -65,6 +65,7 @@ class _FoodListState extends State<FoodListCartWidget> {
                                 ),
                               ),
                               child: Container(
+                                margin: const EdgeInsets.only(right: 5),
                                 decoration: BoxDecoration(
                                     color: kMainBgColor,
                                     borderRadius: BorderRadius.circular(30.0),

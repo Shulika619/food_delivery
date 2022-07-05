@@ -12,11 +12,15 @@ class PastOrdersCubit extends Cubit<PastOrdersState> {
   Future<void> fetchOrders() async {
     emit(const PastOrdersState.loading());
 
-    final data = await pastOrderRepo.fetchOrders();
-    if (data.isEmpty) {
+    try {
+      final data = await pastOrderRepo.fetchOrders();
+      if (data.isEmpty) {
+        emit(const PastOrdersState.initial());
+      } else {
+        emit(PastOrdersState.data(orders: data));
+      }
+    } catch (e) {
       emit(const PastOrdersState.initial());
-    } else {
-      emit(PastOrdersState.data(orders: data));
     }
   }
 }

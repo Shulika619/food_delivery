@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
-import 'package:food_delivery/src/features/cart/data/bloc/cart/cart_bloc.dart';
 
 import '../../../../core/size_config.dart';
 import '../../../detail/ui/widgets/separator.dart';
+import '../../bloc/cart/cart_bloc.dart';
 import 'bottombar_text.dart';
 
 class BottomBar extends StatefulWidget {

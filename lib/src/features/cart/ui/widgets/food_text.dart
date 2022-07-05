@@ -4,7 +4,7 @@ import 'package:food_delivery/src/core/const.dart';
 
 import '../../../../core/size_config.dart';
 import '../../../home/data/models/food.dart';
-import '../../data/bloc/cart/cart_bloc.dart';
+import '../../bloc/cart/cart_bloc.dart';
 
 class FoodText extends StatefulWidget {
   final Food food;

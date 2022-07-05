@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
-import 'package:food_delivery/src/features/cart/data/bloc/cart/cart_bloc.dart';
 
 import '../../../home/data/models/food.dart';
+import '../../bloc/cart/cart_bloc.dart';
 
 class DeleteIconButton extends StatefulWidget {
   final Food food;

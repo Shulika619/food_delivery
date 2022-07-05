@@ -4,9 +4,9 @@ import 'package:food_delivery/src/features/cart/data/models/cart_item.dart';
 import 'package:food_delivery/src/features/cart/data/repositories/orders_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../core/errors/flutter_toast_warning.dart';
-import '../../../../home/data/models/food.dart';
-import '../../models/order_item.dart';
+import '../../../../core/errors/flutter_toast_warning.dart';
+import '../../../home/data/models/food.dart';
+import '../../data/models/order_item.dart';
 
 part 'cart_bloc.freezed.dart';
 

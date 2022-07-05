@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
 import 'package:food_delivery/src/core/widgets/loading_widget.dart';
 import 'package:food_delivery/src/features/profile/cubit/past_orders_cubit.dart';
+import 'package:food_delivery/src/features/profile/ui/pages/order_detail.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
@@ -41,29 +42,57 @@ class _OrdersListPageState extends State<OrdersListPage> {
                       repeat: false),
                 )),
                 loading: () => const LoadingIndicatorWidget(),
-                data: (orders) => Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: ListView.builder(
-                      itemCount: orders.length,
-                      itemBuilder: (context, index) {
-                        final order = orders[index];
-                        return ListTile(
-                          leading:
-                              CircleAvatar(child: Text("\$${order.amount}")),
-                          title: Text(
-                            DateFormat.yMMMMEEEEd().format(order.dateTime!),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: kTxtMainColor),
-                          ),
-                          trailing: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                size: 35,
-                              )),
-                        );
-                      }),
+                data: (orders) => Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        reverse: true,
+                        itemCount: orders.length,
+                        itemBuilder: (context, index) {
+                          final order = orders[index];
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        OrderDetailPage(orderItem: order),
+                                  ));
+                            },
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: ListTile(
+                                  leading: Text(
+                                    "\$${order.amount}",
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w400,
+                                        color: kMainColor),
+                                  ),
+                                  title: Text(
+                                    DateFormat.yMMMMEEEEd()
+                                        .format(order.dateTime!),
+                                    style: const TextStyle(
+                                        fontFamily: 'Forum',
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                        color: kTxtListColor),
+                                  ),
+                                  trailing: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.keyboard_arrow_right_outlined,
+                                        size: 35,
+                                      )),
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                  ),
                 ),
               )),
     );
