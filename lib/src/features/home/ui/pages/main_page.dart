@@ -24,7 +24,6 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    // TODO: Init(favorite, products, orders)
     context.read<UserProfileCubit>().initData();
     context.read<MenuBloc>().add(const MenuEvent.fetchData());
   }

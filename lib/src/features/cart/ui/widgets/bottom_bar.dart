@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
 
 import '../../../../core/size_config.dart';
 import '../../../detail/ui/widgets/separator.dart';
+import '../../bloc/cart/cart_bloc.dart';
 import 'bottombar_text.dart';
 
 class BottomBar extends StatefulWidget {
-  const BottomBar({Key? key}) : super(key: key);
+  const BottomBar({Key? key, required this.amount}) : super(key: key);
+
+  final double amount;
 
   @override
   State<BottomBar> createState() => _BottomBarState();
@@ -16,11 +20,8 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: SizeConfig.screenHeight! / 15.0,
-        horizontal: SizeConfig.screenHeight! / 30.0,
-      ),
-      // height: 174,
+      padding: EdgeInsets.fromLTRB(SizeConfig.screenHeight! / 30.0, 5,
+          SizeConfig.screenHeight! / 30.0, SizeConfig.screenHeight! / 15.0),
       decoration: const BoxDecoration(
         color: kMainBgColor,
         borderRadius: BorderRadius.only(
@@ -65,7 +66,7 @@ class _BottomBarState extends State<BottomBar> {
             // ),
             BottomBarText(
               titleText: "Total",
-              priceText: "\$35.0",
+              priceText: "\$${widget.amount}",
               fontSize: SizeConfig.screenHeight! / 37.95,
               fontWeight: FontWeight.bold,
               textColor: kTxtMainColor,
@@ -74,7 +75,7 @@ class _BottomBarState extends State<BottomBar> {
             // CheckoutButton(),
             InkWell(
               onTap: () {
-                print('Tap CONFIRM ---->');
+                context.read<CartBloc>().add(const CartEvent.addOrder());
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/size_config.dart';
@@ -14,11 +15,11 @@ class _FoodImageState extends State<FoodImage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.screenHeight! / 8.54,
+      height: SizeConfig.screenHeight! / 6.54,
       width: SizeConfig.screenWidth! / 4.57,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(widget.foodImage),
+          image: CachedNetworkImageProvider(widget.foodImage),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(20.0),

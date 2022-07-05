@@ -24,16 +24,16 @@ class _MenuPageState extends State<MenuPage> {
         bottom: false,
         child: SingleChildScrollView(
           child: Column(
-            children: [
+            children: const [
               // UserNameText(),
               // const SearchFood(),
-              const DiscountCard(),
+              DiscountCard(),
               FoodPart(partName: "Categories"),
-              const CategoriesFood(),
+              CategoriesFood(),
               FoodPart(partName: "Recommed"),
-              const RecommedFoods(),
+              RecommedFoods(),
               FoodPart(partName: "Popular"),
-              const PopularFoods(),
+              PopularFoods(),
             ],
           ),
         ),

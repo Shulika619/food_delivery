@@ -20,7 +20,6 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    // final favorIdList = context.watch<UserProfileCubit>().getUser.favoriteList;
     final userProfile = context.watch<UserProfileCubit>();
     return Scaffold(
       backgroundColor: kMainBgColor,

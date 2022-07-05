@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/const.dart';
 import '../../../../core/size_config.dart';
+import '../../../cart/bloc/cart/cart_bloc.dart';
 import '../../../detail/ui/pages/detail_page.dart';
 import '../../bloc/menu_bloc.dart';
 
@@ -87,16 +88,14 @@ class _PopularFoodsState extends State<PopularFoods> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                food.foodName,
-                                                style: TextStyle(
-                                                    color: kTxtListColor,
-                                                    fontSize: SizeConfig
-                                                            .screenHeight! /
-                                                        34.15,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
+                                              Text(food.foodName,
+                                                  style: TextStyle(
+                                                      color: kTxtListColor,
+                                                      fontSize: SizeConfig
+                                                              .screenHeight! /
+                                                          34.15,
+                                                      fontWeight:
+                                                          FontWeight.w700)),
                                               Text(
                                                 food.foodCategory,
                                                 style: TextStyle(
@@ -108,22 +107,6 @@ class _PopularFoodsState extends State<PopularFoods> {
                                                     fontWeight:
                                                         FontWeight.w400),
                                               ),
-                                              // Padding(
-                                              //   padding: EdgeInsets.only(
-                                              //       top: SizeConfig
-                                              //               .screenHeight! /
-                                              //           136.6),
-                                              //   child: Text(
-                                              //     "\$${food.foodPrice}",
-                                              //     style: TextStyle(
-                                              //         color: kMainColor,
-                                              //         fontSize: SizeConfig
-                                              //                 .screenHeight! /
-                                              //             37.95,
-                                              //         fontWeight:
-                                              //             FontWeight.bold),
-                                              //   ),
-                                              // ),
                                             ],
                                           ),
                                         ),
@@ -147,20 +130,26 @@ class _PopularFoodsState extends State<PopularFoods> {
                                     Positioned(
                                       bottom: 0,
                                       right: 0,
-                                      child: Container(
-                                        height:
-                                            SizeConfig.screenHeight! / 13.66,
-                                        width: SizeConfig.screenWidth! / 8.22,
-                                        decoration: const BoxDecoration(
-                                            color: kMainColor,
-                                            borderRadius: BorderRadius.only(
-                                              bottomRight:
-                                                  Radius.circular(30.0),
-                                              topLeft: Radius.circular(30.0),
-                                            )),
-                                        child: const Icon(
-                                          Icons.shopping_cart_rounded,
-                                          color: kMainBgColor,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          context.read<CartBloc>().add(
+                                              CartEvent.addItem(food: food));
+                                        },
+                                        child: Container(
+                                          height:
+                                              SizeConfig.screenHeight! / 13.66,
+                                          width: SizeConfig.screenWidth! / 8.22,
+                                          decoration: const BoxDecoration(
+                                              color: kMainColor,
+                                              borderRadius: BorderRadius.only(
+                                                bottomRight:
+                                                    Radius.circular(30.0),
+                                                topLeft: Radius.circular(30.0),
+                                              )),
+                                          child: const Icon(
+                                            Icons.shopping_cart_rounded,
+                                            color: kMainBgColor,
+                                          ),
                                         ),
                                       ),
                                     ),

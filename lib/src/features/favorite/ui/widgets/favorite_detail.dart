@@ -5,6 +5,7 @@ import 'package:food_delivery/src/core/const.dart';
 import 'package:food_delivery/src/features/profile/cubit/user_cubit.dart';
 
 import '../../../../core/size_config.dart';
+import '../../../cart/bloc/cart/cart_bloc.dart';
 import '../../../home/data/models/food.dart';
 
 class FavoriteDetail extends StatefulWidget {
@@ -79,13 +80,6 @@ class _FavoriteDetailState extends State<FavoriteDetail> {
                         fontSize: SizeConfig.screenHeight! / 42.69,
                         fontWeight: FontWeight.w400),
                   ),
-                  // Text(
-                  //   "\$${widget.foodPrice}",
-                  //   style: TextStyle(
-                  //       color: kMainColor,
-                  //       fontSize: SizeConfig.screenHeight! / 37.95,
-                  //       fontWeight: FontWeight.bold),
-                  // ),
                 ],
               ),
             ),
@@ -107,7 +101,9 @@ class _FavoriteDetailState extends State<FavoriteDetail> {
           right: 0,
           child: GestureDetector(
             onTap: () {
-              print('Tap add card: ${widget.food.foodName}');
+              context
+                  .read<CartBloc>()
+                  .add(CartEvent.addItem(food: widget.food));
             },
             child: Container(
               height: SizeConfig.screenHeight! / 13.66,

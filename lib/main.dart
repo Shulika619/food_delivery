@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/features/home/bloc/menu_bloc.dart';
+import 'package:food_delivery/src/features/profile/cubit/past_orders_cubit.dart';
 
 import 'src/core/bloc/bloc_observer.dart';
 import 'src/core/const.dart';
@@ -10,6 +11,7 @@ import 'src/features/auth/bloc/auth/auth_bloc.dart';
 import 'src/features/auth/ui/pages/forget_password.dart';
 import 'src/features/auth/ui/pages/sign_in_page.dart';
 import 'src/features/auth/ui/pages/sign_up_page.dart';
+import 'src/features/cart/bloc/cart/cart_bloc.dart';
 import 'src/features/home/ui/pages/main_page.dart';
 import 'src/features/profile/cubit/user_cubit.dart';
 import 'src/features/profile/ui/pages/edit_profile_page.dart';
@@ -47,8 +49,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<MenuBloc>(
           create: (context) => MenuBloc(),
         ),
+        BlocProvider<CartBloc>(
+          create: (context) => CartBloc(),
+        ),
         BlocProvider<UserProfileCubit>(
           create: (context) => UserProfileCubit(),
+        ),
+        BlocProvider<PastOrdersCubit>(
+          create: (context) => PastOrdersCubit(),
         ),
       ],
       child: MaterialApp(

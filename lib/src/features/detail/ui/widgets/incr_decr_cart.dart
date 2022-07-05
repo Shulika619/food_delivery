@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
 
 import '../../../../core/size_config.dart';
+import '../../../cart/bloc/cart/cart_bloc.dart';
 import '../../../home/data/models/food.dart';
 import 'separator.dart';
 
-class IncreaseDecrease extends StatefulWidget {
+class IncreaseDecreaseCart extends StatefulWidget {
   final Food food;
-  const IncreaseDecrease({Key? key, required this.food}) : super(key: key);
+  const IncreaseDecreaseCart({Key? key, required this.food}) : super(key: key);
 
   @override
-  State<IncreaseDecrease> createState() => _IncreaseDecreaseState();
+  State<IncreaseDecreaseCart> createState() => _IncreaseDecreaseCartState();
 }
 
-class _IncreaseDecreaseState extends State<IncreaseDecrease> {
+class _IncreaseDecreaseCartState extends State<IncreaseDecreaseCart> {
   int _counter = 1;
 
   void _increaseCart() {
@@ -126,6 +128,56 @@ class _IncreaseDecreaseState extends State<IncreaseDecrease> {
               ),
             ],
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.screenWidth! / 20.55,
+                SizeConfig.screenHeight! / 34.15,
+                SizeConfig.screenWidth! / 20.55,
+                0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: kThirdColor,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
+                  minimumSize: MaterialStateProperty.all(Size(
+                      SizeConfig.screenWidth! / 1.37,
+                      SizeConfig.screenHeight! / 11.66)),
+                ),
+                onPressed: () {
+                  context.read<CartBloc>().add(
+                      CartEvent.addItem(food: widget.food, quantity: _counter));
+                  Navigator.pop(context);
+                },
+                child: Wrap(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          right: SizeConfig.screenWidth! / 51.38),
+                      child: const Icon(
+                        Icons.shopping_cart_rounded,
+                        color: kMainBgColor,
+                      ),
+                    ),
+                    Text(
+                      "Add to Cart",
+                      style: TextStyle(
+                        fontSize: SizeConfig.screenHeight! / 34.15,
+                        fontWeight: FontWeight.w700,
+                        color: kMainBgColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
