@@ -38,7 +38,8 @@ Firebase Realtime Database (Чтение категорий и товара из
 
 ## Cart Корзина
 
-Firebase Realtime Database (Запись заказа).
+Firebase Realtime Database (Запись заказа)
+
 Flutter bloc + freezed
 
 ![Screenshot_1657037488](https://user-images.githubusercontent.com/99508083/177371981-a8e77a77-cba7-4d35-8e11-7bc0d80297ba.png)
@@ -52,7 +53,7 @@ Flutter bloc + freezed
 
 ## Profile Моя информация
 
-Firebase Realtime Database (Чтение и запись данных профиля).
+Firebase Realtime Database (Чтение и запись данных профиля)
 
 Cubit + freezed
 
