@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/core/const.dart';
+import 'package:food_delivery/src/features/cart/data/bloc/cart/cart_bloc.dart';
 
 import '../../../../core/size_config.dart';
 import '../../../detail/ui/widgets/separator.dart';
@@ -73,7 +75,7 @@ class _BottomBarState extends State<BottomBar> {
             // CheckoutButton(),
             InkWell(
               onTap: () {
-                print('Tap CONFIRM ---->');
+                context.read<CartBloc>().add(const CartEvent.addOrder());
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

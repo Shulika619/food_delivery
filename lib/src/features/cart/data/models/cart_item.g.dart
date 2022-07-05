@@ -13,6 +13,6 @@ _$_CartItem _$$_CartItemFromJson(Map<String, dynamic> json) => _$_CartItem(
 
 Map<String, dynamic> _$$_CartItemToJson(_$_CartItem instance) =>
     <String, dynamic>{
-      'food': instance.food,
+      'food': instance.food.toJson(),
       'quantity': instance.quantity,
     };

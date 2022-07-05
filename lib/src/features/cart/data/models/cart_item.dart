@@ -7,6 +7,7 @@ part 'cart_item.g.dart';
 
 @freezed
 class CartItem with _$CartItem {
+  @JsonSerializable(explicitToJson: true)
   const factory CartItem({
     required Food food,
     required int quantity,

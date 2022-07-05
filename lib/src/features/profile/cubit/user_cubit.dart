@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,7 +22,6 @@ class UserProfileCubit extends Cubit<UserProfileState> {
     if (db != null) {
       _user = _user?.copyWith(phone: db['phone'], address: db['address']);
     }
-
     userRepository.fetchUserFavorite().listen((event) {
       if (event.snapshot.value != null) {
         List<String?> favoriteList =

@@ -111,7 +111,8 @@ class __$$_OrderItemCopyWithImpl<$Res> extends _$OrderItemCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_OrderItem implements _OrderItem {
   const _$_OrderItem(
       {required final List<CartItem> items,

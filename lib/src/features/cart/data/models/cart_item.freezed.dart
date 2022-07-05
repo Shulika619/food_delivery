@@ -112,7 +112,8 @@ class __$$_CartItemCopyWithImpl<$Res> extends _$CartItemCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_CartItem implements _CartItem {
   const _$_CartItem({required this.food, required this.quantity});
 

@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/features/cart/data/models/cart_item.dart';
+import 'package:food_delivery/src/features/cart/data/repositories/orders_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../core/errors/flutter_toast_warning.dart';
 import '../../../../home/data/models/food.dart';
 import '../../models/order_item.dart';
 
@@ -9,6 +12,8 @@ part 'cart_bloc.freezed.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(const CartState.initial()) {
+    final orderRepository = OrderRepository();
+
     on<_CartEventAddItem>((event, emit) {
       state.when(initial: () {
         final CartItem cartItem =
@@ -95,7 +100,24 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             emit(CartState.data(orderItem: newOrderItem));
           });
     });
-    on<_CartEventAddOrder>((event, emit) {});
+    on<_CartEventAddOrder>((event, emit) {
+      state.maybeWhen(
+          orElse: () {},
+          data: (order) {
+            final sendData = order.copyWith(dateTime: DateTime.now());
+
+            try {
+              orderRepository.addOrder(sendData);
+              FlutterToastWarning.showToast(
+                  message: 'Successfully', isError: false);
+
+              emit(const CartState.initial());
+            } on FirebaseException catch (e) {
+              FlutterToastWarning.showToast(
+                  message: e.message.toString(), isError: true);
+            }
+          });
+    });
   }
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/src/features/profile/ui/pages/orders_list.dart';
 
 import '../../../../core/const.dart';
 import '../../../../core/size_config.dart';
@@ -28,8 +29,6 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             const TopCustomShape(),
             SizedBox(height: SizeConfig.screenHeight! / 34.15),
-
-            /// 20.0
             InkWell(
               child: UserSection(
                   iconName: Icons.account_circle,
@@ -37,10 +36,15 @@ class _ProfilePageState extends State<ProfilePage> {
               onTap: () =>
                   Navigator.pushNamed(context, EditProfilePage.routeName),
             ),
-
-            UserSection(
-                iconName: Icons.shopping_basket, sectionText: "Past orders"),
-
+            InkWell(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const OrdersListPage(),
+                  )),
+              child: UserSection(
+                  iconName: Icons.shopping_basket, sectionText: "Past orders"),
+            ),
             InkWell(
               child: UserSection(iconName: Icons.logout, sectionText: "LogOut"),
               onTap: () =>

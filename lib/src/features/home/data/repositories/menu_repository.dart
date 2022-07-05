@@ -21,8 +21,8 @@ class MenuRepository {
 
   /// Categories
   Future<List<Category>> fetchCategories() async {
-    /// Firebase return -> _InternalLinkedHashMap<Object?, Object?>
-    /// #1 first variant
+    ///! Firebase return -> _InternalLinkedHashMap<Object?, Object?>
+    ///! #1 first variant
     // final List<Category> categoryList = [];
     // final extractData = response.value as List<dynamic>;
     // for (var element in extractData) {
@@ -32,7 +32,7 @@ class MenuRepository {
     //       categoryImage: element['categoryImage']));
     // }
 
-    /// #2 second variant
+    ///! #2 second variant
     final response = await FirebaseDatabase.instance.ref("/categories").get();
     final extractData = jsonDecode(jsonEncode(response.value)) as List<dynamic>;
     final categoryList = extractData.map((e) => Category.fromJson(e)).toList();

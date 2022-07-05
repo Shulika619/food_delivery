@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/src/features/cart/data/bloc/cart/cart_bloc.dart';
 import 'package:food_delivery/src/features/home/bloc/menu_bloc.dart';
+import 'package:food_delivery/src/features/profile/cubit/past_orders_cubit.dart';
 
 import 'src/core/bloc/bloc_observer.dart';
 import 'src/core/const.dart';
@@ -53,6 +54,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<UserProfileCubit>(
           create: (context) => UserProfileCubit(),
+        ),
+        BlocProvider<PastOrdersCubit>(
+          create: (context) => PastOrdersCubit(),
         ),
       ],
       child: MaterialApp(
