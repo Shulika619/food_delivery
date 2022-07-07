@@ -60,7 +60,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Food Delivery',
         theme: ThemeData(
-            // fontFamily: 'Forum',
             primarySwatch: kMainColor,
             appBarTheme: const AppBarTheme(foregroundColor: kMainBgColor)),
         home: BlocBuilder<AuthBloc, AuthState>(
