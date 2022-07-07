@@ -28,10 +28,6 @@ Future main() async {
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  // final storage = await HydratedStorage.build(
-  //     storageDirectory: await getTemporaryDirectory());
-  // HydratedBlocOverrides.runZoned(() => runApp(const MyApp()),
-  //     blocObserver: AppBlocObserver(), storage: storage);
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();
