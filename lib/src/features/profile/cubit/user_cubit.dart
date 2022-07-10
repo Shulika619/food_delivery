@@ -9,20 +9,21 @@ import '../data/repositories/user_repository.dart';
 part 'user_cubit.freezed.dart';
 
 class UserProfileCubit extends Cubit<UserProfileState> {
-  UserRepository userRepository = UserRepository();
+  final UserRepository repository;
   UserModel? _user;
   UserModel get getUser => _user!;
 
-  UserProfileCubit() : super(const UserProfileState.initial());
+  UserProfileCubit({required this.repository})
+      : super(const UserProfileState.initial());
 
   Future<void> initData() async {
     emit(const UserProfileState.loading());
-    _user = await UserModel.fromFirebase(userRepository.getCurrentUser()!);
-    final db = await userRepository.fetchUserPhoneAndAddress();
+    _user = await UserModel.fromFirebase(repository.getCurrentUser()!);
+    final db = await repository.fetchUserPhoneAndAddress();
     if (db != null) {
       _user = _user?.copyWith(phone: db['phone'], address: db['address']);
     }
-    userRepository.fetchUserFavorite().listen((event) {
+    repository.fetchUserFavorite().listen((event) {
       if (event.snapshot.value != null) {
         List<String?> favoriteList =
             event.snapshot.children.map((item) => item.key).toList();
@@ -42,7 +43,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> updateUserFavorite(String foodId) async {
     try {
       emit(const UserProfileState.loading());
-      await userRepository.updateUserFavorite(foodId);
+      await repository.updateUserFavorite(foodId);
       // _user = _user.copyWith(favoriteList: foodId);
     } on FirebaseException catch (e) {
       FlutterToastWarning.showToast(
@@ -54,7 +55,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> updatePhone(String phone) async {
     try {
       emit(const UserProfileState.loading());
-      await userRepository.updateUserPhone(phone);
+      await repository.updateUserPhone(phone);
       _user = _user!.copyWith(phone: phone);
       FlutterToastWarning.showToast(message: 'Successfully', isError: false);
     } on FirebaseException catch (e) {
@@ -67,7 +68,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> updateAddress(String address) async {
     try {
       emit(const UserProfileState.loading());
-      await userRepository.updateUserAddress(address);
+      await repository.updateUserAddress(address);
       _user = _user!.copyWith(address: address);
       FlutterToastWarning.showToast(message: 'Successfully', isError: false);
     } on FirebaseException catch (e) {
@@ -80,7 +81,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> updateDisplayName(String name) async {
     try {
       emit(const UserProfileState.loading());
-      await userRepository.updateDisplayName(name);
+      await repository.updateDisplayName(name);
       _user = _user!.copyWith(name: name);
       FlutterToastWarning.showToast(message: 'Successfully', isError: false);
     } on FirebaseAuthException catch (e) {
@@ -93,7 +94,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> updateEmail(String email) async {
     try {
       emit(const UserProfileState.loading());
-      await userRepository.updateEmail(email);
+      await repository.updateEmail(email);
       _user = _user!.copyWith(email: email);
       FlutterToastWarning.showToast(message: 'Successfully', isError: false);
     } on FirebaseAuthException catch (e) {
@@ -106,7 +107,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> updatePassword(String password) async {
     try {
       emit(const UserProfileState.loading());
-      await userRepository.updatePassword(password);
+      await repository.updatePassword(password);
       FlutterToastWarning.showToast(message: 'Successfully', isError: false);
     } on FirebaseAuthException catch (e) {
       FlutterToastWarning.showToast(
@@ -118,7 +119,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> updatePhotoURL(String url) async {
     try {
       emit(const UserProfileState.loading());
-      await userRepository.updatePhotoURL(url);
+      await repository.updatePhotoURL(url);
       _user = _user!.copyWith(img: url);
       FlutterToastWarning.showToast(message: 'Successfully', isError: false);
     } on FirebaseAuthException catch (e) {

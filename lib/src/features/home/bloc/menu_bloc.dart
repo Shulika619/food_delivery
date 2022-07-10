@@ -8,16 +8,15 @@ import '../data/repositories/menu_repository.dart';
 part 'menu_bloc.freezed.dart';
 
 class MenuBloc extends Bloc<MenuEvent, MenuState> {
-  MenuBloc()
+  final MenuRepository repository;
+  MenuBloc({required this.repository})
       : super(const MenuState.initData(
             listDiscount: [], listCategories: [], listFood: [])) {
-    final menuRepo = MenuRepository();
-
     on<_MenuEventFetchData>((event, emit) async {
       try {
-        final discounts = await menuRepo.fetchDiscount();
-        final categories = await menuRepo.fetchCategories();
-        final food = await menuRepo.fetchFood();
+        final discounts = await repository.fetchDiscount();
+        final categories = await repository.fetchCategories();
+        final food = await repository.fetchFood();
 
         emit(MenuState.data(
             listDiscount: discounts,
@@ -26,6 +25,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       } catch (e) {
         emit(const MenuState.initData(
             listDiscount: [], listCategories: [], listFood: []));
+        rethrow;
       }
     });
   }

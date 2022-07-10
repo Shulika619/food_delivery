@@ -11,9 +11,8 @@ import '../../data/models/order_item.dart';
 part 'cart_bloc.freezed.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(const CartState.initial()) {
-    final orderRepository = OrderRepository();
-
+  final OrderRepository repository;
+  CartBloc({required this.repository}) : super(const CartState.initial()) {
     on<_CartEventAddItem>((event, emit) {
       state.when(initial: () {
         final CartItem cartItem =
@@ -107,7 +106,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             final sendData = order.copyWith(dateTime: DateTime.now());
 
             try {
-              orderRepository.addOrder(sendData);
+              repository.addOrder(sendData);
               FlutterToastWarning.showToast(
                   message: 'Successfully', isError: false);
 
@@ -115,6 +114,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             } on FirebaseException catch (e) {
               FlutterToastWarning.showToast(
                   message: e.message.toString(), isError: true);
+            } catch (e) {
+              rethrow;
             }
           });
     });

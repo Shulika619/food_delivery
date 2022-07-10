@@ -6,14 +6,15 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'past_orders_cubit.freezed.dart';
 
 class PastOrdersCubit extends Cubit<PastOrdersState> {
-  final pastOrderRepo = PastOrdersRepository();
-  PastOrdersCubit() : super(const PastOrdersState.initial());
+  final PastOrdersRepository repository;
+  PastOrdersCubit({required this.repository})
+      : super(const PastOrdersState.initial());
 
   Future<void> fetchOrders() async {
     emit(const PastOrdersState.loading());
 
     try {
-      final data = await pastOrderRepo.fetchOrders();
+      final data = await repository.fetchOrders();
       if (data.isEmpty) {
         emit(const PastOrdersState.initial());
       } else {
@@ -21,6 +22,7 @@ class PastOrdersCubit extends Cubit<PastOrdersState> {
       }
     } catch (e) {
       emit(const PastOrdersState.initial());
+      rethrow;
     }
   }
 }

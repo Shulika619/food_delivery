@@ -11,11 +11,11 @@ import '../../data/repositories/firebase_auth_repositiry.dart';
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
-  final FireBaseAuthRepository firebaseRepo;
+  final FireBaseAuthRepository repository;
 
-  AuthBloc({required this.firebaseRepo})
+  AuthBloc({required this.repository})
       : super(const AuthState.notAuthorized()) {
-    firebaseRepo.authStateChange.listen((user) {
+    repository.authStateChange.listen((user) {
       if (user == null) {
         setState(const AuthState.notAuthorized());
         return;
@@ -26,7 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
 
     on<_AuthEventLogIn>((event, emit) async {
       try {
-        await firebaseRepo
+        await repository
             .signInWithEmailAndPassword(event.email, event.password)
             .timeout(const Duration(seconds: 5));
       } on FirebaseAuthException catch (e) {
@@ -45,12 +45,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
     });
 
     on<_AuthEventLogOut>((event, emit) async {
-      await firebaseRepo.signOut();
+      await repository.signOut();
     });
 
     on<_AuthEventForgotPass>((event, emit) async {
       try {
-        await firebaseRepo.sendPasswordResetEmail(event.email);
+        await repository.sendPasswordResetEmail(event.email);
         FlutterToastWarning.showToast(
             message: 'Check your email', isError: false);
         navigatorKey.currentState!.popUntil((route) => route.isFirst);
@@ -66,8 +66,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
 
     on<_AuthEventSignUp>((event, emit) async {
       try {
-        await firebaseRepo.signOut();
-        await firebaseRepo.createUserWithEmailAndPassword(
+        await repository.signOut();
+        await repository.createUserWithEmailAndPassword(
             event.email, event.password);
         navigatorKey.currentState!.popUntil((route) => route.isFirst);
       } on FirebaseException catch (e) {

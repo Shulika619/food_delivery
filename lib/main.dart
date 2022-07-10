@@ -13,8 +13,12 @@ import 'src/features/auth/ui/pages/forget_password.dart';
 import 'src/features/auth/ui/pages/sign_in_page.dart';
 import 'src/features/auth/ui/pages/sign_up_page.dart';
 import 'src/features/cart/bloc/cart/cart_bloc.dart';
+import 'src/features/cart/data/repositories/orders_repository.dart';
+import 'src/features/home/data/repositories/menu_repository.dart';
 import 'src/features/home/ui/pages/main_page.dart';
 import 'src/features/profile/cubit/user_cubit.dart';
+import 'src/features/profile/data/repositories/past_orders_repository.dart';
+import 'src/features/profile/data/repositories/user_repository.dart';
 import 'src/features/profile/ui/pages/edit_profile_page.dart';
 
 Future main() async {
@@ -33,25 +37,29 @@ final navigatorKey = GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final repository = FireBaseAuthRepository();
+  final authRepository = FireBaseAuthRepository();
+  final menuRepository = MenuRepository();
+  final orderRepository = OrderRepository();
+  final pastOrderRepository = PastOrdersRepository();
+  final userRepository = UserRepository();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (context) => AuthBloc(firebaseRepo: repository),
+          create: (context) => AuthBloc(repository: authRepository),
         ),
         BlocProvider<MenuBloc>(
-          create: (context) => MenuBloc(),
+          create: (context) => MenuBloc(repository: menuRepository),
         ),
         BlocProvider<CartBloc>(
-          create: (context) => CartBloc(),
+          create: (context) => CartBloc(repository: orderRepository),
         ),
         BlocProvider<UserProfileCubit>(
-          create: (context) => UserProfileCubit(),
+          create: (context) => UserProfileCubit(repository: userRepository),
         ),
         BlocProvider<PastOrdersCubit>(
-          create: (context) => PastOrdersCubit(),
+          create: (context) => PastOrdersCubit(repository: pastOrderRepository),
         ),
       ],
       child: MaterialApp(
