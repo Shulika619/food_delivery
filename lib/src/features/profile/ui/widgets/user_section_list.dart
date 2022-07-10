@@ -71,7 +71,7 @@ class UserSectionList extends StatelessWidget {
               await userCubit.updatePassword(dialogData);
             }
           },
-          child: UserSection(
+          child: const UserSection(
               iconName: Icons.security,
               sectionText: "******",
               optionIcon: Icons.edit),

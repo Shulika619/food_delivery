@@ -5,11 +5,11 @@ import '../../../../core/const.dart';
 import '../../bloc/auth/auth_bloc.dart';
 
 class ForgetPasswordForm extends StatelessWidget {
-  ForgetPasswordForm({Key? key}) : super(key: key);
-  String? _email;
+  const ForgetPasswordForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String? email;
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
       decoration: const BoxDecoration(
@@ -26,7 +26,7 @@ class ForgetPasswordForm extends StatelessWidget {
             children: <Widget>[
               TextField(
                 keyboardType: TextInputType.emailAddress,
-                onChanged: (value) => _email = value,
+                onChanged: (value) => email = value,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   labelText: 'Email address',
@@ -43,7 +43,7 @@ class ForgetPasswordForm extends StatelessWidget {
                 onPressed: () async {
                   context
                       .read<AuthBloc>()
-                      .add(AuthEvent.forgotPass(email: _email ?? ""));
+                      .add(AuthEvent.forgotPass(email: email ?? ""));
                 },
                 child: Container(
                   width: 160,

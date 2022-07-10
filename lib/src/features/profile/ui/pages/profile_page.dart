@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
             const TopCustomShape(),
             SizedBox(height: SizeConfig.screenHeight! / 34.15),
             InkWell(
-              child: UserSection(
+              child: const UserSection(
                   iconName: Icons.account_circle,
                   sectionText: "My information"),
               onTap: () =>
@@ -42,11 +42,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   MaterialPageRoute(
                     builder: (context) => const OrdersListPage(),
                   )),
-              child: UserSection(
+              child: const UserSection(
                   iconName: Icons.shopping_basket, sectionText: "Past orders"),
             ),
             InkWell(
-              child: UserSection(iconName: Icons.logout, sectionText: "LogOut"),
+              child: const UserSection(
+                  iconName: Icons.logout, sectionText: "LogOut"),
               onTap: () =>
                   context.read<AuthBloc>().add(const AuthEvent.logOut()),
             ),

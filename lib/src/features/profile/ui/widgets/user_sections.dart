@@ -4,10 +4,10 @@ import '../../../../core/const.dart';
 import '../../../../core/size_config.dart';
 
 class UserSection extends StatelessWidget {
-  IconData iconName;
-  String sectionText;
-  IconData optionIcon;
-  UserSection(
+  final IconData iconName;
+  final String sectionText;
+  final IconData optionIcon;
+  const UserSection(
       {Key? key,
       required this.iconName,
       required this.sectionText,

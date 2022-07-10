@@ -31,7 +31,7 @@ class ForgetPasswordPage extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Image.asset('assets/images/forget password.png'),
-                  Expanded(
+                  const Expanded(
                     child: ForgetPasswordForm(),
                   ),
                 ],
