@@ -8,6 +8,7 @@ import 'package:food_delivery/src/features/profile/cubit/past_orders_cubit.dart'
 import 'src/core/bloc/bloc_observer.dart';
 import 'src/core/const.dart';
 import 'src/features/auth/bloc/auth/auth_bloc.dart';
+import 'src/features/auth/data/repositories/firebase_auth_repositiry.dart';
 import 'src/features/auth/ui/pages/forget_password.dart';
 import 'src/features/auth/ui/pages/sign_in_page.dart';
 import 'src/features/auth/ui/pages/sign_up_page.dart';
@@ -16,14 +17,11 @@ import 'src/features/home/ui/pages/main_page.dart';
 import 'src/features/profile/cubit/user_cubit.dart';
 import 'src/features/profile/ui/pages/edit_profile_page.dart';
 
-// import 'package:hydrated_bloc/hydrated_bloc.dart';
-// import 'package:path_provider/path_provider.dart';
-
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  BlocOverrides.runZoned(() => runApp(const MyApp()),
+  BlocOverrides.runZoned(() => runApp(MyApp()),
       blocObserver: AppBlocObserver());
 
   SystemChrome.setPreferredOrientations(
@@ -33,14 +31,15 @@ Future main() async {
 final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
+  final repository = FireBaseAuthRepository();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (context) => AuthBloc(),
+          create: (context) => AuthBloc(firebaseRepo: repository),
         ),
         BlocProvider<MenuBloc>(
           create: (context) => MenuBloc(),

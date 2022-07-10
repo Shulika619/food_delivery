@@ -11,9 +11,10 @@ import '../../data/repositories/firebase_auth_repositiry.dart';
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
-  FireBaseAuthRepository firebaseRepo = FireBaseAuthRepository();
+  final FireBaseAuthRepository firebaseRepo;
 
-  AuthBloc() : super(const AuthState.notAuthorized()) {
+  AuthBloc({required this.firebaseRepo})
+      : super(const AuthState.notAuthorized()) {
     firebaseRepo.authStateChange.listen((user) {
       if (user == null) {
         setState(const AuthState.notAuthorized());
@@ -59,6 +60,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
       } catch (e) {
         FlutterToastWarning.showToast(
             message: 'Some Error ForgotPass!!!', isError: true);
+        rethrow;
       }
     });
 
@@ -79,6 +81,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with _SetStateMixin {
       } catch (_) {
         FlutterToastWarning.showToast(
             message: 'Some Error SignUp!!!', isError: true);
+        rethrow;
       }
     });
   }
