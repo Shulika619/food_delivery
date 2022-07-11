@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../main.dart';
-import '../../../../core/errors/flutter_toast_warning.dart';
+import '../../../../core/flutter_toast_warning.dart';
 import '../../data/repositories/firebase_auth_repositiry.dart';
 
 part 'auth_bloc.freezed.dart';

@@ -5,7 +5,7 @@ import 'package:food_delivery/src/features/cart/data/models/order_item.dart';
 import 'package:food_delivery/src/features/profile/data/repositories/past_orders_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/flutter_toast_warning.dart';
+import '../../../core/flutter_toast_warning.dart';
 
 part 'past_orders_cubit.freezed.dart';
 

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/flutter_toast_warning.dart';
+import '../../../core/flutter_toast_warning.dart';
 import '../data/model/user_model.dart';
 import '../data/repositories/user_repository.dart';
 
