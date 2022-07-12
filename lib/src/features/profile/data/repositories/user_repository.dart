@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 
-abstract class InterfaceUserRepository {
+abstract class IUserRepository {
   User? getCurrentUser();
   Future<void> updatePhotoURL(String url);
   Future<void> updateDisplayName(String name);
@@ -14,7 +14,7 @@ abstract class InterfaceUserRepository {
   Stream<DatabaseEvent> fetchUserFavorite();
 }
 
-class UserRepository implements InterfaceUserRepository {
+class UserRepository implements IUserRepository {
   final FirebaseAuth kFirebaseUserProvider = FirebaseAuth.instance;
 
   @override

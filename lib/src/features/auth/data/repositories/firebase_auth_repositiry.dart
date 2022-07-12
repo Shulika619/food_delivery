@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-abstract class InterfaceFireBaseAuth {
+abstract class IAuthRepository {
   Stream<User?> get authStateChange;
   User? getCurrentUser();
   Future<void> signInWithEmailAndPassword(String email, String password);
@@ -9,9 +9,9 @@ abstract class InterfaceFireBaseAuth {
   Future<void> createUserWithEmailAndPassword(String email, String password);
 }
 
-final FirebaseAuth kFirebaseAuthProvider = FirebaseAuth.instance;
+class FireBaseAuthRepository implements IAuthRepository {
+  final FirebaseAuth kFirebaseAuthProvider = FirebaseAuth.instance;
 
-class FireBaseAuthRepository implements InterfaceFireBaseAuth {
   @override
   Stream<User?> get authStateChange => kFirebaseAuthProvider.authStateChanges();
 
