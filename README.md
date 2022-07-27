@@ -38,7 +38,7 @@ Firebase Realtime Database (Чтение категорий и товара из
 
 ## Cart Корзина
 
-Firebase Realtime Database (Запись заказа)
+Firebase Realtime Database (Сохранение заказа)
 
 Flutter bloc + freezed
 
