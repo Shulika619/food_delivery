@@ -18,7 +18,7 @@ Flutter bloc + freezed
 
 ## Main Основной экран
 
-Firebase Storage (Чтение изображения со скидками из хранилища). Если есть изображения в FirebaseStorage/discount, то создается слайдер/карусель
+Firebase Storage (Чтение изображения со скидками из хранилища). Если есть изображения в FirebaseStorage/discount, то создается слайдер/карусель.
 Firebase Realtime Database (Чтение категорий и товара из бд).
 
 - Скидки 
